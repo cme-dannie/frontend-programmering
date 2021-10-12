@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- Inuti HTML har du hela skrivna hemsidan -->
+<html>
+  <!-- <head> innehåller all metadata för hemsidan -->
+  <head>
+    <meta charset="utf-8" />
+    <title>Detta är en titel</title>
+    <style>
+      /* Här skriver man CSS */
+      h1 {
+        text-align: center;
+      }
+
+      div {
+        color: green;
+      }
+    </style>
+  </head>
+  <!-- <body> innehåller allt som är synligt för användaren -->
+  <body>
+    <!-- h1, h2, h3, h4, h5, h6 -->
+    <h1>
+      Detta är en titel som är synlig för
+      <a href="http://aftonbladet.se">användaren</a>
+    </h1>
+    <h2>Detta är en subtitel</h2>
+    <h3>Detta är en mindre subtitel</h3>
+    <h4>Ännu mindre</h4>
+    <h5>Näst minst</h5>
+    <h6>Minst av alla</h6>
+
+    <!-- Paragrafer -->
+    <p title="Hej">
+      Hej detta är
+      <!-- br är ett självstängande element -->
+      <br />
+      en paragraf
+    </p>
+
+    <!-- Nummer och punktlistor -->
+    <!-- Osorterad lista ("u"nordered "l"ist) -->
+    <ul>
+      <!-- List item -->
+      <li>List item 1</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+      <li>List item 4</li>
+    </ul>
+    <!-- Numrerad lista ("o"rdered "l"ist) -->
+    <ol>
+      <li>List item 5</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+    </ol>
+
+    <!-- Länkar -->
+    <p>
+      <a href="http://aftonbladet.se">Detta är en länk till aftonbladet</a>
+      <a href="http://aftonbladet.se">Detta är en länk till aftonbladet</a>
+    </p>
+
+    <!-- Bilder -->
+    <img src="dog.jpeg" alt="En bild på en hund" width="100" title="Hej" />
+
+    <a href="http://aftonbladet.se" target="_blank">
+        <img src="dog.jpeg" alt="En bild på en hund" width="200" title="Hej jag är inuti en länk" />
+        Jag är text också
+    </a>
+
+    <!-- Semantiskt/strukturellt irrelevanta element/taggar (div/span) -->
+    <p>Jag är en paragraf och jag <div>innehåller en div</div></p>
+    <p>Jag är en annan paragraf och jag <span>innehåller en span</span></p>
+
+    <!-- Formulär-element -->
+    <input type="text" placeholder="Användarnamn">
+    <br>
+    <input type="password" placeholder="Password">
+    <br>
+    <select>
+        <option>--- Välj dag ---</option>
+        <option>Måndag</option>
+        <option>Onsdag</option>
+        <option>Fredag</option>
+    </select>
+    <br>
+    <button>Login</button>
+  </body>
+</html>

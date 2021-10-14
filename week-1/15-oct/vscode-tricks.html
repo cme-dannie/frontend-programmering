@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vscode Övningar + Tricks</title>
+  </head>
+  <body>
+    <!-- 
+        Övningar nedan täcker hur du mer effektivt kan arbeta med Vscode. Ju fortare du kan skriva och modifiera texten du skriver, desto bättre.  
+
+        - Försök vänja dig vid att använda DATORMUSEN/TRACKPAD mindre 🐁.
+        - PS: Jag utgår från att du använder Mac
+        - PS2: CMD är i regel CTRL på PC
+        - PS3: Denna fil förväntas vara öppen i Vscode innan du börjar (webbläsare behövs ej)
+    -->
+
+    <!-- MARKÖR -->
+    <!-- 
+        Problem 1: Två h1 syns på hemsidan. INTE bra! 
+        Ta bort den andra genom att navigera med [PILTANGENTER] (upp/ner/vänster/höger) till slutet av raden som önskas tas bort, och sedan använda [BACKSPACE]
+
+        Detta går att lösa ännu snabbare med [SHIFT + CMD + K] när du hamnat på den önskat borttagna raden, något som kommer ta bort raden oavsett var på raden markören är 
+    -->
+    <h1>Vscode Tricks</h1>
+    <h1>Jag ska tas bort</h1>
+
+    <!-- 
+        Problem 2: Ett överflödigt/extra ord i paragrafen. 
+        Ordna stavfelet genom att navigera med [PILTANGENTER] till ordet. Använd sedan med [SHIFT] i kombination med [BACKSPACE] för att markera + ta bort endast det ordet. Notera att det är möjligt att hoppa mellan ord även utan [SHIFT].
+    -->
+    <p>Vi älskar alla att att lära oss nya teknologier</p>
+
+    <!-- 
+        Tips: Notera hur det är möjligt att växla mellan att hoppa mellan bokstäver, ord och hela rader genom att använda [PILTANGENTERNA] vänster/höger i kombination med [ALT] eller [CMD]. Detta kan ytterligare göras i kombination med [SHIFT] för att markera bokstäver, ord eller hela rader. Testa dessa kombinationer.
+    -->
+
+    <!-- 
+        Tips: Genom att trycka [ENTER] hamnar markören på en ny rad. Detta går att uppnå ovasett var på raden din markör är, genom att hålla inne [CMD]. Testa detta.
+    -->
+
+    <!-- 
+        Problem 3: Åh nej! Alla titlar är h7 element. Dessa existerar tyvärr inte i HTML 😨. Ändra dessa till h6 genom att använda "multi-cursor"-funktionaliteten i Vscode (skapa flera markörer). Detta aktiveras genom att hålla inne [ALT] och sedan klicka med musen där du vill skapa markörer. När du är färdig med skapandet av markörer kan du börja använda dem samtidigt. 
+
+        När du är färdig kan du använda [ESC] för att återgå till "normalt" editeringsläge 
+    -->
+    <h7>Hej</h7>
+    <h7>På</h7>
+    <h7>Dig</h7>
+    <h7>Kompis</h7>
+    <h7>!</h7>
+
+    <!-- DUPLICERA RAD -->
+    <!-- 
+        Problem 3: ol elementet ska innehålla 5 li element för att vara komplett. Lägg markören på existerande li och använd [SHIFT + ALT + UP/DOWN] för att duplicera li 4 gånger. 
+        
+        Problem 4: Notera hur alla li element nu kallas "Item 1". Ändra detta mha vad du har lärt dig (multi-cursor exempelvis) eller med hjälp av att markera texten "Item 1" och använda [CMD + D] flera gånger i rad. Detta kommer hitta och markera all text som matchar den som är markerad och skapa flera markörer åt dig.
+    -->
+    <ol>
+      <li>Item 1</li>
+    </ol>
+
+    <!-- FLYTTA RAD -->
+    <!-- 
+        Problem 4: Det femte li elementet (det som heter "Item 5") nedan ligger på fjärdeplats. Ordna detta genom att navigera med [PILTANGENTER] till raden. Använd nu [ALT + UP/DOWN] för att flytta raden upp eller ner. [DOWN] är lösningen för just det här problemet 
+    -->
+    <ol>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 5</li>
+      <li>Item 4</li>
+    </ol>
+    
+    <!-- ÖPPNA FILER -->
+    <!-- 
+        Tips: [CMD + P] öppnar ett sök som gör det möjligt för dig att öppna filer i editeringsvyn utan att använda musen. Du kan söka efter filer som ligger i "project explorer"/vänsterspalten. Testa detta. 
+    -->
+
+    <!-- FORMATTERING -->
+    <!-- 
+        Tips: [ALT + CMD + L] använder vscode standard-formatteraren för att se till att ditt dokument håller en läsbar struktur. Försök att bryta strukturen och använd kommandot för att se att det fungerar.
+    -->
+
+    <!-- ÖVRIGT -->
+    <!-- 
+        Tips: [ALT + Z] för att bryta rader som går utanför din editeringsvy (överflöder bredden till höger). Återgå till "normalt" visningsläge med samma kommando. Testa detta.
+    -->
+
+    <!-- 
+        Tips: [CMD + Z] för att ångra något du gjort (går att repetera). [CMD + SHIFT + Z] för att ångra det du ångrade. Kan också repeteras. Testa detta.
+    -->
+
+    <!-- 
+        Tips: [ALT + B] för att snabbt öppna ditt dokument i standard-webbläsaren (för mig är det Chrome, men ert val beror på vad som är konfigurerat i era datorinställningar). Testa detta.
+    -->
+
+    <!-- 
+        Tips: [CMD + B] för att öppna/stänga "file explorer" till vänster. Detta ger dig mer arbetsyta i din "editor" vy. Testa detta.
+    -->
+
+    <!-- 
+        Tips: [FN] kan användas i kombination med [BACKSPACE] för att ta bort text som ligger framför markören. Detta kan användas ytterligare i kombination med [ALT] eller [CMD] för att ta bort hela ord eller rader som ligger efter markören. Testa detta.
+     -->
+
+    <!-- 
+        - Sök på nätet efter artiklar som går igenom tips och trick för Vscode. Ett exempel är https://www.desuvit.com/11-vscode-keyboard-shortcuts-that-will-boost-your-productivity/
+        - Använd [CMD + K + S] för att kolla vilka kortkommandon som finns i Vscode. De kan även ändras i detta fönster.
+        - Emmet är ett verktyg ni också sett mig använda under presentationer och demos. Vi kan prata mer om det i framtiden 🤓
+    -->
+  </body>
+</html>

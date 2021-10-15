@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- METADATA -->
+    <!-- Skapa en titel för dokumentet -->
+    <title>Lösningar</title>
+    <!-- Skapa metadata som beskriver vem som har byggt hemsidan -->
+    <meta name="author" content="Dannie Håkansson tillsamans med CME klassen :)">
+    <!-- Skapa metadata som representerar en beskrivning av hemsidan -->
+    <meta name="description" content="Lösningar för klassen">
   </head>
   <body>
     <h1>Övningar Grunder i HTML</h1>
@@ -64,37 +71,109 @@
 
     <!-- NESTANDE -->
     <!-- Skapa en paragraf av text där ett av orden har en semantiskt starkare betydelse/vikt än den övriga texten i paragrafen -->
+    <p>Lorem ipsum dolor sit amet <strong>consectetur</strong>, adipisicing elit. Dolorum id ab sint maiores eveniet a, perspiciatis amet iste neque adipisci.</p>
     <!-- Skapa en valfri "parent > child > child > child > child" struktur (alltså en nivå av element som går 5 nivåer djupt inklusive föräldern) -->
 
+    <!-- parent > child > child > child > child > child -->
+    <!-- parent (article) > p (child) > strong (child) > span (child) > a (child) > span (child) -->
+    <article>
+      <p>
+        Lorem ipsum, dolor sit amet <strong>consectetur <span>dannie dricker <a href="https://coffee.com">kaffe och <span> proteinpulver</span></a></span></strong> adipisicing elit. At, blanditiis.
+      </p>
+    </article>
+
     <!-- LISTOR -->
-    <!-- Skapa en numrerad lista av 3 element -->
-    <!-- Skapa en punktlista lista av 3 element -->
-    <!-- Skapa en valfri lista av 3 element där varje element länkar till en hemsida -->
+    <!-- Skapa en numrerad lista av 3 list items -->
+    <ol>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ol>
+    <!-- Skapa en punktlista lista av 3 list items -->
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+
+    <!-- Skapa en valfri lista av 3 list items där varje element länkar till en hemsida -->
+    <ul>
+      <li><a href="https://coffee.com">Item 1</a></li>
+      <li><a href="https://coffee.com">Item 2</a></li>
+      <li><a href="https://coffee.com">Item 3</a></li>
+    </ul>
 
     <!-- FORMULÄR -->
+    <form>
     <!-- Skapa ett fält där användaren kan mata in text -->
+    <input type="text">
     <!-- Skapa ett fält där användaren kan mata in känslig information (som lösenord) -->
+    <input type="password">
     <!-- Skapa ett fält där användaren kan få hjälp i att förstå formatet som hen ska fylla i informationen i -->
+    <input type="text" placeholder="+46 xxx xx xx">
     <!-- Skapa ett fält där användaren kan mata in mer än en rad av information (OBS: det är ett element ni inte hört om än) -->
+    <br>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
     <!-- Skapa en dropdown-lista med alla 7 veckordagar att välja mellan -->
+    <br>
+    <select>
+      <option>--- Välj veckodag ---</option>
+      <option>Måndag</option>
+      <option>Tisdag</option>
+      <option>Onsdag</option>
+      <option>Torsdag</option>
+      <option>Fredag</option>
+      <option>Lördag</option>
+      <option>Söndag</option>
+    </select>
     <!-- Skapa en knapp med valfri text -->
+    <button type="submit">
+      Leverera lunch till mig nu
+      <span>Tjena nu kommer Uber Eats leveransen</span>
+    </button>
     <!-- Skapa en till knapp med valfri text (men använd ett annat element än i förra lösningen) -->
+    <input type="submit" value="Leverera lunch till mig nu <span>Tjena nu kommer Uber Eats leveransen</span>">
     <!-- Skapa en knapp som är avstängd (ej klickbar) (OBS: det är ett attribut ni inte hört om än) -->
+    <button disabled>Beställ Bubble Tea NU!</button>
     <!-- Skapa alla element som kan tänkas ingå i ett login-formulär, dvs. "användarnamn", "lösenord" och "login" fält -->
+    <label for="username">Username:</label>
+    <input id="username" type="text" placeholder="Username">
+
+    <label for="password">Password:</label>
+    <input id="password" type="password" placeholder="Password">
+
+    <button type="submit">Login</button>
     <!-- Modifiera login-formuläret du just skapade med att lägga till "labels" -->
     <!-- Skapa en checkbox med label -->
+    <label for="terms-of-agreement">Godkänner du våra användarvillkor?</label>
+    <input id="terms-of-agreement" type="checkbox">
+    
+    <label>Godkänner du våra användarvillkor? <input type="checkbox"></label>
     <!-- Skapa tre radio-knappar. Testa sedan att tryck på dem. Se till att endast en går att klicka i (läs på https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio) -->
+    <br>
+    <h2>Betala när?</h2>
+    <label for="weekly">Veckovis</label>
+    <input id="weekly" name="when-to-pay" type="radio">
+
+    <label for="monthly">Månatligen</label>
+    <input id="monthly" name="when-to-pay" type="radio">
+    
+    <label for="yearly">Årligen</label>
+    <input id="yearly" name="when-to-pay" type="radio">
+
     <!-- Lägg nu en label runt varje radio-knapp. Se till att tryckandet på texten/labeln markerar knappen (precis som om du skulle tryckt på knappen) -->
+    </form>
 
     <!-- ICKE-SEMANTIK -->
     <!-- Skapa en div med en div inuti -->
-    <!-- Skapa en div med en span inuti -->
-    <!-- Skapa en span med en span inuti -->
+    <div>
+      <div>Hej</div>
+    </div>
 
-    <!-- METADATA -->
-    <!-- Skapa en titel för dokumentet -->
-    <!-- Skapa metadata som beskriver vem som har byggt hemsidan -->
-    <!-- Skapa metadata som representerar en beskrivning av hemsidan -->
+    <!-- Skapa en div med en span inuti -->
+    <div><span>Lorem ipsum dolor sit.</span></div>
+    <!-- Skapa en span med en span inuti -->
+    <span><span>Lorem ipsum dolor sit amet.</span></span>
 
     <!-- ÖVRIGT -->
     <!-- Laborera med strukturella element som beskrivs i https://developer.mozilla.org/en-US/docs/Web/HTML/Element#content_sectioning -->

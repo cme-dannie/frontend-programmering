@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Absolute positioning</title>
+    <style>
+      body {
+        margin: 10px;
+      }
+
+      div {
+        padding: 10px;
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+        /* 1. Uncomment the positioning to see how the two elements are put out of the "normal" document flow */
+        /* position: absolute; */
+      }
+
+      .green {
+        background: limegreen;
+        /* 2. Notice how we now can manipulate the z-index to put the regular "first" element as the "last" element of the stacking context */
+        /* z-index: 1; */
+      }
+
+      .violet {
+        background: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Absolute positioning</h1>
+    <div class="green"></div>
+    <div class="violet"></div>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relative positioning</title>
+    <style>
+      body {
+        margin: 10px;
+      }
+
+      div {
+        padding: 10px;
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+        /* 1. Aktivera relativ positionering. Detta kommer ej skapa ett synligt resultat.  */
+        /* TODO: Why is this needed on both divs to illustrate the z-index? */
+        /* position: relative; */
+      }
+
+      .green {
+        background: limegreen;
+
+        /* 2. Aktivera "top" och "left" för att se hur elementet glider under det andra elementet */
+        /* top: 50px; */
+        /* left: 50px; */
+
+        /* 3. Aktivera z-index */
+        /* z-index: 1; */
+      }
+
+      .violet {
+        background: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Relative positioning</h1>
+    <div class="green"></div>
+    <div class="violet"></div>
+  </body>
+</html>

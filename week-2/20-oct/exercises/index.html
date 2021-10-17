@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Övningar CSS del 2</title>
+  </head>
+  <body>
+    <!-- 
+        I uppgifterna nedan arbetar vi med att bekanta oss ännu mer med CSS.
+
+        Vissa av lösningarna kräver att du bekantar dig vid CSS-attribut som du kanske inte känner till riktigt än. Försök Googla :). MDN är som alltid en fantastisk resurs att läsa när det kommer till dokumentation.
+
+        All CSS för uppgifterna nedan förväntas vara skriven i en extern css-fil. Skapa denna och läs in den via <link> innan du börjar.
+
+        OBS: HTML-strukturen för dokumentet är skapad av "Emmet" snippet som triggas vid tecknet "!" (utropstecken).
+    -->
+
+    <!-- SELECTORS -->
+
+    <!-- ELEMENT TYPE SELECTOR -->
+    <!-- Skapa en huvudtitel (h1). Använd DevTools för att lista ut hur stor en huvudtitel är by default, och presentera sedan elementet mindre med hjälp av en element-typ-selektor. -->
+
+    <!-- ID SELECTOR (#) -->
+    <!-- 
+        - Lägg till ett id på din redan skapade huvudtitel. Använd en id-selektor för att skapa en border runt elementet. 
+        
+        - BONUS: Se om det går att kombinera lösningen på förra uppgiften med lösningen för denna, dvs. att slutresultatet är en utökad/kombinerad selektor. Fundera sedan på om man skulle vilja göra så eller ej.
+    -->
+
+    <!-- CLASS SELECTOR (.) -->
+    <!-- 
+        - Vi vill nu skapa en punkt-lista med 12 stycken list-element som representerar alla årets månader. Alla list-element ska ha lila textfärg, en valfri border, och en padding på 10px. Använd en class-selektor för att lösa detta.
+
+        - Vi kan se om vi inspekterar i DevTools att vår webbläsare har skapat en padding och margin för vår punktlista (vilket är definierat i "user agent stylesheet"). Använd en class-selektor för att ta bort detta.
+
+        - Eftersom att vi vill skapa en snyggare lista så vill vi ta bort "punkterna" som dyker upp till vänster av varje list-item. Se om du kan lista ut hur man tar bort dessa.
+
+        - Eftersom att vi befinner oss i oktober månad, så vill vi visa detta på något sätt. Ändra textfärgen till grön, och typvikten av texten "Oktober" till bold med hjälp av en ny class.
+    -->
+
+    <style>
+      aside {
+        margin-top: 50px;
+      }
+
+      .list {
+        padding: 0;
+        margin: 0;
+      }
+
+      .item {
+        color: purple;
+        padding: 10px;
+        border-bottom: 1px solid gray;
+        border-bottom: 1px solid gray;
+        list-style: none;
+      }
+
+      .current {
+        color: green;
+        font-weight: bold;
+      }
+
+      .item[title] {
+        color: blue;
+      }
+
+      .item[title="Nästa månad"] {
+        color: red;
+      }
+
+      main .list {
+        background: rgba(255, 255, 119, 0.551);
+      }
+    </style>
+
+    <main>
+      <ul class="list">
+        <li class="item">Januari</li>
+        <li class="item">Februari</li>
+        <li class="item">Mars</li>
+        <li class="item">April</li>
+        <li class="item">Mars</li>
+        <li class="item">Juni</li>
+        <li class="item">Juli</li>
+        <li class="item">Augusti</li>
+        <li class="item" title="Förra månaden">September</li>
+        <li class="item current">
+          <ul>
+            <li>Hey</li>
+          </ul>
+        </li>
+        <li class="item" title="Nästa månad">November</li>
+        <li class="item">December</li>
+      </ul>
+    </main>
+
+    <aside>
+      <ul class="list">
+        <li class="item">Måndag</li>
+        <li class="item">Tisdag</li>
+        <li class="item">Onsdag</li>
+        <li class="item">Torsdag</li>
+        <li class="item">Fredag</li>
+        <li class="item">Lördag</li>
+        <li class="item">Söndag</li>
+      </ul>
+    </aside>
+
+    <!-- ATTRIBUTE SELECTOR ([attr]) -->
+    <!-- 
+        - Hjälp användaren förstå när musen ligger över elementet "November" att det just är nästföljande månad. Gör detta mha HTML title attributet. Gör även detta för "September" för att hjälpa användaren förstå att det är förra månaden.
+    
+        - Använd en attribut-selektor tillsammans med class-selektor för att ändra textfärgen på både "September" och "November" till blått.
+
+        - Eftersom att "förra" och "nästa" månad inte är samma sak så borde vi nog ändra vår färg på ett av elementen så att vår användare inte blir förvirrad. Skapa en ny attribut-selektor så att endast elementet med texten "November" blir röd.
+    -->
+
+    <!-- DESCENDANT COMBINATOR -->
+    <!-- 
+        - Skapa en ny lista under den förra, med 7 element som representerar alla veckans dagar. Använd existerande CSS för att presentera denna nya lista på samma sätt.
+
+        - Lägg den första (månadslistan) i ett kringliggande <main> element. Detta element representerar det "huvudsakliga" innehållet på sidan. Lägg den nya listan i ett <aside> element. Detta element representerar "icke huvudsakligt" eller "kringliggande" innehåll på sidan.
+
+        - Ge ditt aside element en top margin av 50px, så att vi lättare kan skilja på listorna. Använd valfri selektor du lärt dig hittills för att lösa detta.
+
+        - Ge elementet som representerar "månadslistan" en bakgrundsfärg av gul. Använd "descendant combinator" tillsammans med element-typ-selektor och klass-selektor för att åstadkomma detta. Dvs. undvik att färga "veckolistan" gul.
+    
+    -->
+
+    <!-- CHILD COMBINATOR (>) -->
+    <!-- 
+        - Lägg till ett list element inuti oktober månad. Notera hur denna lista nu blir gul. Detta är eftersom att selektorn du använde för att färglägga den är "generell", dvs. den kommer selecta alla children oavsett vilken nivå de ligger på.
+
+        - Ändra selektorn så att den använder sig av "child combinator" istället för "descendant combinator".
+     -->
+
+    <!-- GENERAL SIBLING COMBINATOR (~) -->
+    <!-- ADJACENT SIBLING COMBINATOR (+) -->
+    <!-- UNIVERSAL SELECTOR (*) -->
+    <!-- UNIVERSAL SELECTOR (*) -->
+    <!-- GROUPING OF SELECTORS (,) -->
+
+    <!-- POSITIONING -->
+    <!-- Z-INDEX -->
+    <!-- PSEUDO CLASSES -->
+  </body>
+</html>

@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Övningar CSS del 2</title>
+    <title>Övningar CSS del 2 - Selektorer</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <!-- 
-        I uppgifterna nedan arbetar vi med att bekanta oss ännu mer med CSS.
+        I uppgifterna nedan arbetar vi med att bekanta oss ännu mer med CSS, mer specifikt selektorer.
 
         Vissa av lösningarna kräver att du bekantar dig vid CSS-attribut som du kanske inte känner till riktigt än. Försök Googla :). MDN är som alltid en fantastisk resurs att läsa när det kommer till dokumentation.
 
-        All CSS för uppgifterna nedan förväntas vara skriven i en extern css-fil. Skapa denna och läs in den via <link> innan du börjar.
+        All CSS för uppgifterna nedan förväntas vara skriven i "styles.css" som redan ligger i samma mapp som den här filen.
 
         OBS: HTML-strukturen för dokumentet är skapad av "Emmet" snippet som triggas vid tecknet "!" (utropstecken).
     -->
@@ -37,77 +38,8 @@
 
         - Eftersom att vi vill skapa en snyggare lista så vill vi ta bort "punkterna" som dyker upp till vänster av varje list-item. Se om du kan lista ut hur man tar bort dessa.
 
-        - Eftersom att vi befinner oss i oktober månad, så vill vi visa detta på något sätt. Ändra textfärgen till grön, och typvikten av texten "Oktober" till bold med hjälp av en ny class.
+        - Eftersom att vi befinner oss i oktober månad, så vill vi visa detta på något sätt. Ändra textfärgen till grön, och typvikten av texten "Oktober" till bold med hjälp av en ny class. Ett bra namn skulle kunna vara "current".
     -->
-
-    <style>
-      aside {
-        margin-top: 50px;
-      }
-
-      .list {
-        padding: 0;
-        margin: 0;
-      }
-
-      .item {
-        color: purple;
-        padding: 10px;
-        border-bottom: 1px solid gray;
-        border-bottom: 1px solid gray;
-        list-style: none;
-      }
-
-      .current {
-        color: green;
-        font-weight: bold;
-      }
-
-      .item[title] {
-        color: blue;
-      }
-
-      .item[title="Nästa månad"] {
-        color: red;
-      }
-
-      main .list {
-        background: rgba(255, 255, 119, 0.551);
-      }
-    </style>
-
-    <main>
-      <ul class="list">
-        <li class="item">Januari</li>
-        <li class="item">Februari</li>
-        <li class="item">Mars</li>
-        <li class="item">April</li>
-        <li class="item">Mars</li>
-        <li class="item">Juni</li>
-        <li class="item">Juli</li>
-        <li class="item">Augusti</li>
-        <li class="item" title="Förra månaden">September</li>
-        <li class="item current">
-          <ul>
-            <li>Hey</li>
-          </ul>
-        </li>
-        <li class="item" title="Nästa månad">November</li>
-        <li class="item">December</li>
-      </ul>
-    </main>
-
-    <aside>
-      <ul class="list">
-        <li class="item">Måndag</li>
-        <li class="item">Tisdag</li>
-        <li class="item">Onsdag</li>
-        <li class="item">Torsdag</li>
-        <li class="item">Fredag</li>
-        <li class="item">Lördag</li>
-        <li class="item">Söndag</li>
-      </ul>
-    </aside>
 
     <!-- ATTRIBUTE SELECTOR ([attr]) -->
     <!-- 
@@ -126,25 +58,39 @@
 
         - Ge ditt aside element en top margin av 50px, så att vi lättare kan skilja på listorna. Använd valfri selektor du lärt dig hittills för att lösa detta.
 
-        - Ge elementet som representerar "månadslistan" en bakgrundsfärg av gul. Använd "descendant combinator" tillsammans med element-typ-selektor och klass-selektor för att åstadkomma detta. Dvs. undvik att färga "veckolistan" gul.
+        - Ge elementet som representerar "månadslistan" en border av "5px solid black". Använd "descendant combinator" tillsammans med element-typ-selektor och klass-selektor för att åstadkomma detta. Dvs. undvik att applicera detta på "veckolistan".
     
     -->
 
     <!-- CHILD COMBINATOR (>) -->
     <!-- 
-        - Lägg till ett list element inuti oktober månad. Notera hur denna lista nu blir gul. Detta är eftersom att selektorn du använde för att färglägga den är "generell", dvs. den kommer selecta alla children oavsett vilken nivå de ligger på.
+        - Lägg till ett list element inuti elementet "oktober" månad. Lägg in valfritt innehåll här för de nya list-elementen. Återanvänd existerande klasser för att få den här listan att se ut som de andra liknande ut.
 
-        - Ändra selektorn så att den använder sig av "child combinator" istället för "descendant combinator".
+        - Notera att även denna listan fick en svart border runt sig. Detta vill vi inte ha. Ändra existerande selektor som är skriven för denna CSS så att endast den yttre listan får denna border, dvs. applicera "child combinator" istället för "descendant combinator" som selektor.
      -->
 
     <!-- GENERAL SIBLING COMBINATOR (~) -->
-    <!-- ADJACENT SIBLING COMBINATOR (+) -->
-    <!-- UNIVERSAL SELECTOR (*) -->
-    <!-- UNIVERSAL SELECTOR (*) -->
-    <!-- GROUPING OF SELECTORS (,) -->
+    <!-- 
+      - Peka ut dagens dag i "veckolistan" mha en ny class. Färgen ska även här vara grön och typvikten ska vara "bold". Se om du kan använda samma class som du använde för att märka ut den nuvarande månaden i "månadslistan"ej.
 
-    <!-- POSITIONING -->
-    <!-- Z-INDEX -->
-    <!-- PSEUDO CLASSES -->
+      - Använd "general sibling combinator" i kombination med de selektorer du lärt dig för att ändra alla dagar som följer dagens dag till att ha färgen röd.
+     -->
+
+    <!-- ADJACENT SIBLING COMBINATOR (+) -->
+    <!-- 
+      - Eftersom att morgondagen är extra viktig så vill vi märka ut detta för användaren. Använd "adjacent sibling combinator" i kombination med de selektorer du lärt dig för att göra typvikten "bold" för morgondagen.
+     -->
+
+    <!-- UNIVERSAL SELECTOR (*) -->
+    <!-- 
+      - Sätt en 1px border på alla element med hjälp av "univeral selector". Notera hur allting på hela sidan påverkas. 
+      
+      Denna selector kan vara användbart som en inledande "reset" eller "borttagning" av CSS som har applicerats av "user agent stylesheet".
+     -->
+
+    <!-- GROUPING OF SELECTORS (,) -->
+    <!-- 
+      Testa att labba med att kombinera selektorer som du har lärt dig mha gruppering (,).
+     -->
   </body>
 </html>

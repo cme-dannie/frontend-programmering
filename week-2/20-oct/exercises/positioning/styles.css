@@ -1,0 +1,66 @@
+/* 
+    I uppgifterna nedan arbetar vi med att bekanta oss ännu mer med CSS, mer specifikt positionering.
+
+    Vissa av lösningarna kräver att du bekantar dig vid CSS-attribut som du kanske inte känner till riktigt än. Försök Googla :). MDN är som alltid en fantastisk resurs att läsa när det kommer till dokumentation.
+
+    Ingen HTML förväntas behövas skrivas för att lösa uppgifterna.
+
+    Komplettera CSSen nedan med följande uppgifter (du måste läsa HTML-dokumentet index.html i den här mappen för att förstå vilka selektorer som lämpar sig):
+
+    1. Positionera bilden på kaninen så att den ligger över den blåa bakgrunden.
+
+    2. Markera länken för att kontakta författaren av artikeln så att den fastnar när toppen av elementet når skärmkanten vid scroll neråt.
+
+    3. Om du scrollar längst ner på sidan så kan du se att där finns en "cookie banner", en av många som ni säkert sett när ni surfar på nätet. En vanlig grej är att den sitter fast i botten av skärmytan. Få detta att fungera.
+
+    4. Kaninen är hungrig efter en morot. Använd det du lärt dig för att mata kaninen 🐰🥕
+*/
+
+body {
+  margin: 0;
+}
+
+.hero {
+  padding: 100px 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(35, 46, 209, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  text-align: center;
+}
+
+h1 {
+  color: white;
+}
+
+main {
+  padding: 0 50px;
+}
+
+img {
+  display: block;
+}
+
+.rabbit {
+  border-radius: 100%;
+  border: 4px solid gray;
+  object-fit: cover;
+}
+
+article {
+  margin: 10px auto;
+  max-width: 50ch;
+  line-height: 1.5;
+  font-size: 20px;
+}
+
+.cookie-banner {
+  background: linear-gradient(
+    90deg,
+    rgba(35, 46, 209, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: white;
+  padding: 20px;
+}

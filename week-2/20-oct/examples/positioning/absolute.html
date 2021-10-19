@@ -7,32 +7,76 @@
     <title>Absolute positioning</title>
     <style>
       body {
-        margin: 10px;
+        padding: 0 20px;
       }
 
-      div {
-        padding: 10px;
-        margin: 10px;
-        width: 100px;
-        height: 100px;
-        /* 1. Uncomment the positioning to see how the two elements are put out of the "normal" document flow */
+      h2 {
+        margin: 0;
+      }
+
+      body {
+        font-family: fantasy;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        filter: brightness(80%);
+      }
+
+      .card {
+        border: 2px solid lightgray;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 300px;
+      }
+
+      small {
+        display: block;
+        font-size: 20px;
+        /* 2. Aktivera absolut positionering. Notera att detta KOMMER att skapa ett synligt resultat, även utan top/right/bottom/left */
         /* position: absolute; */
+
+        /* 3. Sätt värden för "förflyttning" av elementet */
+        /* bottom: 0; */
+        /* left: 0; */
+        /* right: 0; */
+
+        /* 4. Put some padding, a new text color as well as a nice background overlay effect to have it fit in more nicely. */
+        /* padding: 10px; */
+        /* background: rgba(0, 0, 0, 0.5); */
+        /* color: white; */
       }
 
-      .green {
-        background: limegreen;
-        /* 2. Notice how we now can manipulate the z-index to put the regular "first" element as the "last" element of the stacking context */
-        /* z-index: 1; */
+      .image-container {
+        /* 5. Make this container the "closest" positioned element, instead of it being the root <body> */
+        /* position: relative; */
       }
 
-      .violet {
-        background: blueviolet;
+      .description {
+        padding: 20px;
       }
     </style>
   </head>
   <body>
     <h1>Absolute positioning</h1>
-    <div class="green"></div>
-    <div class="violet"></div>
+    <main>
+      <section class="card">
+        <div class="image-container">
+          <img
+            src="apartment.jpeg"
+            alt="En fin lägenhet vid kusten"
+            width="100"
+          />
+          <!-- 1. Rendera det här elementet, vilket låter det ta upp dess naturliga "statiska" plats i dokumentflödet -->
+          <!-- <small>2.000.000 SEK</small> -->
+        </div>
+        <div class="description">
+          <h2>Fin bostad vid kusten</h2>
+          <p>Precis vid vattnet har vi den här vackra lägenheten...</p>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

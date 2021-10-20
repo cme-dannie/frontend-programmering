@@ -1,0 +1,40 @@
+h1#mainTitle {
+  font-size: 20px;
+  border-bottom: 1px solid black;
+}
+/* 
+  Hur pekar jag ut mina <li> element UTAN en element typ selektor? Jag måste använda mig av en class-selector.
+  
+  Vad är namnet på min class!? */
+
+.color-border-padding {
+  color: purple;
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+/* 
+  Hur kan jag peka ut mitt <ul> element just nu!?
+  
+  - Ah, jag kan använda mig av klassen "list" */
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Hur kan jag berätta för användaren att Oktober månad är EXTRA viktig? */
+.current {
+  color: green;
+  font-weight: bold;
+}
+
+/* Hur kan jag identifiera mitt li element som har ett attribut title? */
+.color-border-padding[title] {
+  color: blue;
+}
+
+.color-border-padding[title="Nästa månad"] {
+  color: red;
+}

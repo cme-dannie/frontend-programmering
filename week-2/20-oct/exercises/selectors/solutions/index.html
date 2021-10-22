@@ -42,20 +42,40 @@
 
         - Eftersom att vi befinner oss i oktober månad, så vill vi visa detta på något sätt. Ändra textfärgen till grön, och typvikten av texten "Oktober" till bold med hjälp av en ny class. Ett bra namn skulle kunna vara "current".
     -->
-    <ul class="list">
-      <li class="color-border-padding">Januari</li>
-      <li class="color-border-padding">Februari</li>
-      <li class="color-border-padding">Mars</li>
-      <li class="color-border-padding">April</li>
-      <li class="color-border-padding">Maj</li>
-      <li class="color-border-padding">Juni</li>
-      <li class="color-border-padding">Juli</li>
-      <li class="color-border-padding">Augusti</li>
-      <li class="color-border-padding" title="Förra månaden">September</li>
-      <li class="color-border-padding current">Oktober</li>
-      <li class="color-border-padding" title="Nästa månad">November</li>
-      <li class="color-border-padding">December</li>
-    </ul>
+    <main>
+      <ul class="list">
+        <li class="color-border-padding">Januari</li>
+        <li class="color-border-padding">Februari</li>
+        <li class="color-border-padding">Mars</li>
+        <li class="color-border-padding">April</li>
+        <li class="color-border-padding">Maj</li>
+        <li class="color-border-padding">Juni</li>
+        <li class="color-border-padding">Juli</li>
+        <li class="color-border-padding">Augusti</li>
+        <li class="color-border-padding" title="Förra månaden">September</li>
+        <li class="color-border-padding current">
+          Oktober
+          <ul class="list">
+            <li class="color-border-padding">Vecka 1</li>
+            <li class="color-border-padding">Vecka 2</li>
+          </ul>
+        </li>
+        <li class="color-border-padding" title="Nästa månad">November</li>
+        <li class="color-border-padding">December</li>
+      </ul>
+    </main>
+
+    <aside>
+      <ul class="list week">
+        <li class="color-border-padding">Måndag</li>
+        <li class="color-border-padding">Tisdag</li>
+        <li class="color-border-padding">Onsdag</li>
+        <li class="color-border-padding">Torsdag</li>
+        <li class="color-border-padding current">Fredag</li>
+        <li class="color-border-padding">Lördag</li>
+        <li class="color-border-padding">Söndag</li>
+      </ul>
+    </aside>
 
     <!-- ATTRIBUTE SELECTOR ([attr]) -->
     <!-- 
@@ -66,7 +86,7 @@
         - Eftersom att "förra" och "nästa" månad inte är samma sak så borde vi nog ändra vår färg på ett av elementen så att vår användare inte blir förvirrad. Skapa en ny attribut-selektor så att endast elementet med texten "November" blir röd.
     -->
 
-    <!-- DESCENDANT COMBINATOR -->
+    <!-- DESCENDANT COMBINATOR ( ) -->
     <!-- 
         - Skapa en ny lista under den förra, med 7 element som representerar alla veckans dagar. Använd existerande CSS för att presentera denna nya lista på samma sätt.
 
@@ -75,19 +95,18 @@
         - Ge ditt aside element en top margin av 50px, så att vi lättare kan skilja på listorna. Använd valfri selektor du lärt dig hittills för att lösa detta.
 
         - Ge elementet som representerar "månadslistan" en border av "5px solid black". Använd "descendant combinator" tillsammans med element-typ-selektor och klass-selektor för att åstadkomma detta. Dvs. undvik att applicera detta på "veckolistan".
-    
     -->
 
     <!-- CHILD COMBINATOR (>) -->
     <!-- 
-        - Lägg till ett list element inuti elementet "oktober" månad. Lägg in valfritt innehåll här för de nya list-elementen. Återanvänd existerande klasser för att få den här listan att se ut som de andra liknande ut.
+        - Lägg till ett list element inuti elementet "oktober" månad. Lägg in valfritt innehåll här för de nya list-elementen. Återanvänd existerande klasser för att få den här listan att se ut som de andra.
 
         - Notera att även denna listan fick en svart border runt sig. Detta vill vi inte ha. Ändra existerande selektor som är skriven för denna CSS så att endast den yttre listan får denna border, dvs. applicera "child combinator" istället för "descendant combinator" som selektor.
      -->
 
     <!-- GENERAL SIBLING COMBINATOR (~) -->
     <!-- 
-      - Peka ut dagens dag i "veckolistan" mha en ny class. Färgen ska även här vara grön och typvikten ska vara "bold". Se om du kan använda samma class som du använde för att märka ut den nuvarande månaden i "månadslistan"ej.
+      - Peka ut dagens dag i "veckolistan" mha en ny class. Färgen ska även här vara grön och typvikten ska vara "bold". Se om du kan använda samma class som du använde för att märka ut den nuvarande månaden i "månadslistan".
 
       - Använd "general sibling combinator" i kombination med de selektorer du lärt dig för att ändra alla dagar som följer dagens dag till att ha färgen röd.
      -->

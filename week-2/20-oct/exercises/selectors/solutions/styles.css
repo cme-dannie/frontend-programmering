@@ -38,3 +38,69 @@ h1#mainTitle {
 .color-border-padding[title="Nästa månad"] {
   color: red;
 }
+
+aside {
+  margin-top: 50px;
+}
+
+/* - Ge elementet som representerar "månadslistan" en border av "5px solid black". Använd "descendant combinator" tillsammans med element-typ-selektor och klass-selektor för att åstadkomma detta. Dvs. undvik att applicera detta på "veckolistan". */
+
+/* Vad heter element-typen som representerar "månadslistan"? */
+/* main ul {
+  border: 5px solid black;
+} */
+
+/* main .list {
+  border: 5px solid black;
+} */
+
+main > .list {
+  border: 5px solid black;
+}
+
+aside .current ~ .color-border-padding {
+  color: red;
+}
+
+/* vad heter nuvarande dag? */
+/* hur kan vi uttrycka relationen mellan nuvarande dag och morgondagen? */
+aside .current + li {
+  font-weight: bold;
+}
+
+/* Alla element som har classen "color-border-padding" som ligger direkt eller indirekt som "ättling" inuti alla element av typen "main" som har klassen "list" som ligger direkt eller indirekt som en descendant/ättling/child/barn till element av typen "main" ska få en border */
+
+/* <main>
+      <ul>
+          <li>
+              <ul */
+
+/* Om vi tittar på HTML-strukturen för de olika listorna, vad är skillnaden? */
+
+/* Hur ändrar vi vår selektor så att "child combinator" används istället för "descendant combinator? */
+
+/* Olika sätt på hur vi kan "peka ut" element i vår HTML och styla dem med CSS */
+
+/* 1. "element type selector" */
+/* p {} */
+/* body {} */
+/* div {} */
+
+/* 2. "id selector */
+/* #myElement <-- <div id="myElement"> */
+/* #loginForm <-- <form id="loginForm"> */
+/* #fixedHeader <-- <header id="fixedHeader"> */
+
+/* 3. "class selector" */
+/* .tjena <-- <p class="tjena">, <span class="hey tjena"> */
+/* .color-border-padding <-- <li class="color-border-padding"> */
+
+/* 4. "attribute selector" */
+/* a[href]  <-- <a href="https://twitter.com"> */
+/* a[href="https://omni.se"] {}  <-- <a href="https://omni.se"> */
+/* img[src="https://omni.se/katt.png"] {}  <-- <img src="https://omni.se/katt.png"> */
+
+/* Kombinerade selektorer */
+
+/* 5. "descendant combinator" ( ) */
+/* #myElement .tjena { color: red; } */

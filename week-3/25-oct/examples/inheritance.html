@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inheritance</title>
+    <style>
+      body {
+        /* Allting på hela hemsidan kommer nu ärva font-size av 25px från 'body' eftersom att det är alla elements slutgiltiga förfäder/ancestor
+        
+        Det "djupaste" elementet på sidan är <li>, som ärver font-size av <ul> som ärver det av <nav>, som ärver det av <header>, som ärver det av <body>. Med andra ord, eftersom att vi inte sagt något annat för dessa inre element, så har de 'font-size: inherit' satt. */
+        font-size: 25px;
+      }
+
+      header {
+        /* Varken nav, ul eller li element inuti vår header kommer ha den här bordern applicerad. Visst vore det lite konstigt om det vore fallet? */
+        border-bottom: 2px solid black;
+      }
+
+      p {
+        /* Eftersom att color är ett inherited property, så ärver vår inre <strong> av <p> */
+        color: rgb(232, 26, 74);
+
+        /* Padding på <p> ärvs däremot inte av vår inre <strong>, då det vore konstigt. */
+        padding-left: 50px;
+      }
+
+      strong {
+        /* Vi kan dock säga att vi VILL att padding ska ärvas. Notera hur värdet från <p> appliceras. Denna flexibilitet finns för alla properties. */
+        padding-left: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">About us</a></li>
+          <li><a href="">Our blog</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit libero
+        natus molestias ea totam itaque qui cupiditate laboriosam a dicta aut
+        non doloribus accusamus nam id, maxime animi dignissimos laudantium
+        quisquam porro soluta <strong>harum inventore</strong>. Vitae, corrupti
+        sit earum culpa doloremque odio, quisquam ratione asperiores veniam
+        incidunt, ipsam cupiditate modi?
+      </p>
+    </main>
+  </body>
+</html>

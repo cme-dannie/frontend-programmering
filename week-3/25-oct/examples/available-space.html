@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Available space</title>
+    <style>
+      a {
+        padding: 0 150px;
+      }
+
+      header {
+          /* Vad skulle fördelen vara med att sätta 50% istället för en fast bredd i px för det här elementet? */
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Notera hur innehållet tillåts att expandera i höjd. Detta är förväntat beteende. Det är oftast bredden som begränsas eller bearbetas för att te sig på specifika sätt. -->
+    <h1>Available space</h1>
+    <header>
+      <nav>
+        <!-- När länkarna ej längre får plats inom den tillgängliga bredden, så hamnar de på en ny rad. Detta är förväntat och väldigt användbart, eftersom att innehållet fortfarande är synligt. -->
+        <a href="">One</a>
+        <a href="">Two</a>
+        <a href="">Three</a>
+      </nav>
+    </header>
+  </body>
+</html>

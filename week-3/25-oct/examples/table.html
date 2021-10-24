@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table layout</title>
+    <style>
+      thead {
+        background: black;
+        color: white;
+      }
+      form {
+        display: table;
+        margin: 0 auto;
+      }
+
+      div {
+        display: table-row;
+      }
+
+      label,
+      input {
+        display: table-cell;
+        margin-bottom: 10px;
+      }
+
+      label {
+        width: 200px;
+        padding-right: 10px;
+        text-align: right;
+      }
+
+      input {
+        width: 300px;
+      }
+
+      p {
+        display: table-caption;
+        caption-side: bottom;
+        width: 300px;
+        color: #999;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Table layouts</h1>
+    <h2>1. Proper use of table</h2>
+    <table>
+      <thead>
+        <td>First name</td>
+        <td>Last name</td>
+        <td>Age</td>
+      </thead>
+      <tbody>
+        <tr>
+          <td>James</td>
+          <td>Dean</td>
+          <td>27</td>
+        </tr>
+        <tr>
+          <td>James</td>
+          <td>Bond</td>
+          <td>28</td>
+        </tr>
+        <tr>
+          <td>LeBron</td>
+          <td>James</td>
+          <td>29</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>2. Improper use of table</h2>
+    <form>
+      <p>First of all, tell us your name and age.</p>
+      <div>
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" />
+      </div>
+      <div>
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" />
+      </div>
+      <div>
+        <label for="age">Age:</label>
+        <input type="text" id="age" />
+      </div>
+    </form>
+  </body>
+</html>

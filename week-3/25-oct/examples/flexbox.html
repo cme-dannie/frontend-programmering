@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox layout</title>
+    <style>
+      section {
+        /* 1. Activate flexbox for our <section> elements. Notice how the columns jump onto the same row and have the same height. We've already achieved something which is impossible with floats.
+          
+        Right now we can view the whole <section> as a flex container which renders its children on a single row. */
+        display: flex;
+
+        /* 2. Activate flex-direction */
+        /* flex-direction: row; */
+      }
+
+      section > div {
+        /* The following values are the browser default values for flex children (meaning that if you do nothing this is what happens): */
+        /* 
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto; 
+        */
+
+        /* Let's go over them one by one to see how they function in the context of Flexbox. */
+        
+        /* By default, children don't "stretch" on the main axis (our row). This is determined by 'flex-grow' being 0. This means that they essentially are not allowed to grow. If we look at the value of 'flex-shrink' which is 1, we can see that they are allowed to shrink.
+        
+        Shrinking and growing happens within the available space of the flex container. It's what enables the "flexing" of flexbox to happen.
+        
+        Shrinking in our case is good, because it means the content will most probably fit into our container. 
+        
+        If we want columns to take up the same amount of space though, we need to change the "growing" properties of the children. This is done by setting 'flex-grow' to an arbitrary number that is not 0. 1 is common. All children having the same number means they will be weighed the same against eachother when it comes to the space being distributed to them individually.  */
+
+        /* 3. Set 'flex-grow' to 1 and 'flex-basis' to 0 to allow the columns to take up the same amount of space. 'flex-basis' is ess. */
+
+        /* These three properties are */
+      }
+
+      /* .col.bigger {
+        flex: 2;
+      } */
+    </style>
+  </head>
+  <body>
+    <h1>Flexbox layout</h1>
+
+    <h2>1. Two column flex layout</h2>
+    <section>
+      <div>
+        <h2>First column</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci.
+        </p>
+      </div>
+
+      <div>
+        <h2>Second column</h2>
+        <p>Nam vulputate diam nec tempor bibendum.</p>
+      </div>
+    </section>
+
+    <!-- <h2>2. Three column float layout with varying sizes</h2>
+    <section>
+      <div class="col">
+        <h2>First column</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet
+          nunc, at ultricies tellus laoreet sit amet. Sed auctor cursus massa at
+          porta. Integer ligula ipsum, tristique sit amet orci vel, viverra
+          egestas ligula. Curabitur vehicula tellus neque, ac ornare ex
+          malesuada et. In vitae convallis lacus. Aliquam erat volutpat.
+          Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros
+          pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit
+          quam nec lacus varius commodo et a urna. Ut id ornare felis, eget
+          fermentum sapien.
+        </p>
+      </div>
+
+      <div class="col bigger">
+        <h2>Second column</h2>
+        <p>
+          Nam vulputate diam nec tempor bibendum. Donec luctus augue eget
+          malesuada ultrices. Phasellus turpis est, posuere sit amet dapibus ut,
+          facilisis sed est. Nam id risus quis ante semper consectetur eget
+          aliquam lorem. Vivamus tristique elit dolor, sed pretium metus
+          suscipit vel. Mauris ultricies lectus sed lobortis finibus. Vivamus eu
+          urna eget velit cursus viverra quis vestibulum sem. Aliquam tincidunt
+          eget purus in interdum. Cum sociis natoque penatibus et magnis dis
+          parturient montes, nascetur ridiculus mus.
+        </p>
+      </div>
+
+      <div class="col">
+        <h2>Third column</h2>
+        <p>
+          Nam vulputate diam nec tempor bibendum. Donec luctus augue eget
+          malesuada ultrices. Phasellus turpis est, posuere sit amet dapibus ut,
+          facilisis sed est. Nam id risus quis ante semper consectetur eget
+          aliquam lorem. Vivamus tristique elit dolor, sed pretium metus
+          suscipit vel. Mauris ultricies lectus sed lobortis finibus. Vivamus eu
+          urna eget velit cursus viverra quis vestibulum sem. Aliquam tincidunt
+          eget purus in interdum. Cum sociis natoque penatibus et magnis dis
+          parturient montes, nascetur ridiculus mus.
+        </p>
+      </div>
+    </section> -->
+  </body>
+</html>

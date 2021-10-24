@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Max width height</title>
+    <style>
+      nav {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.5;
+        font-family: sans-serif;
+        background: #4267b2;
+        border: 1px solid black;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        /* 2. Ändra storleken på fönstret och se att ingenting krymper heller. */
+        /* 3. Ändra 'width' till 'max-width' och notera hur innehållet tillåts krympa */
+        width: 230px;
+        /* 4. Aktivera max-height för att begränsa expansion av elementet i höjd */
+        /* max-height: 300px; */
+      }
+
+      h2 {
+        margin: 0 0 20px 0;
+        color: white;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        padding: 10px 0;
+        color: white;
+        border-bottom: 1px solid white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Max width height</h1>
+    <nav>
+      <h2>Facebook</h2>
+      <ul>
+        <!-- 1. Ändra storleken på innehållet och se att ingenting krymper. -->
+        <li>Messages and other stuff</li>
+        <li>Events</li>
+        <li>Photos</li>
+        <li>Videos</li>
+        
+        <!-- 5. Lägg till några nya items i vår meny. Lägg märke till hur allting helt plötsligt ej får plats i det kringliggande elementet. -->
+        <!-- <li>Friends</li>
+        <li>Groups</li>
+        <li>Marketplace</li> -->
+      </ul>
+    </nav>
+  </body>
+</html>

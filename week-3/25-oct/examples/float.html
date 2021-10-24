@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Float layout</title>
+    <style>
+      .rabbit {
+        float: left;
+        margin-right: 10px;
+      }
+
+      .clearfix {
+        clear: both;
+      }
+
+      .col {
+        float: left;
+      }
+
+      .col-half {
+        /* Vi använder en procentsats för att sätta bredden på kolumnen */
+        width: 50%;
+        /* Testa att sätt en margin left och right för att skapa ett avstånd mellan kolumnerna. Irriterande eller? */
+        /* margin: 0 10px; */
+      }
+
+      .col-3 {
+        width: 33.3%;
+      }
+
+      .col-first,
+      .col-last {
+        width: 16.6%;
+      }
+
+      .col-middle {
+        width: 66.6%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Float layout</h1>
+
+    <h2>1. Proper use of float</h2>
+    <img
+      class="rabbit"
+      src="https://cdn.pixabay.com/photo/2020/02/29/18/59/rabbit-4890861_1280.jpg"
+      alt="En kanin"
+      width="200"
+    />
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+      dolore quos, qui asperiores consectetur minima in porro repellat illo sunt
+      quisquam aut iste corporis adipisci corrupti tempore dolorem error sit?
+      Doloribus dolor illo ea! Provident repellat ipsa quas assumenda suscipit
+      sapiente voluptate, cum molestias eos eius dolorum, deleniti dolorem
+      distinctio consequuntur reiciendis perspiciatis, ipsum ea consectetur
+      repellendus deserunt excepturi debitis obcaecati! Animi ullam, inventore
+      assumenda a dolore mollitia debitis nobis fugit vitae necessitatibus
+      laudantium unde, placeat, nulla in consectetur magnam quaerat veniam eos
+      vero facere. Iste laudantium dignissimos error voluptates consequatur, a,
+      sequi delectus nisi quos vero corporis, suscipit ab.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+      dolore quos, qui asperiores consectetur minima in porro repellat illo sunt
+      quisquam aut iste corporis adipisci corrupti tempore dolorem error sit?
+      Doloribus dolor illo ea! Provident repellat ipsa quas assumenda suscipit
+      sapiente voluptate, cum molestias eos eius dolorum, deleniti dolorem
+      distinctio consequuntur reiciendis perspiciatis, ipsum ea consectetur
+      repellendus deserunt excepturi debitis obcaecati! Animi ullam, inventore
+      assumenda a dolore mollitia debitis nobis fugit vitae necessitatibus
+      laudantium unde, placeat, nulla in consectetur magnam quaerat veniam eos
+      vero facere. Iste laudantium dignissimos error voluptates consequatur, a,
+      sequi delectus nisi quos vero corporis, suscipit ab.
+    </p>
+
+    <h2>2. Two column float layout</h2>
+
+    <div class="col col-half">
+      <h2>First column</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+        aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+        pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+        at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+        Integer ligula ipsum, tristique sit amet orci vel, viverra egestas
+        ligula. Curabitur vehicula tellus neque, ac ornare ex malesuada et. In
+        vitae convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet
+        turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare
+        egestas augue ut luctus. Proin blandit quam nec lacus varius commodo et
+        a urna. Ut id ornare felis, eget fermentum sapien.
+      </p>
+    </div>
+
+    <div class="col col-half">
+      <h2>Second column</h2>
+      <p>
+        Nam vulputate diam nec tempor bibendum. Donec luctus augue eget
+        malesuada ultrices. Phasellus turpis est, posuere sit amet dapibus ut,
+        facilisis sed est. Nam id risus quis ante semper consectetur eget
+        aliquam lorem. Vivamus tristique elit dolor, sed pretium metus suscipit
+        vel. Mauris ultricies lectus sed lobortis finibus. Vivamus eu urna eget
+        velit cursus viverra quis vestibulum sem. Aliquam tincidunt eget purus
+        in interdum. Cum sociis natoque penatibus et magnis dis parturient
+        montes, nascetur ridiculus mus.
+      </p>
+    </div>
+
+    <h2 class="clearfix">2. Three column float layout with varying sizes</h2>
+    <div class="col col-first">
+      <h2>First column</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+        aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+        pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+        at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+        Integer ligula ipsum, tristique sit amet orci vel, viverra egestas
+        ligula. Curabitur vehicula tellus neque, ac ornare ex malesuada et. In
+        vitae convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet
+        turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare
+        egestas augue ut luctus. Proin blandit quam nec lacus varius commodo et
+        a urna. Ut id ornare felis, eget fermentum sapien.
+      </p>
+    </div>
+
+    <div class="col col-middle">
+      <h2>Second column</h2>
+      <p>
+        Nam vulputate diam nec tempor bibendum. Donec luctus augue eget
+        malesuada ultrices. Phasellus turpis est, posuere sit amet dapibus ut,
+        facilisis sed est. Nam id risus quis ante semper consectetur eget
+        aliquam lorem. Vivamus tristique elit dolor, sed pretium metus suscipit
+        vel. Mauris ultricies lectus sed lobortis finibus. Vivamus eu urna eget
+        velit cursus viverra quis vestibulum sem. Aliquam tincidunt eget purus
+        in interdum. Cum sociis natoque penatibus et magnis dis parturient
+        montes, nascetur ridiculus mus.
+      </p>
+    </div>
+
+    <div class="col col-last">
+      <h2>Third column</h2>
+      <p>
+        Nam vulputate diam nec tempor bibendum. Donec luctus augue eget
+        malesuada ultrices. Phasellus turpis est, posuere sit amet dapibus ut,
+        facilisis sed est. Nam id risus quis ante semper consectetur eget
+        aliquam lorem. Vivamus tristique elit dolor, sed pretium metus suscipit
+        vel. Mauris ultricies lectus sed lobortis finibus. Vivamus eu urna eget
+        velit cursus viverra quis vestibulum sem. Aliquam tincidunt eget purus
+        in interdum. Cum sociis natoque penatibus et magnis dis parturient
+        montes, nascetur ridiculus mus.
+      </p>
+    </div>
+  </body>
+</html>

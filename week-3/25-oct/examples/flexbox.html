@@ -19,7 +19,7 @@
         We've basically already achieved something that is impossible with floats 😂
           
         Right now we can understand the whole <section> as a flex container which renders its children on a single row. */
-        /* display: flex; */
+        display: flex;
       }
 
       /* After we activated flexbox on our <section>, our immediate children <div> elements became flex-children */
@@ -31,9 +31,9 @@
 
         /* The following values are the browser default values for flex children (meaning that if you do nothing this is what happens):
 
-        flex-grow: 0;
-        flex-shrink: 1;
-        flex-basis: auto; 
+        flex-grow: 0; <- MAX
+        flex-shrink: 1; <- MIN
+        flex-basis: auto; <- IDEAL
 
         Let's go over them one by one to see how they function in the context of Flexbox. 
 
@@ -49,12 +49,12 @@
 
         Activate grow/shrink/basis to 1/1/0.
         */
-        /* flex-grow: 1; */
-        /* flex-shrink: 1; */
-        /* flex-basis: 0; */
+        /* flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0; */
 
         /* This can also be done by setting the short-hand property of 'flex' to 1. */
-        /* flex: 1; */
+        flex: 1;
       }
 
       .container {
@@ -65,17 +65,17 @@
         /* align-items: center; */
 
         /* 3. We could also set this property to start, to have an uneven height. The height would then be based on the content itself. Add some content to see the column expand downwards.  */
-        /* align-items: end; */
+        /* align-items: start; */
 
         /* 4. We could even set this property to end, to have the opposite effect of start. The columns will now expand its height upwards towards the upper edge of the flex-container.  */
-        /* align-items: start; */
+        /* align-items: end; */
       }
 
       .child {
         /* 5. Make the children small by turning off the grow/shrink and by setting a hard flex-basis. Notice how there's now space left in the flex-container. */
-        /* flex-grow: 0; */
-        /* flex-shrink: 0; */
-        /* flex-basis: 100px; */
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 100px;
       }
 
       .container {
@@ -83,10 +83,11 @@
         /* justify-content: center; */
 
         /* 7. We've spoken about the fact that flexbox lays out flex-children based on its "main axis", which by default is row. This can actually be changed by activating what's called flex-direction. Set this to column. */
-        /* flex-direction: column; */
+        flex-direction: column;
+        /* justify-content = main axis alignment (by default, row) */
+        /* align-items = cross axis alignment (by default, column) */
 
         /* 8. Setting this essentially reverses 'align-items' and 'justify-content'. This can take a while to get used to. This is because the "cross axis" (default column) becomes the "main axis" (default row). Activate align-items now and see what happens. */
-        /* align-items: center; */
       }
 
       /* This probably gives you an idea of how insanely confusing and yet very powerful and enabling of a technique for layouts flexbox is. There's much more to dive into, but these properties are for sure amongst the most frequently used, and more than enough for us at this point in time.  */

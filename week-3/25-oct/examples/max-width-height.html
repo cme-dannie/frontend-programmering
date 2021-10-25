@@ -17,9 +17,10 @@
         padding: 10px;
         /* 2. Ändra storleken på fönstret och se att ingenting krymper heller. */
         /* 3. Ändra 'width' till 'max-width' och notera hur innehållet tillåts krympa */
-        width: 230px;
+        max-width: 230px;
         /* 4. Aktivera max-height för att begränsa expansion av elementet i höjd */
-        /* max-height: 300px; */
+        max-height: 300px;
+        overflow: scroll;
       }
 
       h2 {
@@ -52,9 +53,9 @@
         <li>Videos</li>
         
         <!-- 5. Lägg till några nya items i vår meny. Lägg märke till hur allting helt plötsligt ej får plats i det kringliggande elementet. -->
-        <!-- <li>Friends</li>
+        <li>Friends</li>
         <li>Groups</li>
-        <li>Marketplace</li> -->
+        <li>Marketplace</li>
       </ul>
     </nav>
   </body>

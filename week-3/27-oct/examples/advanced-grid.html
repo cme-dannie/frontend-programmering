@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced grid layout</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        display: grid;
+
+        /* It's possible to assign "areas" to different elements of your HTML. This is insanely powerful and flexible.
+        
+        1. Activate 'grid-template-areas' to build a general layout. The layout here is three columns wide and three rows high. Note how some elements span more than one "cell" within the grid */
+        /* grid-template-areas:
+          "header header header"
+          "main main aside"
+          "footer footer footer"; */
+      }
+
+      header,
+      main,
+      footer,
+      aside {
+        padding: 50px;
+      }
+
+      header {
+        background: #2a9d8f;
+        /* grid-area: header; */
+      }
+
+      main {
+        background: #e9c46a;
+        /* grid-area: main; */
+      }
+
+      footer {
+        background: #f4a261;
+        /* grid-area: footer; */
+      }
+
+      aside {
+        background: #e76f51;
+        /* grid-area: aside; */
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        height: 500px;
+        grid-template-rows: 2fr 1fr;
+        grid-gap: 10px;
+      }
+
+      .child {
+        background: #0074d9;
+        border: 1px solid #001f3f;
+        color: white;
+        padding: 20px;
+        /* display: grid; */
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>Header area</header>
+    <main>
+      <p>Main area</p>
+      <section class="container">
+        <div class="child" contenteditable>Column 1</div>
+        <div class="child" contenteditable>Column 2</div>
+        <div class="child" contenteditable>Column 3</div>
+        <div class="child" contenteditable>Column 4</div>
+        <div class="child" contenteditable>Column 5</div>
+        <div class="child" contenteditable>Column 6</div>
+      </section>
+    </main>
+    <aside>Aside area</aside>
+    <footer>Footer area</footer>
+  </body>
+</html>

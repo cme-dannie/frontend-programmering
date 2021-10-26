@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media query</title>
+    <style>
+      /* Before we reach the media queries written further down, we assume that all of the design is applied on all screen sizes */
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      h1 {
+        color: #0074d9;
+      }
+
+      p {
+        padding: 10px;
+      }
+
+      section {
+        background: #2a9d8f;
+        padding: 100px 10px;
+      }
+
+      /* Here we assume that by using 'min-width' for our media query that "mobile" or "smaller screens" is our target audience. Why? Because with this media query we're establishing a query that says "I want the design to adapt to BIGGER screens, and THIS is how". This essentially means that our media query will "override" our existing (mobile) design above. */
+      @media (min-width: 400px) {
+        /* First of all, we want to show another text color for our main title. Activate this */
+
+        /* h1 {
+          color: #e9c46a;
+        } */
+
+        /* Secondly, we want to increase the padding since it's quite small on a smaller device.  */
+        /* section {
+          padding: 200px 10px;
+        } */
+      }
+
+      /* The thing is, we don't have to assume that "mobile" or "smaller screens" is our target audience. By using 'max-width' we're doing the opposite, namely saying that "desktop" or "larger devices" is our target audience. Why? Because with this media query we're establishing a query that says "I want the design to adapt to SMALLER screens, and THIS is how". */
+      @media (max-width: 400px) {
+        /* section {
+          background: yellow;
+        } */
+      }
+
+      /* There are different philosophies on how to tackle this, and I will share my thoughts on how I believe you should think about it. */
+    </style>
+  </head>
+  <body>
+    <section>
+      <h1>Media query</h1>
+    </section>
+    <main>
+      <p>Some awesome content we can't wait for the users to see.</p>
+      <p>
+        The more content we have, the more unlikely it is that it fits on the
+        small screen
+      </p>
+    </main>
+  </body>
+</html>

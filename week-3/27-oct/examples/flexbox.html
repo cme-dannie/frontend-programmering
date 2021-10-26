@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox multi-row layout</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Helvetica;
+      }
+
+      .container {
+        display: flex;
+        max-width: 700px;
+
+        /* By default, all items are allowed to shrink. They will shrink as much as the can to fit onto the single row (our main axis). Notice how the number wraps onto a new line. This is shrinking happening. The ideal size of the boxes are based on the 'flex-basis' of 'auto', which is essentially "the width of the content". It has to break the ideal size here to have them fit within the new container width (which is less than 700px).
+        
+        Notice that when we shrink the container too much, the content will start overflowing the flex-container itself. This is because the minimum width for flex-children is the size of the content. We broke the number onto a new line, but what more can we do to shrink the item? Nothing actually. And so naturally, the content has nowhere to go, hence the overflow.
+        */
+
+        /* 1. Activate 'flex-wrap' to "wrap" the "overflowing" columns onto a new row */
+        /* flex-wrap: wrap; */
+      }
+
+      .child {
+        background: #0074d9;
+        border: 1px solid #001f3f;
+        color: white;
+        padding: 20px;
+
+        /* 2. Activate flex: 1 to have the columns shrink/flex evenly across our single row. Try to shrink the container size and see what happens to the items. */
+        /* flex: 1; */
+
+        /* There are tricks to solve some of these issues even with Flexbox, but they are easier solved with the next layout technique we will learn. */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Flexbox multi-row layout</h1>
+    <section class="container">
+      <div class="child" contenteditable>Column 1</div>
+      <div class="child" contenteditable>Column 2</div>
+      <div class="child" contenteditable>Column 3</div>
+      <div class="child" contenteditable>Column 4</div>
+      <div class="child" contenteditable>Column 5</div>
+      <div class="child" contenteditable>Column 6</div>
+    </section>
+  </body>
+</html>

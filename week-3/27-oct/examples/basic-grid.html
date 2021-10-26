@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic grid layout</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Helvetica;
+      }
+
+      .container {
+        display: grid;
+
+        /* Changing 'display' to 'grid' establishes what's called a new formatting context. It's essentially a fancy way of saying "it's a new way to layout our elements". At first glance it looks like nothing has happened, but we can actually inspect the new grid layout in DevTools to see that something has changed.
+        
+        The cool thing is, that by setting 'display' to 'grid', we have, much like when we activated Flexbox, opened up the possibility to use a myriad of ways to manipulate it. 
+        
+        This is done by a list of new properties (note that these are not all of the available ones):
+        - 'grid-template-columns'
+        - 'grid-template-rows'
+        - 'grid-gap'
+
+        We will try these out to see what we can achieve with them.
+        */
+
+        /* 1. Activate 'grid-template-columns'. This is a property which defines how many columns we wish to have, as well as their size. The following will place our three items on a single row, and each item will be 200px wide.  */
+
+        /* grid-template-columns: 200px 200px 200px; */
+
+        /* 2. This is great, but what if we wanted, like we did in Flexbox, the items to be evenly sized across the entire available width of the grid-container?
+        
+        We can accomplish this by using a new sizing unit that actually comes with our new Grid layout. The unit is called 'fr' and stands for 'fraction'. It's a way to establish how much of the available space you wish to assign for a certain item of the grid. 1fr is "one part of the available space". Use this new knowledge distribute one part of the available space to each one of our items within the grid. */
+
+        /* grid-template-columns: 1fr 1fr 1fr; */
+
+        /* 3. Pretty cool huh? Try now to change it so that the middle column has "two parts of the available space". */
+
+        grid-template-columns: 1fr 2fr 1fr;
+
+        /* So far it seems like what we're doing is identical to Flexbox. Let's change that.
+        
+        4. Add a new item to our new grid in the markup, and watch what happens. Note how the new item jumps onto a new row, AND respects the boundaries of the columns of the first row. This is what we mean when we say that CSS Grid layouts are two-dimensional.
+        
+        5. Add two more items so that we have two full rows of three columns each. 
+        
+        6. Set a fixed height on our grid-container. Note how the behaviour is for the respective rows to evenly fill the space now available. */
+
+        height: 500px;
+
+        /* 7. What if we wanted one of the rows to take up more space than the other? Activate 'grid-template-rows' to have the first row take up twice the amount of space as the second. */
+
+        grid-template-rows: 2fr 1fr;
+
+        /* 8. I feel like the items are a bit too close to eachother. What if we wanted to create some space between the around the items? Active 'grid-gap' to handle this. Notice how everything "just works". */
+
+        grid-gap: 10px;
+      }
+
+      .child {
+        background: #0074d9;
+        border: 1px solid #001f3f;
+        color: white;
+        padding: 20px;
+
+        /* 9. What if we wished to center the content within the items vertically and horizontally? This is where we come to the point where we can actually combine Grid with Flexbox, to get the powers of both techniques.
+        
+        Activate Flexbox for the individual items of the Grid, as well as 'justify-content' and 'align-items'. */
+
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+      }
+
+      /* Much more is possible with CSS grid than what we've just seen. This is JUST the beginning.  */
+    </style>
+  </head>
+  <body>
+    <h1>Basic grid layout</h1>
+    <section class="container">
+      <div class="child" contenteditable>Column 1</div>
+      <div class="child" contenteditable>Column 2</div>
+      <div class="child" contenteditable>Column 3</div>
+      <div class="child" contenteditable>Column 4</div>
+      <div class="child" contenteditable>Column 5</div>
+      <div class="child" contenteditable>Column 6</div>
+    </section>
+  </body>
+</html>

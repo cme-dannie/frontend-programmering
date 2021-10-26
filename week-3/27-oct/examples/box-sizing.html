@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box sizing</title>
+    <style>
+      .outer-box {
+        background: burlywood;
+        width: 200px;
+        height: 200px;
+      }
+
+      .inner-box {
+        background: cadetblue;
+        width: 100px;
+        height: 100px;
+
+        /* Apply border, which will cause a content overflow */
+        /* border: 5px solid blue; */
+
+        /* Apply padding, which will worsen the content overflow */
+        /* padding: 5px; */
+
+        /* Change the 'box-sizing' to alleviate these issues */
+        /* box-sizing: border-box; */
+      }
+
+      /* This is a really common setting for all modern websites. All elements will now behave according to 'border-box' instead of the default 'content-box' */
+      /* * {
+        box-sizing: border-box;
+      } */
+    </style>
+  </head>
+  <body>
+    <h1>Box sizing</h1>
+    <div class="outer-box">
+      <div class="inner-box"></div>
+      <div class="inner-box"></div>
+    </div>
+  </body>
+</html>

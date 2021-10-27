@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dribbble codealong</title>
+    <style>
+      header {
+        padding: 20px 0;
+      }
+
+      select,
+      button {
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid black;
+        background: white;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      ol {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+      }
+
+      .active {
+        font-weight: bold;
+        background: rgb(126, 126, 126, 0.3);
+        border-radius: 10px;
+      }
+
+      @media (min-width: 700px) {
+        header {
+          display: flex;
+          justify-content: space-between;
+          align-items: start;
+          gap: 10px;
+        }
+
+        nav {
+          flex: 1;
+        }
+      }
+
+      @media (min-width: 900px) {
+        nav {
+          flex: 0 1 auto;
+        }
+
+        ol {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top section -->
+    <header>
+      <select>
+        <option value="popular">Popular</option>
+        <option value="latest">Latest</option>
+      </select>
+
+      <!-- Main navigation menu -->
+      <nav>
+        <ol>
+          <li><a href="" class="active">All</a></li>
+          <li><a href="">Animation</a></li>
+          <li><a href="">Branding</a></li>
+          <li><a href="">Illustration</a></li>
+          <li><a href="">Mobile</a></li>
+          <li><a href="">Print</a></li>
+          <li><a href="">Product Design</a></li>
+          <li><a href="">Typography</a></li>
+          <li><a href="">Web Design</a></li>
+        </ol>
+      </nav>
+
+      <!-- Filter button -->
+      <button>👌 Filter</button>
+    </header>
+    <!-- Main section -->
+    <main>
+      <!-- The grid of cards -->
+      <section>
+        <!-- The actual card -->
+        <a href="">
+          <img
+            src="assets/financial-goals.webp"
+            alt="Finansiella mål"
+            width="300"
+          />
+        </a>
+      </section>
+    </main>
+  </body>
+</html>

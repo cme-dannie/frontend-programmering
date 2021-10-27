@@ -25,8 +25,10 @@
         How can we handle this overflow?
         */
 
+        /* flex-wrap: nowrap; */
+
         /* 1. Activate 'flex-wrap' to "wrap" the "overflowing" columns onto a new row */
-        /* flex-wrap: wrap; */
+        flex-wrap: wrap;
       }
 
       .child {
@@ -36,7 +38,9 @@
         padding: 20px;
 
         /* 2. Activate flex: 1 to have the columns shrink/flex evenly across our single row. Try to shrink the container size and see what happens to the items. */
-        /* flex: 1; */
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: 200px;
 
         /* There are tricks to solve some of these issues even with Flexbox, but they are easier solved with the next layout technique we will learn. */
       }

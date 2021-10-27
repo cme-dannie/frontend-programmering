@@ -14,7 +14,7 @@
         font-family: Helvetica;
       }
 
-      .container {
+      .grid-container {
         display: grid;
 
         /* Changing 'display' to 'grid' establishes what's called a new formatting context. It's essentially a fancy way of saying "it's a new way to layout our elements". At first glance it looks like nothing has happened, but we can actually inspect the new grid layout in DevTools to see that something has changed.
@@ -31,9 +31,9 @@
 
         /* 1. Activate 'grid-template-columns'. This is a property which defines how many columns we wish to have, as well as their size. The following will place our three items on a single row, and each item will be 200px wide.  */
 
-        /* grid-template-columns: 200px 200px 200px; */
+        /* grid-template-columns: 200px 200px 200px 200px 200px 200px; */
 
-        /* 2. This is great, but what if we wanted, like we did in Flexbox, the items to be evenly sized across the entire available width of the grid-container?
+        /* 2. This is great, but what if we wanted, like we did in Flexbox, the items to be evenly sized across the entire available width of the grid-grid-?
         
         We can accomplish this by using a new sizing unit that actually comes with our new Grid layout. The unit is called 'fr' and stands for 'fraction'. It's a way to establish how much of the available space you wish to assign for a certain item of the grid. 1fr is "one part of the available space". Use this new knowledge distribute one part of the available space to each one of our items within the grid. */
 
@@ -41,7 +41,7 @@
 
         /* 3. Pretty cool huh? Try now to change it so that the middle column has "two parts of the available space". */
 
-        /* grid-template-columns: 1fr 2fr 1fr; */
+        grid-template-columns: 1fr 2fr 1fr;
 
         /* So far it seems like what we're doing is identical to Flexbox. Let's change that.
         
@@ -51,18 +51,18 @@
         
         6. Set a fixed height on our grid-container. Note how the behaviour is for the respective rows to evenly fill the space now available. */
 
-        /* height: 500px; */
+        height: 500px;
 
         /* 7. What if we wanted one of the rows to take up more space than the other? Activate 'grid-template-rows' to have the first row take up twice the amount of space as the second. */
 
-        /* grid-template-rows: 2fr 1fr; */
+        grid-template-rows: 2fr 1fr 2fr;
 
         /* 8. I feel like the items are a bit too close to eachother. What if we wanted to create some space between the around the items? Active 'grid-gap' to handle this. Notice how everything "just works". */
 
-        /* grid-gap: 10px; */
+        gap: 10px;
       }
 
-      .child {
+      .grid-child {
         background: #0074d9;
         border: 1px solid #001f3f;
         color: white;
@@ -72,9 +72,9 @@
         
         Activate Flexbox for the individual items of the Grid, as well as 'justify-content' and 'align-items'. */
 
-        /* display: flex; */
-        /* justify-content: center; */
-        /* align-items: center; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       /* Much more is possible with CSS grid than what we've just seen. This is JUST the beginning.  */
@@ -82,13 +82,16 @@
   </head>
   <body>
     <h1>Basic grid layout</h1>
-    <section class="container">
-      <div class="child" contenteditable>Column 1</div>
-      <div class="child" contenteditable>Column 2</div>
-      <div class="child" contenteditable>Column 3</div>
-      <div class="child" contenteditable>Column 4</div>
-      <div class="child" contenteditable>Column 5</div>
-      <div class="child" contenteditable>Column 6</div>
+    <section class="grid-container">
+      <div class="grid-child" contenteditable>Column 1</div>
+      <div class="grid-child" contenteditable>Column 2</div>
+      <div class="grid-child" contenteditable>Column 3</div>
+      <div class="grid-child" contenteditable>Column 4</div>
+      <div class="grid-child" contenteditable>Column 5</div>
+      <div class="grid-child" contenteditable>Column 6</div>
+      <div class="grid-child" contenteditable>Column 4</div>
+      <div class="grid-child" contenteditable>Column 5</div>
+      <div class="grid-child" contenteditable>Column 6</div>
     </section>
   </body>
 </html>

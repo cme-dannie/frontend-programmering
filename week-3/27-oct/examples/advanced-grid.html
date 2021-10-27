@@ -17,10 +17,10 @@
         /* It's possible to assign "areas" to different elements of your HTML. This is insanely powerful and flexible.
         
         1. Activate 'grid-template-areas' to build a general layout. The layout here is three columns wide and three rows high. Note how some elements span more than one "cell" within the grid */
-        /* grid-template-areas:
+        grid-template-areas:
           "header header header"
           "main main aside"
-          "footer footer footer"; */
+          "footer footer footer";
       }
 
       header,
@@ -32,30 +32,30 @@
 
       header {
         background: #2a9d8f;
-        /* grid-area: header; */
+        grid-area: header;
       }
 
       main {
         background: #e9c46a;
-        /* grid-area: main; */
-      }
-
-      footer {
-        background: #f4a261;
-        /* grid-area: footer; */
+        grid-area: main;
       }
 
       aside {
         background: #e76f51;
-        /* grid-area: aside; */
+        grid-area: aside;
+      }
+
+      footer {
+        background: #f4a261;
+        grid-area: footer;
       }
 
       .container {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
-        height: 500px;
         grid-template-rows: 2fr 1fr;
-        grid-gap: 10px;
+        height: 500px;
+        gap: 10px;
       }
 
       .child {
@@ -72,7 +72,7 @@
   <body>
     <header>Header area</header>
     <main>
-      <p>Main area</p>
+      Main area
       <section class="container">
         <div class="child" contenteditable>Column 1</div>
         <div class="child" contenteditable>Column 2</div>

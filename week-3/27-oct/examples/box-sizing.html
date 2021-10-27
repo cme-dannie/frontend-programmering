@@ -10,6 +10,7 @@
         background: burlywood;
         width: 200px;
         height: 200px;
+        border: 5px solid red;
       }
 
       .inner-box {
@@ -18,19 +19,19 @@
         height: 100px;
 
         /* Apply border, which will cause a content overflow */
-        /* border: 5px solid blue; */
+        border: 5px solid blue;
 
         /* Apply padding, which will worsen the content overflow */
-        /* padding: 5px; */
+        padding: 5px;
 
         /* Change the 'box-sizing' to alleviate these issues */
         /* box-sizing: border-box; */
       }
 
       /* This is a really common setting for all modern websites. All elements will now behave according to 'border-box' instead of the default 'content-box' */
-      /* * {
+      * {
         box-sizing: border-box;
-      } */
+      }
     </style>
   </head>
   <body>

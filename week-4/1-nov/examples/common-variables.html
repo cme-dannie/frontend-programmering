@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Common variables</title>
+    <style>
+      :root {
+        /* Colors */
+        --color-background: red;
+        --color-text: blue;
+
+        /* Font sizes */
+        --font-size-1: 4rem;
+        --font-size-2: 3.2rem;
+        --font-size-3: 2.4rem;
+        --font-size-default: 2rem;
+      }
+
+      body {
+        font-size: var(--font-size-default);
+      }
+
+      h1 {
+        font-size: var(--font-size-1);
+      }
+
+      header {
+        background: var(--color-background);
+      }
+
+      main {
+        color: var(--color-text);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>One</li>
+          <li>Two</li>
+          <li>Three</li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Common variables</h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto,
+        ipsam!
+      </p>
+    </main>
+  </body>
+</html>

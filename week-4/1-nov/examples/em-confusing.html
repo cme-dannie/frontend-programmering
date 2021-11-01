@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Em unit confusing</title>
+    <style>
+      .level-one {
+        /* 1em will compute to a font-size of 16px, 
+        which would be identical to using rem */
+        font-size: 1em;
+
+        /* 1em here computes to 16px "by default" */
+      }
+
+      .level-two {
+        /* 2em will compute to 32px, which would still be identical to using rem */
+        font-size: 2em;
+      }
+
+      .level-three {
+        /* 3em will now compute to 32 * 3 = 96px(!!!). This is because it is 
+          "three times the font-size of the parent", which was 32px. */
+        font-size: 3em;
+      }
+
+      .level-four {
+        /* 2em will now compute to 96 * 2 = 192px(!!!). This is because it is 
+          "two times the font-size of the parent", which was 96px.
+          
+          This is what we mean when we talk about the 
+          "compounding problem with em units". EM is a terrible unit for font-size, 
+          for this exact reason. */
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li class="level-one">
+        Level one
+        <ul>
+          <li class="level-two">
+            Level two
+            <ul>
+              <li class="level-three">
+                Level three
+                <ul>
+                  <li class="level-four">Level four</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>

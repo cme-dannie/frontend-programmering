@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relative font size</title>
+    <style>
+      html {
+        /* font-size: 10px; */
+
+        font-size: 62.5%;
+
+        /* Results in 10px */
+      }
+
+      body {
+        font-size: 1.6rem;
+      }
+
+      p {
+        border: 1px solid black;
+        padding: 1.25rem;
+        max-width: 500rem;
+      }
+
+      .absolute-font-size {
+        font-size: 16px;
+      }
+
+      .relative-font-size {
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Paragraphs render by default as the default font size set by the
+      user/browser preferences. For Chrome that is 16px. This is the base that
+      everything else is based on.
+    </p>
+    <p>
+      1. Change the default font size in Chrome to Large to see what happens to
+      the text on this page. Notice it getting bigger. This is good for
+      accessibility reasons. We are NOT making any assumptions as to how big the
+      default font is actually rendered. Another way to see this is that we're
+      respecting the default font size of the browser that the user is using.
+    </p>
+    <!-- 2. Activate this paragraph, which is set to a 1rem font. -->
+    <p class="absolute-font-size">
+      I will NOT respect the default font size. I don't ctually care about my
+      users!
+    </p>
+    <p class="relative-font-size">
+      I will respect the default font size. I actually care about my users!
+    </p>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pseudoclasses</title>
+    <style>
+      /* Apply the color red when any h1 on the page is hovered */
+      h1:hover {
+        color: red;
+      }
+
+      /* Apply a specific font-size when any element with a class of 'bigger'
+      is clicked on */
+      .bigger:active {
+        font-size: 50px;
+      }
+
+      /* Pseudoclasses can also be stacked one over the other to apply similar styles
+      in several situations.
+      
+      Here we apply a background color when a p which is the first of it's siblings
+      is hovered. */
+      p:last-child:hover {
+        background-color: yellow;
+      }
+      
+      /* p:nth-child(15) {
+        background-color: yellow;
+      }
+      
+      p:nth-child(3n) {
+        border-bottom: 1px solid black;
+      } */
+    </style>
+  </head>
+  <body>
+    <h1 class="bigger">Lorem ipsum dolor sit amet.</h1>
+    <section>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="bigger">Perferendis recusandae qui consequuntur magnam?</p>
+      <p>Nam, hic. Culpa, dolorum ad!</p>
+    </section>
+  </body>
+</html>

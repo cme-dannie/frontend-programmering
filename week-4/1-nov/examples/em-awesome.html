@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Em unit awesome</title>
+    <style>
+      body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background-image: url("assets/stacked-peaks-haikei.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        transform: translateY(-10rem);
+      }
+
+      input,
+      button {
+        border: 0;
+        align-self: start;
+        box-shadow: 3px 5px 10px rgb(0, 0, 0, 0.2);
+        border-radius: 5px;
+
+        /* Our margin and padding is written with ems, 
+        meaning it will scale up/down with the font-size of the element */
+        margin-top: 1em;
+        padding: 0.75em 1em;
+
+        /* Try to change the font-size value to something else. 
+        Notice that happens to the paddings and top margins */
+        font-size: 1rem;
+      }
+
+      button {
+        background: #fe7e50;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <button>Login</button>
+    </form>
+  </body>
+</html>

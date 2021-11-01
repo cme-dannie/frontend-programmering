@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inheritance</title>
+    <style>
+      body {
+        /* Font-size is by default an "inherited" property. */
+        font-size: 30px;
+
+        /* Border is NOT by default an "inherited" property.
+        Notice how only the <body> has a border. */
+        border: 1px solid black;
+
+        margin: 10px;
+      }
+
+      p {
+        /* 1. Activate inherit for our border. */
+        border: inherit;
+        margin: inherit;
+      }
+
+      strong {
+        /* 2. Activate inherit for our border. 
+        Notice how the initial value came from <body> and NOT from <p>.
+        Try to turn off the inherit from <p> to see it not having a border anymore*/
+
+        border: inherit;
+        margin: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Both <p> and <strong> will inherit the font-size of <body>. 
+        This is because it is very convenient. -->
+    <p>Lorem ipsum <strong>dolor</strong> sit amet.</p>
+  </body>
+</html>

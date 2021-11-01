@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG</title>
+    <style>
+      img,
+      svg {
+        /* Try to change this pixel-value. Notice how it never loses 
+        its "sharpness". */
+        width: 50px;
+      }
+
+      .red {
+        stroke: red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- An SVG can be used in two primary ways. The first is with an <img> tag -->
+    <img src="assets/arrow.svg" alt="An arrow icon" />
+
+    <!-- Another way is by including the contents of the 
+        actual .svg file inside of the HTML. This is actually valid HTML. -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        class="red"
+        d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
+      />
+    </svg>
+  </body>
+</html>

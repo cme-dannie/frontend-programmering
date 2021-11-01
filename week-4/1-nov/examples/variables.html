@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variables</title>
+    <style>
+      /* :root is our storage. 
+      It will make our variables available for all CSS we write. */
+      :root {
+        /* Note how we can use this bucket/variable throughout the entire CSS.
+          Every reference to it will be reflected when we change it. */
+
+        /* 1. Create our variable 'my-border' */
+        --my-border: 1px solid blue;
+        --big-font-size: 3rem;
+      }
+
+      form {
+        /* border-top: 1px solid red; */
+
+        /* 2. Activate border-top with a value based on a reference
+        to our already declared variable 'my-border'. */
+        border-top: var(--my-border);
+
+        font-size: var(--big-font-size);
+      }
+
+      div {
+        /* border: 1px solid red; */
+
+        /* 3. Activate variable usage */
+        border: var(--my-border);
+
+        font-size: var(--big-font-size);
+      }
+
+      p {
+        /* border-bottom: 1px solid red; */
+
+        /* 3. Activate variable usage. */
+        border-bottom: var(--my-border);
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">This is a form</form>
+    <div>Hey</div>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </body>
+</html>

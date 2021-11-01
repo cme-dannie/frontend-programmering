@@ -13,29 +13,34 @@
           Every reference to it will be reflected when we change it. */
 
         /* 1. Create our variable 'my-border' */
-        /* --my-border: 1px solid red; */
+        --my-border: 1px solid blue;
+        --big-font-size: 3rem;
       }
 
       form {
-        border-top: 1px solid red;
+        /* border-top: 1px solid red; */
 
         /* 2. Activate border-top with a value based on a reference
         to our already declared variable 'my-border'. */
-        /* border-top: var(--my-border); */
+        border-top: var(--my-border);
+
+        font-size: var(--big-font-size);
       }
 
       div {
-        border: 1px solid red;
+        /* border: 1px solid red; */
 
         /* 3. Activate variable usage */
-        /* border: var(--my-border); */
+        border: var(--my-border);
+
+        font-size: var(--big-font-size);
       }
 
       p {
-        border-bottom: 1px solid red;
+        /* border-bottom: 1px solid red; */
 
         /* 3. Activate variable usage. */
-        /* border-bottom: var(--my-border); */
+        border-bottom: var(--my-border);
       }
     </style>
   </head>

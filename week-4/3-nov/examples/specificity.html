@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Specificity</title>
+    <style>
+      /* 1. By default we say that all h1 elements have a font-size of 2rem */
+      h1 {
+        font-size: 2rem;
+      }
+
+      /* 2. Then we apply a class selector and say that it has a font-size of 3rem.
+      Since class selectors have a "higher weight" than element type selectors, 
+      this declaration wins */
+      .title {
+        font-size: 3rem;
+      }
+
+      /* 3. Then we apply another class selector and says that it instead
+      has a font-size of 3.5rem. This declaration wins despite it being
+      the same selector weight,
+      because it is written last in the CSS. */
+      .another-title {
+        font-size: 3.5rem;
+      }
+
+      /* 4. Then we apply a font-size of 4rem with the help of our ID.
+      Ids are the selectors with the highest priority, hence it wins over 
+      the others. */
+      #title {
+        font-size: 4rem;
+      }
+
+      /* 5. We can even introduce a combined selector to "up" the weight
+      of our selector even more. Here we combine our id and classes to
+      win over our single id selector above. */
+      #title.title {
+        font-size: 5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title" class="title another-title">Specifity</h1>
+  </body>
+</html>

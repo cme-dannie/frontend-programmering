@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>!important</title>
+    <style>
+      h1 {
+        font-size: 2rem;
+      }
+
+      .title {
+        font-size: 3rem;
+      }
+
+      .another-title {
+        font-size: 3.5rem;
+      }
+
+      #title {
+        font-size: 4rem;
+      }
+
+      #title.title {
+        font-size: 5rem;
+      }
+
+      h1 {
+        /* The fact that our h1 selector here weighs way less than the 
+        other ones above, this declaration will win. 
+        This is because of the !important keyword. */
+        font-size: 1rem !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title" class="title another-title">!important</h1>
+  </body>
+</html>

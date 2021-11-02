@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cascade</title>
+    <style>
+      /* 
+      The origins are (in descending order of weight) are:
+
+        1. Author inline styles
+        2. Author embedded styles (aka: internal style sheets)
+        3. Author external style sheet
+        4. User style sheet
+        5. Default browser style sheet */
+
+      h1 {
+        /* This statement will override the "user agent stylesheet"
+          style of h1 elements having a font-size of 2em.
+          
+          This rule "wins" the battle because of the Cascade rules.
+          This selector is written in number 2 above (embedded styles),
+          whereas Chrome CSS is written in nuber 5. */
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Inline CSS has the highest of priority when it comes to the different origins.
+    This means that it wins over both Chrome and the <style> CSS above. -->
+    <h1 style="font-size: 18px">This is a title</h1>
+  </body>
+</html>

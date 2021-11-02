@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pseudoelement</title>
+    <style>
+      body {
+        font-size: 1.5rem;
+      }
+
+      p {
+        max-width: 20ch;
+      }
+
+      li::marker {
+        content: "❤️";
+      }
+
+      p::first-letter {
+        font-size: 2rem;
+      }
+
+      p::first-line {
+        background: red;
+      }
+
+      input {
+        font-size: 3rem;
+        padding: 0.75em 1em;
+      }
+
+      input::placeholder {
+        background: url("assets/clip.jpeg");
+        background-clip: text;
+        -webkit-background-clip: text;
+        font-weight: bold;
+        color: transparent;
+      }
+
+      .text::before {
+        content: ">>";
+      }
+
+      .text::after {
+        content: "<<";
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pseudoelement</h1>
+    <ul>
+      <li>My</li>
+      <li>::marker</li>
+      <li>is</li>
+      <li>styled</li>
+      <li>to</li>
+      <li>be</li>
+      <li>a</li>
+      <li>heart :D</li>
+    </ul>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur,
+      minima.
+    </p>
+    <input type="text" placeholder="I can be styled" />
+    <div class="text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto,
+      autem.
+    </div>
+  </body>
+</html>

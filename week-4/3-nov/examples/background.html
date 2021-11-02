@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+
+        /* We specify a custom background image */
+        background-image: url("assets/background.svg");
+
+        /* We specify that we don't want it to repeat */
+        background-repeat: no-repeat;
+
+        /* We then specify that we wish to center it */
+        background-position: center;
+
+        /* We then specify that we want it to always 
+        cover our element (making it responsive) */
+        background-size: cover;
+
+        /* This can be done with a shorthand as well */
+        /* background: url("assets/background.svg") no-repeat center / cover; */
+      }
+
+      h1 {
+        border-radius: 100%;
+        padding: 10rem;
+        text-align: center;
+
+        /* We can use gradients in CSS instead of colors for our backgrounds */
+        background: radial-gradient(closest-side, #3f87a6, #ebf8e1, #f69d3c);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Background</h1>
+  </body>
+</html>

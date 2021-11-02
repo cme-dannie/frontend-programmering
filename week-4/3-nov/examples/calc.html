@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calc</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body,
+      h1 {
+        margin: 0;
+      }
+
+      h1 {
+        height: 50px;
+        background: red;
+      }
+
+      main {
+        background: green;
+        /* Here we calculate the remaining area to be the entire viewport height
+        minus the height of the nav */
+        min-height: calc(100vh - 50px);
+      }
+
+      .flex-container {
+        display: flex;
+      }
+
+      .flex-container > * {
+        background: yellow;
+        border: 1px solid black;
+        padding: 1em;
+        /* Here we calculate our flex-basis to be 
+        1/3 of 100% in order to get 3 even columns */
+        flex: 1 1 calc(100% / 3);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calc</h1>
+    <main>
+      <section class="flex-container">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+      </section>
+    </main>
+  </body>
+</html>

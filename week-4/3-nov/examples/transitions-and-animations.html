@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transitions and Animations</title>
+    <style>
+      body {
+        max-width: 40rem;
+        margin: 0 auto;
+      }
+
+      h1 {
+        /* Animate all CSS properties, have it take 300ms and use the "ease-in"
+          function */
+        transition: all 300ms ease-in;
+      }
+
+      h1:hover {
+        /* Since we've used 'all' above, both 'color' and 'transform' will be
+          animated. */
+        color: red;
+        transform: rotate(-5deg);
+      }
+
+      p {
+        display: inline-block;
+        animation: rotate 5s infinite linear;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0);
+        }
+
+        50% {
+          transform: rotate(1turn) scale(1.5);
+        }
+
+        60% {
+          color: red;
+        }
+
+        75% {
+          transform: rotate(0.75turn) scale(1);
+        }
+
+        100% {
+          transform: rotate(0turn);
+          color: black;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Transitions and Animations</h1>
+    <p>I'll never stop spinning</p>
+  </body>
+</html>

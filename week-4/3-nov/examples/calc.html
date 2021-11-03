@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calc</title>
     <style>
+      :root {
+        --header-height: 100px;
+        --number-of-columns: 5;
+      }
+
       * {
         box-sizing: border-box;
       }
@@ -16,7 +21,7 @@
       }
 
       h1 {
-        height: 50px;
+        height: var(--header-height);
         background: red;
       }
 
@@ -24,7 +29,8 @@
         background: green;
         /* Here we calculate the remaining area to be the entire viewport height
         minus the height of the nav */
-        min-height: calc(100vh - 50px);
+        min-height: calc(100vh - var(--header-height));
+        /* min-height: 100vh; */
       }
 
       .flex-container {
@@ -37,7 +43,7 @@
         padding: 1em;
         /* Here we calculate our flex-basis to be 
         1/3 of 100% in order to get 3 even columns */
-        flex: 1 1 calc(100% / 3);
+        flex: 1 1 calc(100% / var(--number-of-columns));
       }
     </style>
   </head>
@@ -48,6 +54,8 @@
         <div>One</div>
         <div>Two</div>
         <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
       </section>
     </main>
   </body>

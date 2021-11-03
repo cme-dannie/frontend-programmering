@@ -39,8 +39,21 @@
         color: transparent;
       }
 
+      .text {
+        padding: 1em;
+        border: 1px solid red;
+        position: relative;
+      }
+
       .text::before {
-        content: ">>";
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 20px;
+        /* height: 20px; */
+        background: blue;
+        content: "";
       }
 
       .text::after {
@@ -50,7 +63,7 @@
   </head>
   <body>
     <h1>Pseudoelement</h1>
-    <ul>
+    <!-- <ul>
       <li>My</li>
       <li>::marker</li>
       <li>is</li>
@@ -64,7 +77,7 @@
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur,
       minima.
     </p>
-    <input type="text" placeholder="I can be styled" />
+    <input type="text" placeholder="I can be styled" /> -->
     <div class="text">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto,
       autem.

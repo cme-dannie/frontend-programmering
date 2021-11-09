@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>While statement</title>
+    <script>
+      var correctGuess = 7;
+
+      /* This is executed again and again, 
+      as long as the condition evaluates to true */
+      while (guess !== correctGuess) {
+        var input = prompt("Guess a number between 1 and 10");
+        var guess = parseInt(input);
+      }
+
+      /* Note that this console.log is not executed until the while is "finished",
+      meaning the condition evaluates to false.
+      
+      Note that we're using 'alert' instead of 'console.log'. This is
+      very similar, but it prints in a popup window instead of in the console. */
+      alert("You've guessed correctly. You win!");
+    </script>
+  </head>
+  <body></body>
+</html>

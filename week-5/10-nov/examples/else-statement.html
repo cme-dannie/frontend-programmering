@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Else statement</title>
+    <script>
+      var input = prompt("How old are you?");
+      var age = parseInt(input);
+
+      var isUnderage = age < 18;
+      var isAdult = age > 18;
+
+      if (isUnderage) {
+        console.log("Oh my, you are not allowed to do this!");
+      } else if (isAdult) {
+        console.log("Yes, you are definitely old enough to do this.");
+      } else {
+        console.log("You are exactly old enough");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

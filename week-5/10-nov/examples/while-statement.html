@@ -7,12 +7,13 @@
     <title>While statement</title>
     <script>
       var correctGuess = 7;
+      var guess = -1;
 
       /* This is executed again and again, 
       as long as the condition evaluates to true */
       while (guess !== correctGuess) {
         var input = prompt("Guess a number between 1 and 10");
-        var guess = parseInt(input);
+        guess = parseInt(input);
       }
 
       /* Note that this console.log is not executed until the while is "finished",

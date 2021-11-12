@@ -35,7 +35,7 @@
       var isAdult = false;
       var hasPermissionFromParents = true;
 
-      if (isAdult && hasPermissionFromParents) {
+      if (isAdult || hasPermissionFromParents) {
         console.log("I'm in!");
       }
 
@@ -47,7 +47,7 @@
 
       var likesToDoCleaning = false;
 
-      if (likesToDoCleaning) {
+      if (!likesToDoCleaning) {
         console.log("I really like to clean! I need NO willpower to do it.");
       }
 
@@ -67,13 +67,13 @@
 
       We can see that the menu is already open here. */
 
-      var menuIsOpen = true;
+      var menuIsOpen = false;
 
       /* 5. Someone clicks on the toggle button here! Finish the variable assignment
       in order to toggle it. NOTE that this toggle should be working even if the
       menu is initially closed (meaning if 'menuIsOpen' is false instead of true) */
 
-      // menuIsOpen = ???;
+      menuIsOpen = !menuIsOpen;
 
       if (menuIsOpen) {
         console.log("The menu is open. Look at this beautiful menu!");
@@ -89,9 +89,9 @@
       Remove the comments below and finish the for statement so that I can become
       a famous instagram squatter. */
 
-      // for (var mySquatPR = 0; ???; ???) {
-      //   console.log("My current PR is: " + mySquatPR);
-      // }
+      for (var mySquatPR = 0; mySquatPR <= 200; mySquatPR += 10) {
+        console.log("My current PR is: " + mySquatPR);
+      }
 
       /* 7. We are in a store and we want to pay for our goods.
 
@@ -103,7 +103,7 @@
       var myAccountBalance = 11;
       var totalCost = 11;
 
-      if (myAccountBalance > totalCost) {
+      if (myAccountBalance >= totalCost) {
         console.log("I'll pay up!");
       }
 
@@ -118,19 +118,34 @@
       var password = 1000;
       var correctPassword = "1000";
 
-      if (password == correctPassword) {
+      if (password === correctPassword) {
         console.log("Yes, I'm allowed access hehehe!");
       }
 
       /* 9. Write a for statement that prints all numbers from 1 to 55 */
 
+      // for (var i = 1; i <= 55; i++) {
+      //   console.log(i);
+      // }
+
       /* 10. Write a for statement that prints all numbers from 1 to 1000 BACKWARDS. */
+
+      // for (var i = 1000; i >= 1; i--) {
+      //   console.log(i);
+      // }
 
       /* 11. Write a for statement that prints all even numbers between 1 and 500.
 
 
       NOTE: This requires an arithmetic operator we haven't covered yet. See if you
       can figure it out by searching :) */
+
+      for (var i = 0; i <= 500; i++) {
+        // How do we know whether or not the value of 'i' is even or odd?
+        if (i % 2 === 0) {
+          console.log(i);
+        }
+      }
     </script>
   </head>
   <body></body>

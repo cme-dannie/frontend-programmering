@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function exercises</title>
+    <script>
+      /* We will here make ourselves comfortable with using functions in
+        JS. They are one of the most common structures within a program, and they
+        are used to make code more readable and reusable.
+        
+        The exercise is based on the "guessing game" we built last week. The 
+        foundation is an infinite loop that never ends. It's up to you
+        to finish the program given the functions that are already there.
+        
+        Some of the functions below are empty, some of them are not used, and some
+        of them are missing a return value. We want to "fill in the blanks" so that
+        everything works as intended.
+        
+        NOTE: Feel free to write your own functions in addition to the ones 
+        already there.
+
+        NOTE: Use the DevTools Console and Debugger when you are stuck. This CANNOT
+        be overstated.
+
+        NOTE: Use https://cme-waiting-list.netlify.app/ when you need help 💪.
+        */
+
+      const validGuess = 57;
+
+      function promptUser(text) {
+        // Complete this by returning
+        prompt(text);
+      }
+
+      function parseString(string) {
+        // Return 'string' converted to numeric
+      }
+
+      function isLower(number) {
+        // Return whether or not 'number' is below 'validGuess'
+      }
+      function isHigher(number) {
+        // Return whether or not 'number' is higher 'validGuess'
+      }
+
+      function playGame() {
+        const playing = true;
+
+        while (playing) {
+          promptUser("Guess a number!");
+
+          // Finish the while statement based on what we did last week (same logic)
+        }
+      }
+
+      playGame();
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String functions</title>
+    <script>
+      const long =
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione, maiores.";
+
+      // Regular
+      console.log(long);
+
+      // Uppercase
+      console.log(long.toUpperCase());
+
+      // Lowercase
+      console.log(long.toLowerCase());
+
+      // Index of "ipsum"
+      const ipsumIndex = long.indexOf("ipsum");
+      console.log(ipsumIndex);
+
+      /* Split into a list based on a "delimiter".
+      Using a " " will net us every word in the form of an array */
+      const words = long.split(" ");
+
+      // Print every individual word
+      for (let i = 0; i < words.length; i++) {
+        console.log(words[i]);
+      }
+
+      /* Make a new "sub string" out of the original string,
+      starting from our ipsum position, and ending with the rest of the string */
+      const sub = long.substr(ipsumIndex, long.length - 1);
+      console.log(sub);
+
+      /* There are so many ways to manipulate and work with strings. These are just
+      some examples :) */
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Var problems</title>
+    <script>
+      /* Problem 1: Access without having even declared the variable.
+      
+      This is what we call variable hoisting. This is actually really peculiar.
+      
+      We will not dive further into this topic because it can go really deep, but
+      this confusing behaviour has caused lots of errors in JS programs. Why?
+      Because a programmer wrote some code that accessed a variable before it was even
+      declared and given a value. */
+      console.log(test);
+      var test = "Dannie";
+
+      /* Problem 2: Declaring a variable with the same name is perfectly fine. This is
+      also a root cause for lots of errors in programs. It basically "shadows" our 
+      first variable declaration, rendering it completely useless. This is a case of JS 
+      allowing the programmer to do things that is definitely not intended. 
+      Quite frankly, this behaviour is really stupid. */
+      var number = 1;
+      console.log(number);
+      var number = 10;
+      console.log(number);
+
+      /* Problem 3: In lots of programming languages, it's common to express a value
+      that never changes. We call this a constant. This is not possible with var,
+      making it yet again hard to make sure your program is correctly written. */
+      var myConstant = "DON'T CHANGE ME";
+      console.log(myConstant);
+      myConstant = "Well, I had no idea that you didn't want to change...";
+      console.log(myConstant);
+
+      /* All of these problems can be alleviated with that we will now learn */
+    </script>
+  </head>
+  <body></body>
+</html>

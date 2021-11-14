@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scoping</title>
+    <script>
+      const outer =
+        "I live in the global scope! Try to read me from DevTools ;)";
+
+      function sayHello() {
+        const inner =
+          "I live in the local function scope. This is because a function is a block. Try to read me from DevTools ;)";
+
+        console.log(inner);
+
+        if (true) {
+          let mostInner =
+            "I live in the local if scope. This is because an if statement is also a block. ";
+        }
+
+        console.log(mostInner);
+      }
+
+      console.log(outer);
+      sayHello();
+    </script>
+  </head>
+  <body></body>
+</html>

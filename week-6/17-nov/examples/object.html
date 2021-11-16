@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object</title>
+    <script>
+      // Create object
+      const person = {
+        firstName: "Dannie",
+        lastName: "Håkansson",
+        age: 28,
+      };
+
+      // Read whole object
+      console.log(person);
+
+      // Read individual properties with dot notation
+      console.log(person.firstName);
+      console.log(person.lastName);
+      console.log(person.age);
+
+      // Read individual properties with square bracket notation
+      console.log(person["firstName"]);
+      console.log(person["lastName"]);
+      console.log(person["age"]);
+
+      // Iterate all keys of an object
+      const keys = Object.keys(person);
+      for (let i = 0; i < keys.length; i++) {
+        console.log(keys[i]);
+      }
+
+      // Delete an attribute 'age' with the keyword 'delete'
+      delete person.age;
+      console.log(person);
+
+      // Create another person
+      const anotherPerson = {
+        firstName: "Test",
+        lastName: "Testsson",
+        age: 100,
+      };
+
+      // Create an array 'people' with the values being our two people
+      const people = [person, anotherPerson];
+      console.log(people);
+
+      // Iterate the first names of our people
+      for (let i = 0; i < people.length; i++) {
+        const person = people[i];
+        console.log(person.firstName);
+      }
+
+      // Add a new property 'isHuman' to our 'anotherPerson'
+      anotherPerson.isHuman = false;
+      console.log(anotherPerson);
+
+      // It's possible to use a for .. of loop to iterate our arrays
+      for (const person of people) {
+        console.log(person);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

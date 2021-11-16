@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>forEach</title>
+    <script>
+      /* forEach is yet another way to iterate something, like an Array.
+      Read more at MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach */
+
+      const students = [
+        "Student 1",
+        "Student 2",
+        "Student 3",
+        "Student 4",
+        "Student 5",
+      ];
+
+      function printStudent(student) {
+        console.log(student);
+      }
+
+      // Print all students with a named function
+      students.forEach(printStudent);
+
+      // Print all students with an anonymous arrow function
+      students.forEach((student) => {
+        console.log(student);
+      });
+
+      /* forEach is not a function on a String by default, so we convert it 
+        to an Array before we commit to our forEach, which will print all
+        characters of the string. */
+      Array.from("Afterwork").forEach((char) => console.log(char));
+    </script>
+  </head>
+  <body></body>
+</html>

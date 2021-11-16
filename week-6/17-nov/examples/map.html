@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>map</title>
+    <script>
+      /* map is a powerful way of creating a new array, based on data from
+      a source array: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map */
+
+      // Create an array of student objects
+      const students = [
+        {
+          name: "Student 1",
+          age: 20,
+          skills: ["HTML", "CSS", "JS"],
+        },
+        {
+          name: "Student 2",
+          age: 40,
+          skills: ["HTML"],
+        },
+        {
+          name: "Student 3",
+          age: 22,
+          skills: ["CSS"],
+        },
+        {
+          name: "Student 4",
+          age: 70,
+          skills: ["CSS", "JS"],
+        },
+        {
+          name: "Student 5",
+          age: 25,
+          skills: ["JS"],
+        },
+      ];
+
+      function getName(student) {
+        return student.name;
+      }
+
+      // Extract all names as a new list using a named function
+      const names = students.map(getName);
+      console.log(names);
+
+      // Extract all names as a new list using an anonymous arrow function
+      const namesAgain = students.map((student) => {
+        return student.name;
+      });
+      console.log(namesAgain);
+
+      // Extract all names as a new list using an anonymous arrow function (shorter)
+      const ages = students.map((student) => student.age);
+      console.log(ages);
+
+      /* Extract all names as a new list using an anonymous arrow function
+      (EVEN shorter thanks to destructuring syntax) */
+      const agesAgain = students.map(({ age }) => age);
+      console.log(ages);
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>filter</title>
+    <script>
+      /* filter is a powerful way of creating a new array, based on a criteria or
+      condition that every item of a source array has to meet:
+      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter */
+
+      // Create an array of words
+      const words = ["potato", "cumin", "carrot", "pasta", "chocolate"];
+
+      // Filter out any words not starting with the letter "c"
+      const wordsNotStartingWithC = words.filter((word) => {
+        return word[0] !== "c";
+      });
+      console.log(wordsNotStartingWithC);
+
+      // Filter out any word that doesn't contain at least 8 letters
+      let longWords = words.filter((word) => {
+        return word.length >= 8;
+      });
+      console.log(longWords);
+
+      /* This can actually be simplified even more. This is because
+      an arrow function implicitly has a 'return', if the function only
+      consists of one instruction */
+      longWords = words.filter((word) => word.length >= 8);
+      console.log(longWords);
+
+      /* Print all words that have at most 5 letters, make them uppercase
+      and print them to the console. Make note of the flexibility and readability */
+      words
+        .filter((word) => word.length <= 5)
+        .map((word) => word.toUpperCase())
+        .forEach((word) => console.log(word));
+    </script>
+  </head>
+  <body></body>
+</html>

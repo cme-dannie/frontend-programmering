@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reduce</title>
+    <script>
+      /* reduce is probably the function which is the hardest to understand.
+      The idea is that you "reduce" an array to a single value based on a
+      starting value:
+      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce */
+
+      // Create an array of words
+      const words = ["potato", "cumin", "carrot", "pasta", "chocolate"];
+
+      // Count the number of letters in total by "reducing" the list to a single value
+      const total = words.reduce((acc, curr) => acc + curr.length, 0);
+      console.log(total);
+
+      const students = [
+        {
+          name: "Student 1",
+          age: 20,
+          skills: ["HTML", "CSS", "JS"],
+        },
+        {
+          name: "Student 2",
+          age: 40,
+          skills: ["HTML"],
+        },
+        {
+          name: "Student 3",
+          age: 22,
+          skills: ["CSS"],
+        },
+        {
+          name: "Student 4",
+          age: 70,
+          skills: ["CSS", "JS"],
+        },
+        {
+          name: "Student 5",
+          age: 25,
+          skills: ["JS"],
+        },
+      ];
+
+      /* Reduce the list to a all skills that students at least at the 
+      age of 40 have, lastly print this to the console. Notice how we combine
+      all the functions we've learned to do this sequence of events.
+      
+      We use concat to "concatenate" or "stitch" together two arrays into one. */
+      students
+        .filter((student) => student.age >= 40)
+        .reduce((acc, curr) => acc.concat(curr.skills), [])
+        .map((skill) => `The skill is ${skill}`)
+        .forEach((skill) => console.log(skill));
+    </script>
+  </head>
+  <body></body>
+</html>

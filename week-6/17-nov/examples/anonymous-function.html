@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anonymous function</title>
+    <script>
+      function createPerson(name, callback) {
+        const person = { firstName: name };
+        callback(person);
+      }
+
+      // Invoke createPerson with an anonymous function
+      createPerson("Dannie", function (person) {
+        console.log(`Hello ${person.firstName}! Welcome to the class.`);
+      });
+
+      // Invoke createPerson with an anonymous arrow function
+      createPerson("Dannie", (person) => {
+        console.log(`Hello ${person.firstName}! Welcome to the class.`);
+      });
+
+      // Invoke createPerson with an anonymous arrow function (shorter syntax)
+      createPerson("Dannie", (person) =>
+        console.log(`Hello ${person.firstName}! Welcome to the class.`)
+      );
+      
+      // Invoke createPerson with an anonymous arrow function (EVEN shorter syntax)
+      createPerson("Dannie", person =>
+        console.log(`Hello ${person.firstName}! Welcome to the class.`)
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array and string exercises</title>
+    <script>
+      /*
+        Here we will make ourselves comfortable with using lists/arrays as well
+        as Strings. Needless to say, this is a very common thing in programming,
+        and something you will need to make yourselves comfortable with.
+
+        Arrays are a very powerful data structure that you will use very much
+        in the programs that you write. These exercises will prove the flexibility
+        of them very much.
+
+        I recognize that these exercises will be harder than the previous ones
+        that you have done. Be humble with regard to that fact.
+
+        NOTE: Some solutions require searching by your own for solutions that are
+        not immediately in front of you. Just like we have covered:
+
+        - length
+        - push
+
+        There are many other things to do with an array.
+
+        NOTE: Try to use template literal strings to make dynamic string building
+        easier. Also, please create functions if you feel the need. They help
+        clarify the code :)
+
+        NOTE: Use the DevTools Console and Debugger when you are stuck. This CANNOT
+        be overstated.
+
+        NOTE: Use https://cme-waiting-list.netlify.app/ when you need help 💪.
+
+        Good luck!
+        */
+
+      const students = [
+        "Anton Jaldegren",
+        "Carl-Oscar Pihl",
+        "David Skotte",
+        "Emilia Åslund",
+        "Alexander Nyman",
+        "Alinde Mårtensson",
+        "Fanny Skogefält",
+        "Almin Sirbic",
+        "George manaz",
+        "Timothy Magee",
+        "Giada Unger",
+        "Ida Hägerth",
+        "Isabelle Wincrantz",
+        "Andreas Fäctare",
+        "Joel Olsson",
+        "Katerina Chrysostomou Nygren",
+        "Andreas Larsson",
+        "Adam Österlund",
+        "Kevin Lundberg",
+        "Tim Gottling Tegman",
+        "Kyung-jin Cho",
+        "Joakim Melen",
+        "Linda Andersson",
+        "Binnaz Akyüz",
+        "Linus Foxell",
+        "Fredrik Einar Aleksej Magnusson",
+        "Marcus Piri",
+        "Stephano Melo",
+        "Mariia Shabelnik",
+        "Sofia Drejmark",
+        "Nikuu Westberg",
+        "Nils Fält",
+        "Sandy Congreve",
+        "Petter Karlsson",
+        "Saga Vallin",
+        "Samina Dahlberg",
+        "Sebastian Torneus",
+        "Vincent Sjögren",
+        "Sofia Niyazson",
+        "Tsubasa Fujii",
+      ];
+
+      /* 1. We have a big class of students! Can you figure out how to print them
+      all on individual lines? Add a 👋 to the end of every print,
+      to simulate everyone saying hi :). "Dannie Håkansson 👋" is an example, if
+      I were to be a student in your class. */
+      for (let i = 0; i < students.length; i++) {
+        const student = students[i];
+        console.log(`${student} 👋`);
+      }
+
+      /* 2. We now want to sort every student in alphabetical order. Can you
+      figure out how to do that? When you do, print that result to the console. */
+      students.sort();
+      console.log(students);
+
+      /* 3. We now want to create a new list containing only the student
+      first names. Print this to the console. */
+      for (let i = 0; i < students.length; i++) {
+        const student = students[i];
+        const studentNames = student.split(" ");
+        console.log(studentNames[0]);
+      }
+
+      /* 4. The students have varying amounts of names. Can you make individual
+      prints that render like "Hi I'm <firstName> and I have <number> names"? */
+      for (let i = 0; i < students.length; i++) {
+        const student = students[i];
+        const studentNames = student.split(" ");
+        const firstName = studentNames[0];
+
+        const string = `Hi I'm ${firstName} and I have ${studentNames.length} names`;
+        console.log(string);
+      }
+
+      /* 5. Can you build a string consisting of every student with the word 'and'
+      separating them all? Print this to the console. */
+      console.log(students.join(" and "));
+
+      /* 6. Can you replace every occurrence of a blankspace " " within each student
+      with an emoji like 👀? Put this result in a new list as to not
+      affect our original one :)
+
+      Example: "Dannie Håkansson" should become "Dannie👀Håkansson". */
+      for (const student of students) {
+        // Solution 1: split + join
+        // 1. Split all names into an array of x number of items, where x is the amount of names
+        // const names = student.split(" ");
+        // 2. Join the names with a emoji separator/delimiter
+        // console.log(names.join("👀"));
+
+        // Solution 2: replace
+        console.log(student.replaceAll(" ", "👀"));
+      }
+
+      /* BONUS 1. We now want to know the number of occurrences of the character 'm'
+      amongst all of our students full names. Can you calculate and print that
+      to the console? For only "Dannie Håkansson" the amount is 1.
+
+      The final count should add up to 19. */
+      let sum = 0;
+
+      for (const fullName of students) {
+        // 1. Inner loop solution
+        // for (let i = 0; i < fullName.length; i++) {
+        //   const character = fullName[i];
+        //   console.log(character);
+
+        //   // 2. Is the character the same as 'm'?
+        //   if (character.toLowerCase() === "m") {
+        //     sum++;
+        //   }
+        // }
+
+        // 2. Split solution
+        // Dammie Håkansson
+        sum += fullName.toLowerCase().split("m").length - 1;
+      }
+
+      console.log(sum);
+
+      // 3. Regex solution
+      console.log(students.join("").match(/m/gi).length);
+
+      /* BONUS 2. It can sometimes be hard to help every student at once. It can then
+      be good to make the total group smaller. Can you make four lists that are
+      evenly sized, based on the original students list? The result should be that
+      we have 10 in each list. Print these to the console like:
+
+      "This is group <number>: <groupList>".
+
+      A hint is that this concept is called "chunking" the array, or "creating
+      chunks".
+
+      Another hint is that it's possible to have an array with arrays :)
+
+      A last hint is that 'slice' is a useful function :) */
+
+      // 1. Naive solution
+      // const firstChunk = students.slice(0, 10);
+      // const secondChunk = students.slice(10, 20);
+      // const thirdChunk = students.slice(20, 30);
+      // const fourthChunk = students.slice(30, 40);
+
+      // console.log(`This is group number 1: ${firstChunk}`);
+      // console.log(`This is group number 2: ${secondChunk}`);
+      // console.log(`This is group number 3: ${thirdChunk}`);
+      // console.log(`This is group number 4: ${fourthChunk}`);
+
+      // 2. Not so naive solution, but still broken in certain cases (like if list is 41 students)
+      // const chunkSize = students.length / 4;
+
+      // const chunks = [];
+
+      // for (let i = 0; i < students.length; i += chunkSize) {
+      //   const chunk = students.slice(i, i + chunkSize);
+      //   chunks.push(chunk);
+      // }
+
+      // for (let i = 0; i < chunks.length; i++) {
+      //   console.log(`This is group number ${i + 1}: ${chunks[i].join(", ")}`);
+      // }
+
+      // 3. Solution of "as long as there are students left to pick"
+      // const chunkSize = 10;
+      // const chunks = [];
+
+      // while (students.length > 0) {
+      //   const chunk = [];
+
+      //   for (let i = 0; i < chunkSize; i++) {
+      //     const selectedStudent = students.shift();
+      //     if (selectedStudent !== undefined) {
+      //       chunk.push(selectedStudent);
+      //     }
+      //   }
+
+      //   chunks.push(chunk);
+      // }
+
+      // for (let i = 0; i < chunks.length; i++) {
+      //   console.log(`This is group number ${i + 1}: ${chunks[i].join(", ")}`);
+      // }
+
+      /* BONUS 3. Can you print a new name for every student, which omits the first
+      and last characters of every name they have?
+
+      For "Dannie Håkansson" that would become "anni åkansso".
+
+      A hint is that it's possible to have nested loops ;) */
+      for (const student of students) {
+        const names = student.split(" ");
+        // ["anni", "åkansso"]
+
+        // 1. Regular solution
+        // let newName = "";
+
+        // for (let i = 0; i < names.length; i++) {
+        //   const name = names[i];
+        //   newName += name.substring(1, name.length - 1) + " ";
+        // }
+
+        // 2. Solution with reduce
+        const newNames = names.reduce((newNames, name) => {
+          newNames.push(name.substring(1, name.length - 1));
+          return newNames;
+        }, []);
+
+        console.log(newNames.join(" "));
+      }
+
+      /* If you've managed to solve all of the above exercises, then I applaud you.
+      You're really starting to learn how to program!
+
+      If you're not quite there yet, don't worry. It takes TIME to get used to the
+      mindset of solving problems like this 🤓 */
+    </script>
+  </head>
+  <body></body>
+</html>

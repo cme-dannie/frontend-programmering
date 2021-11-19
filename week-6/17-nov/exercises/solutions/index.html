@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object exercises</title>
+    <script>
+      /* In these exercises we will make ourselves comfortable with using
+        objects, arrays with objects as well as forEach/filter/map/reduce.
+
+        NOTE: Some solutions require searching by your own for solutions that are
+        not immediately in front of you.
+
+        NOTE: Use the DevTools Console and Debugger when you are stuck. This CANNOT
+        be overstated.
+
+        NOTE: Use https://cme-waiting-list.netlify.app/ when you need help 💪.
+
+        Good luck!
+        */
+
+      const person = {
+        firstName: "Dannie",
+        lastName: "Håkansson",
+        age: 28,
+      };
+
+      /* 1. Print our person to the console. */
+      console.log(person);
+
+      /* 2. Print only the age of our person to the console. */
+      console.log(person.age);
+
+      /* 3. Print every value of our person. This can be done with the help of a
+      function called Object.values in combination with a forEach.
+
+      When you're done, see if you can do it in a different way? */
+      function printValue(value) {
+        console.log(value);
+      }
+
+      Object.values(person).forEach(printValue);
+
+      const values = Object.values(person);
+
+      for (value of values) {
+        console.log(value);
+      }
+
+      /* 4. Print every key of our person. This can be done similarly to the previous
+      exercise. */
+      for (const key of Object.keys(person)) {
+        console.log(key);
+      }
+
+      Object.keys(person).forEach(printValue);
+
+      /* 5. Sometimes the value we want to print is associated with an unknown key.
+      Can you figure out how to read the value from our person based on the variable
+      'key' below? This means that if 'key' changes to another property/key, the
+      code should still work. Print this to the console. */
+      const key = "lastName";
+      console.log(person[key]);
+
+      /* 6. Remove the age attribute from our person. Print the object to
+      the console afterwards. */
+      delete person.age;
+      console.log(person);
+
+      /* 7. Re-add the age attribute to our person. Print the object to
+      the console afterwards. */
+      person.age = 30;
+      console.log(person);
+
+      /* 8. Below we have an array of people, consisting of our single person. Can
+      you create a new object that represents you and add it to the existing
+      'people' array? A good idea is to follow the format of the existing object
+      we've been working with, but with different data. When you're done, also add
+      a third person to the list. The data representing this last person
+      can be imaginary if you'd like. */
+      const people = [person];
+      people.push({ firstName: "Test", lastName: "Testsson", age: 18 });
+      people.push({ firstName: "Test2", lastName: "Testsson2", age: 28 });
+      console.log(people);
+
+      /* 9. Iterate all of the objects and print their first name. Try to do this
+      with a forEach loop. */
+      people.forEach((person) => console.log(person.firstName));
+
+      /* 10. Iterate all of the objects and print their first name. Try to do this
+      with a forEach loop. */
+
+      /* 11. Create a new list representing all ages of the people. Try to do this
+      by using map. */
+      // const ages = [];
+
+      // for (const person of people) {
+      //   ages.push(person.age);
+      // }
+
+      // console.log(ages);
+
+      const ages = people.map((person) => person.age);
+      console.log(ages);
+
+      // Object destructuring syntax
+      console.log(people.map(({ age }) => age));
+
+      /* 12. Combine map with forEach to print a full name for every person. */
+      people
+        .map((person) => `${person.firstName} ${person.lastName}`)
+        .forEach((name) => console.log(name));
+
+      /* 13. Calculate an average age across all people by using reduce */
+      const sum = people.reduce((sum, person) => sum + person.age, 0);
+      const average = sum / people.length;
+      console.log(average);
+
+      /* 14. Filter out all people whose first or last name doesn't include the
+      letter 'D', and make the solution case insensitive, meaning casing doesn't
+      matter. Use filter to solve this. */
+      const vips = people
+        .map((person) => `${person.firstName} ${person.lastName}`)
+        .filter((fullName) => {
+          return fullName.toUpperCase().includes("D");
+        });
+
+      console.log(vips);
+
+      /* Congratulations for solving the exercises of today :) */
+    </script>
+  </head>
+  <body></body>
+</html>

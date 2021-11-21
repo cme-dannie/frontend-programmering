@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logical error</title>
+    <script>
+      function add(x, y) {
+        return x * y;
+      }
+
+      /* Our assumption is that this should produce 6,
+      but it doesn't, because we've a logical error on our hands. Notice
+      how JS has no idea about this. It can get really difficult to track
+      these issues down the more code you have. */
+      const sum = add(2, 4);
+      console.log(sum);
+
+      const numbers = [1, 2, "3", 4, "5"];
+
+      for (const value of numbers) {
+        /* This is most probably a logical error, because our list is 
+        not actually only consisting of numbers.
+        
+        Once again, the result is unexpected, but the program runs
+        "correctly". */
+        console.log(
+          `The value is ${value}, and when incremented by 10 it becomes ${
+            value + 10
+          }`
+        );
+      }
+
+      /* Can you find the logical error in the code below? */
+    //   const CORRECT_PASSWORD = "secret";
+    //   let guessPassword;
+
+    //   do {
+    //     guessPassword = prompt("Welcome, enter password to proceed...");
+    //   } while (guessPassword === CORRECT_PASSWORD);
+
+    //   alert("Password correct, you may proceed.");
+    </script>
+  </head>
+  <body></body>
+</html>

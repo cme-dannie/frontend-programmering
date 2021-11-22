@@ -7,7 +7,7 @@
     <title>Runtime error</title>
     <script>
       // Produces ReferenceError
-      doSomething();
+      // doSomething();
 
       const people = [{ firstName: "Dannie", lastName: "Håkansson", age: 28 }];
 
@@ -18,7 +18,7 @@
       program to know without reaching this line.
       
       Produces TypeError. */
-      console.log(people[1].age);
+      console.log(people[0].age);
 
       const values = [1];
       /* We're trying to use 'split', which is not a function on an array.

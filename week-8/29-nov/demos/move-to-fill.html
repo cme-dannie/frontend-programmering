@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Move to fill</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .meter {
+        width: 30rem;
+        border: 2px solid black;
+        height: 3rem;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .fill {
+        width: 0;
+        height: 100%;
+        background: #96e6b3;
+      }
+    </style>
+    <script type="module">
+      const meter = document.querySelector(".meter");
+      const fill = document.querySelector(".fill");
+
+      document.addEventListener("mousemove", ({ clientX }) => {
+        const percentage = Math.round((clientX / window.innerWidth) * 100);
+        fill.style.width = `${percentage}%`;
+      });
+    </script>
+  </head>
+  <body>
+    <section>
+      <h1>Move mouse to fill 😍</h1>
+      <div class="meter">
+        <div class="fill"></div>
+      </div>
+    </section>
+  </body>
+</html>

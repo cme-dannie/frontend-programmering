@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .keyboard {
+        display: flex;
+        perspective: 1000px;
+        gap: 1em;
+      }
+
+      [data-key] {
+        border: 1px solid gray;
+        padding: 2em;
+        font-size: 2rem;
+        transform: rotateX(30deg);
+        box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+        transition: all 100ms ease-in;
+      }
+
+      .pressed {
+        background: #da3e52;
+        transform: rotateX(30deg) scale(1.1);
+      }
+    </style>
+    <script type="module">
+      const meter = document.querySelector(".meter");
+      const fill = document.querySelector(".fill");
+
+      document.addEventListener("keydown", function ({ key: keyValue }) {
+        const key = document.querySelector(`[data-key=${keyValue}]`);
+        if (!key) {
+          return;
+        }
+
+        key.classList.add("pressed");
+      });
+
+      document.addEventListener("keyup", ({ key: keyValue }) => {
+        const key = document.querySelector(`[data-key=${keyValue}]`);
+        if (!key) {
+          return;
+        }
+
+        setTimeout(() => {
+          key.classList.remove("pressed");
+        }, 100);
+      });
+    </script>
+  </head>
+  <body>
+    <section>
+      <h1>Press keys below</h1>
+      <div class="keyboard">
+        <div data-key="a">A</div>
+        <div data-key="b">B</div>
+        <div data-key="c">C</div>
+        <div data-key="d">D</div>
+        <div data-key="e">E</div>
+        <div data-key="f">F</div>
+      </div>
+    </section>
+  </body>
+</html>

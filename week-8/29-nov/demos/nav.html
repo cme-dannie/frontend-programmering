@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body,
+      ul {
+        margin: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        font-size: 2rem;
+      }
+
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+        padding: 1em;
+        transition: all 500ms linear;
+      }
+
+      .main-nav {
+        border-bottom: 1px solid black;
+      }
+
+      .toggle:hover {
+        cursor: pointer;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+    <script type="module">
+      const toggle = document.querySelector(".toggle");
+      const inner = document.querySelector(".main-nav ul");
+
+      toggle.addEventListener("click", () => {
+        inner.classList.toggle("hidden");
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="main-nav">
+          <li>
+            <div class="toggle">Toggle</div>
+            <ul class="hidden">
+              <li>Sub item 2</li>
+              <li>Sub item 3</li>
+              <li>Sub item 4</li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>

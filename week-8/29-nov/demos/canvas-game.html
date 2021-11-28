@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas game</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      canvas {
+        display: block;
+        margin: 2rem auto 0 auto;
+      }
+    </style>
+    <script type="module">
+      const KEY_UP = "ArrowUp";
+      const KEY_DOWN = "ArrowDown";
+      const KEY_LEFT = "ArrowLeft";
+      const KEY_RIGHT = "ArrowRight";
+
+      function renderBackground() {
+        ctx.drawImage(
+          background.image,
+          background.x,
+          background.y,
+          canvas.width,
+          canvas.height
+        );
+
+        ctx.drawImage(
+          background.image,
+          background.x,
+          background.y - canvas.height,
+          canvas.width,
+          canvas.height
+        );
+
+        if (background.y >= canvas.height) {
+          background.y = 0;
+        }
+        background.y += background.movingSpeed;
+      }
+
+      function renderPlayer() {
+        ctx.drawImage(
+          player.image,
+          player.currentFrame * shipFrameWidth,
+          0 * shipFrameHeight,
+          shipFrameWidth,
+          shipFrameHeight,
+          player.x,
+          player.y,
+          player.width,
+          player.height
+        );
+      }
+
+      function render() {
+        requestAnimationFrame(render);
+        renderBackground();
+        movePlayer();
+        renderPlayer();
+      }
+
+      function movePlayer() {
+        if (player.movingDirectionX !== null) {
+          player.x += player.movingSpeed * player.movingDirectionX;
+        }
+
+        if (player.movingDirectionY !== null) {
+          player.y += player.movingSpeed * player.movingDirectionY;
+        }
+      }
+
+      function setUpKeyListeners() {
+        document.addEventListener("keydown", ({ key }) => {
+          if (![KEY_UP, KEY_RIGHT, KEY_DOWN, KEY_LEFT].includes(key)) {
+            return;
+          }
+
+          if (key === KEY_UP) {
+            player.movingDirectionY = -1;
+          } else if (key === KEY_DOWN) {
+            player.movingDirectionY = 1;
+          }
+
+          if (key === KEY_RIGHT) {
+            player.movingDirectionX = 1;
+            player.currentFrame = 2;
+          } else if (key === KEY_LEFT) {
+            player.movingDirectionX = -1;
+            player.currentFrame = 0;
+          }
+        });
+
+        document.addEventListener("keyup", ({ key }) => {
+          if (![KEY_UP, KEY_RIGHT, KEY_DOWN, KEY_LEFT].includes(key)) {
+            return;
+          }
+
+          if ([KEY_UP, KEY_DOWN].includes(key)) {
+            player.movingDirectionY = null;
+          } else {
+            player.movingDirectionX = null;
+            player.currentFrame = 1;
+          }
+        });
+      }
+
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+
+      const backgroundImage = new Image();
+      backgroundImage.src = "assets/background.jpeg";
+      const background = {
+        image: backgroundImage,
+        x: 0,
+        y: 0,
+        movingSpeed: 2,
+      };
+
+      const shipImage = new Image();
+      shipImage.src = "assets/ship.png";
+      const shipFrameWidth = 92;
+      const shipFrameHeight = 108;
+      const playerWidth = 40;
+      const playerHeight = 60;
+
+      const player = {
+        x: canvas.width / 2 - playerWidth / 2,
+        y: canvas.height / 2 - playerHeight / 2,
+        width: playerWidth,
+        height: playerHeight,
+        movingDirectionX: null,
+        movingDirectionY: null,
+        movingSpeed: 5,
+        image: shipImage,
+        currentFrame: 1,
+      };
+
+      setUpKeyListeners();
+      render();
+    </script>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+  </body>
+</html>

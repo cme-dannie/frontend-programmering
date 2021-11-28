@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercises</title>
+    <style>
+      h1 {
+        font-weight: normal;
+      }
+
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+        border: 1px solid gray;
+      }
+
+      ul li {
+        padding: 1em;
+        transition: all 300ms ease-in-out;
+      }
+
+      ul li:not(:last-child) {
+        border-bottom: 1px solid gray;
+      }
+
+      ul li.current {
+        background: lightgreen;
+        font-weight: bold;
+      }
+    </style>
+    <script type="module">
+      /*
+      In the exercises of today we will start to make ourselves
+      comfortable using the DOM.
+
+      NOTE: Some solutions will require you to search for solutions that are not
+      immediately in front of you. This will not change, as that's how you will
+      have to work when you start your first job.
+
+      NOTE: Use the DevTools Console and Debugger when you are stuck.
+      This CANNOT be overstated.
+
+      NOTE: Use https://cme-waiting-list.netlify.app/ when you need help 💪.
+      */
+
+      /* 1. As you can see, our web page is completely empty. This is not good.
+      Start of by creating a main title element that says "Hi visitor, welcome!".
+      Add this to the page body. */
+
+      /* 2. The text is quite boring when it's all black. Give it a fancy new
+      color by using the 'style' attribute on your node. This attribute is how
+      you access CSS properties through the DOM. Read more about it at
+      https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style#setting_styles */
+
+      /* 3. We now wish to wrap "welcome!" in bold through a <strong> tag. Make
+      this happen. This means "Hi visitor, " will be directly in the existing
+      <h1>, and "welcome!" will be in <strong>. */
+
+      /* 4. Create a ul with 7 items representing every day of the week.
+      Add the text from this array to the new items. Lastly add the list to the body. */
+      const weekdays = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ];
+
+      /* 5. Add the existing class 'current' to the item representing today. This
+      will make it green and bold */
+
+      /* 6. Everyone dislikes sundays, right? Remove the item representing sunday,
+      so that hopefully we will never see it again 😛 */
+
+      /* 7. In order to help the visitors, we wish to have a 'title' attribute
+      tooltip show up, which says "This day is <day>". For monday when hovering with
+      the mouse this should say "This day is Monday". */
+
+      /* 8. By using window.setInterval, see if you can make the 'current' class
+      change to a random day every 0.5 seconds. */
+
+      /* 9. Expand the solution to exercise 8 by adding a new window.setInterval
+      which removes an item every 2 seconds. When all items are removed, see if 
+      you can figure out how to turn off both of the setIntervals. Read about this
+      on MDN. */
+    </script>
+  </head>
+  <!-- NOTE: This body element should not be modified through directly written 
+    HTML, but only through JS. -->
+  <body></body>
+</html>

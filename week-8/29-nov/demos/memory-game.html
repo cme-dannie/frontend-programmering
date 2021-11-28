@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory game</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1em;
+        min-height: 100vh;
+        background: rgb(184, 184, 184);
+      }
+
+      main {
+        width: 100%;
+        max-width: 50rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+        gap: 1em;
+      }
+
+      .card {
+        position: relative;
+        border: 2px solid black;
+        aspect-ratio: 3 / 4;
+        transition: all 400ms ease-in-out;
+        transform-style: preserve-3d;
+        border-radius: 5px;
+      }
+
+      .card:not(.flipped) {
+        cursor: pointer;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      .card.flipped:hover {
+        transform: rotateY(180deg);
+      }
+
+      .front,
+      .back {
+        backface-visibility: hidden;
+        position: absolute;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .front {
+        background: transparent;
+        transform: rotateY(0deg);
+        background-color: #dfdbe5;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M12 0h18v6h6v6h6v18h-6v6h-6v6H12v-6H6v-6H0V12h6V6h6V0zm12 6h-6v6h-6v6H6v6h6v6h6v6h6v-6h6v-6h6v-6h-6v-6h-6V6zm-6 12h6v6h-6v-6zm24 24h6v6h-6v-6z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+        background-position: center;
+      }
+
+      .back {
+        transform: rotateY(180deg);
+        font-size: 5rem;
+        background: white;
+      }
+
+      .flipped {
+        transform: rotateY(180deg);
+      }
+    </style>
+    <script type="module">
+      const cards = document.querySelectorAll(".card");
+
+      cards.forEach((card) =>
+        card.addEventListener(
+          "click",
+          () => {
+            card.classList.add("flipped");
+          },
+          { once: true }
+        )
+      );
+    </script>
+  </head>
+  <body>
+    <main>
+      <div class="card">
+        <div class="front"></div>
+        <div class="back">😎</div>
+      </div>
+      <div class="card">
+        <div class="front"></div>
+        <div class="back">😎</div>
+      </div>
+      <div class="card">
+        <div class="front"></div>
+        <div class="back">🎃</div>
+      </div>
+      <div class="card">
+        <div class="front"></div>
+        <div class="back">👀</div>
+      </div>
+      <div class="card">
+        <div class="front"></div>
+        <div class="back">🐰</div>
+      </div>
+      <div class="card">
+        <div class="front"></div>
+        <div class="back">🎃</div>
+      </div>
+      <div class="card">
+        <div class="front"></div>
+        <div class="back">👀</div>
+      </div>
+      <div class="card">
+        <div class="front"></div>
+        <div class="back">🐰</div>
+      </div>
+    </main>
+  </body>
+</html>

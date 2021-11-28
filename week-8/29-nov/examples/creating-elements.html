@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating elements</title>
+    <script type="module">
+      /* Creating elements is done with the
+        'document.createElement' function. */
+      const section = document.createElement("section");
+
+      /* Whenever a Node has been created, it has to be "inserted"
+      into the DOM somehow. One such function is 'append', which is
+      available on all DOM nodes. */
+      document.body.append(section);
+
+      /* Currently our <section> is empty. Let's change that. */
+      const p = document.createElement("p");
+      p.textContent = "Hello there!";
+      section.append(p);
+
+      /* Here we create a list and have it be populated by 10 list items */
+      const list = document.createElement("ul");
+
+      for (let i = 0; i < 10; i++) {
+        const item = document.createElement("li");
+        item.textContent = `Item ${i + 1}`;
+        list.append(item);
+      }
+
+      section.append(list);
+
+      /* You can probably already see the benefits of being 
+      able to do this from JS. */
+    </script>
+  </head>
+  <body></body>
+</html>

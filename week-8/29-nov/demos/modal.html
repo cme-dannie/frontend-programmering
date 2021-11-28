@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        font-size: 62.5%;
+      }
+
+      body,
+      h2 {
+        margin: 0;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-size: 2rem;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      .modal {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      .closed {
+        visibility: hidden;
+      }
+
+      .modal__content {
+        background: white;
+        border-radius: 10px;
+        padding: 1em;
+        max-width: 50ch;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        transition: transform 100ms ease-in;
+      }
+
+      .closed .modal__content {
+        transform: translateY(-100%);
+      }
+
+      button {
+        border: 0;
+        font-size: inherit;
+        padding: 0.5em 1em;
+        background: #2c73d2;
+        color: white;
+        border-radius: 5px;
+        transition: box-shadow 100ms linear;
+      }
+
+      button:hover {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+      }
+    </style>
+    <script type="module">
+      function closeModal() {
+        modal.classList.add("closed");
+      }
+
+      const modal = document.querySelector(".modal");
+      const openButton = document.querySelector(".open-button");
+      const closeButton = document.querySelector(".close-button");
+
+      openButton.addEventListener("click", () => {
+        modal.classList.remove("closed");
+      });
+
+      // Close via close button
+      closeButton.addEventListener("click", closeModal);
+
+      // Close via ESCAPE button
+      window.addEventListener("keydown", ({ key }) => {
+        if (key !== "Escape") {
+          return;
+        }
+
+        closeModal();
+      });
+
+      // Close via click outside of modal
+      document.addEventListener("click", ({ target }) => {
+        if (target !== modal) {
+          return;
+        }
+
+        closeModal();
+      });
+    </script>
+  </head>
+  <body>
+    <main>
+      <section class="container">
+        <h1>Press button to open modal</h1>
+        <button class="open-button">Open</button>
+      </section>
+      <section class="modal closed">
+        <div class="modal__content">
+          <h2>Modal title</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error,
+            tempore?
+          </p>
+          <button class="close-button">Close</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retrieving elements</title>
+    <script type="module">
+      /* querySelector and querySelectorAll accepts any possible selector
+        that we learned to use in CSS. */
+      const allListItems = document.querySelectorAll("li");
+      console.log(allListItems);
+
+      const thirdListItem = document.querySelectorAll("li:nth-child(3)");
+      console.log(thirdListItem);
+
+      // This will return the first Node which matches the given selector
+      const fourthFooterListItem = document.querySelector(
+        "footer ol li:nth-child(4)"
+      );
+      console.log(fourthFooterListItem);
+    </script>
+  </head>
+  <body>
+    <main>
+      <ul>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Porro blanditiis sint ipsam suscipit!</li>
+        <li>Ratione quisquam voluptas praesentium possimus.</li>
+        <li>Error amet consequuntur modi impedit?</li>
+        <li>Cum magni nobis qui quos?</li>
+      </ul>
+    </main>
+    <footer>
+      <ol>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Vel saepe illo ipsam sapiente.</li>
+        <li>Incidunt unde autem ea maxime.</li>
+        <li>Numquam hic eum accusamus laudantium.</li>
+        <li>Pariatur neque cumque quaerat cum.</li>
+      </ol>
+    </footer>
+  </body>
+</html>

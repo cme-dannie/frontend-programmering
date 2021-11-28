@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo list</title>
+    <style>
+      :root {
+        --clr-primary: #00cc8e;
+        --clr-secondary: #003dcc;
+
+        --size-default: 2.8rem;
+
+        --box-shadow: 3px 5px 10px rgb(0, 0, 0, 0.2);
+        --text-shadow: 1px 1px 1px #000;
+        --border-radius: 5px;
+      }
+
+      * {
+        box-sizing: border-box;
+        font-size: inherit;
+        font-family: inherit;
+        outline: 0;
+        box-shadow: none;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        font-size: var(--size-default);
+        min-height: 100vh;
+        background: var(--clr-primary);
+        margin: 0;
+      }
+
+      main {
+        padding: 2rem;
+        width: 100%;
+        max-width: 70rem;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      form {
+        display: flex;
+      }
+
+      button {
+        border: 0;
+        padding: 0;
+        background: transparent;
+      }
+
+      form input,
+      form button {
+        padding: 0.75em 1em;
+        box-shadow: var(--box-shadow);
+        border-radius: var(--border-radius);
+        transition: all 200ms ease-in-out;
+      }
+
+      form input {
+        border: 0;
+        padding: 0.75em 1em;
+        flex: 1;
+        color: var(--clr-secondary);
+      }
+
+      form input::placeholder {
+        color: rgb(0, 61, 204, 0.4);
+      }
+
+      form button {
+        color: white;
+        background: rgb(0, 61, 204, 1);
+        margin-left: 0.5em;
+      }
+
+      form button[disabled] {
+        cursor: not-allowed;
+        filter: brightness(80%);
+      }
+
+      form button:hover:not([disabled]) {
+        transform: scale(1.1);
+      }
+
+      form button:active {
+        transform: scale(1.2) !important;
+      }
+
+      ol {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .list {
+        color: white;
+        text-shadow: var(--text-shadow);
+        margin-top: 1em;
+      }
+
+      .list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0.5em;
+        padding: 1em;
+        background: rgb(255, 255, 255, 0.2);
+        transition: transform 300ms ease-in-out;
+        box-shadow: var(--box-shadow);
+      }
+    </style>
+    <script type="module">
+      const form = document.querySelector("form");
+      const input = form.querySelector("input");
+      const list = document.querySelector(".list");
+
+      function createListItem(text) {
+        const item = document.createElement("li");
+        item.textContent = text;
+        return item;
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        list.append(createListItem(input.value));
+        input.value = "";
+      });
+    </script>
+  </head>
+  <body>
+    <main>
+      <form action="">
+        <input type="text" placeholder="What to do" required autofocus />
+        <button type="submit" class="button">Add</button>
+      </form>
+      <ol class="list"></ol>
+    </main>
+  </body>
+</html>

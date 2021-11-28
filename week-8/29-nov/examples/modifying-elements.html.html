@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modifying elements</title>
+    <style>
+      body {
+        font-size: 1.5rem;
+      }
+
+      .yellow {
+        color: yellow;
+      }
+
+      .bg-green {
+        background: green;
+      }
+    </style>
+    <script type="module">
+      const first = document.querySelector("li:first-child");
+      const second = document.querySelector("li:nth-child(2)");
+      const third = document.querySelector("li:nth-child(3)");
+
+      /* 1. It's common to change the content of a given Node.
+
+      This can be done via:
+      - innerHTML
+      - innerText
+      - textContent
+      */
+      first.textContent = "Dannie was here! 🤓";
+
+      second.innerText = "Someone has written dynamic text...";
+
+      /* 2. Using innerHTML let's you add HTML dynamically. */
+      third.innerHTML = `<strong>${"I'm bold 👀"}</strong>`;
+
+      /* There is a big reason to be cautious about using innerHTML though.
+      Why? Because it's potentially dangerous. You might give access
+      to a user by letting them write their own JS on your page.
+      There's a resource at the end of this presentation which gives you a basic
+      idea of this. For now, just be wary of using innerHTML. */
+
+      /* 3. Another common thing to do on a page is to dynamically set/unset
+      classes. */
+      first.classList.add("yellow");
+
+      third.classList.remove("bg-green");
+
+      /* 4. Another common thing to do is to set/unset HTML attributes */
+      const img = document.querySelector("img");
+      console.log(img.getAttribute("src"));
+      console.log(img.getAttribute("alt"));
+
+      img.setAttribute("src", "../demos/assets/ship.png");
+
+      for (const attr of img.attributes) {
+        console.log(attr.name, attr.value);
+      }
+
+      Array.from(img.attributes).forEach(({ name, value }) =>
+        console.log(name, value)
+      );
+
+      // There's way more to do, but this gives you an idea :)
+    </script>
+  </head>
+  <body>
+    <main>
+      <ul>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Porro blanditiis sint ipsam suscipit!</li>
+        <li class="bg-green">
+          Ratione quisquam voluptas praesentium possimus.
+        </li>
+        <li>Error amet consequuntur modi impedit?</li>
+        <li>Cum magni nobis qui quos?</li>
+      </ul>
+    </main>
+    <img
+      src="../demos/assets/background.jpeg"
+      alt="An awesome ship!"
+      width="300"
+    />
+    <footer>
+      <ol>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Vel saepe illo ipsam sapiente.</li>
+        <li>Incidunt unde autem ea maxime.</li>
+        <li>Numquam hic eum accusamus laudantium.</li>
+        <li>Pariatur neque cumque quaerat cum.</li>
+      </ol>
+    </footer>
+  </body>
+</html>

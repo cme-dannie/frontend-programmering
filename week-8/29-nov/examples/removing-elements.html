@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Removing elements</title>
+    <style>
+      header {
+        background: lightslategray;
+      }
+
+      main {
+        background: lightblue;
+      }
+
+      footer {
+        background: lightsalmon;
+      }
+    </style>
+    <script type="module">
+      /* In order to remove a DOM Node we first need to access it */
+      const header = document.querySelector("header");
+
+      /* We then call 'remove' on it. */
+      header.remove();
+    </script>
+  </head>
+  <body>
+    <header>
+      <ul>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Dolor nesciunt aut deleniti atque!</li>
+        <li>Dolorum porro sunt dolores ratione.</li>
+        <li>Accusantium aperiam deleniti id asperiores?</li>
+        <li>Iusto ut fugiat alias ullam?</li>
+      </ul>
+    </header>
+    <main>
+      <article>
+        <h1>Awesome article here!</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
+          dolore.
+        </p>
+      </article>
+    </main>
+    <footer>This is a footer!</footer>
+  </body>
+</html>

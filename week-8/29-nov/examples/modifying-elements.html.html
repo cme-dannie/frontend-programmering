@@ -55,6 +55,7 @@
       console.log(img.getAttribute("alt"));
 
       img.setAttribute("src", "../demos/assets/ship.png");
+      img.setAttribute("alt", "An awesome ship!");
 
       for (const attr of img.attributes) {
         console.log(attr.name, attr.value);
@@ -81,7 +82,7 @@
     </main>
     <img
       src="../demos/assets/background.jpeg"
-      alt="An awesome ship!"
+      alt="An awesome background!"
       width="300"
     />
     <footer>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function as parameter</title>
+    <style>
+      body {
+        font-size: 2rem;
+      }
+    </style>
+    <script type="module">
+      let callCount = 0;
+
+      function sayHi() {
+        callCount++;
+        console.log("I'm saying hello!", callCount);
+      }
+
+      /* Below we're calling 'sayHi' in completely different
+      situations. Notice how we're NOT responsible
+      ourselves for calling 'sayHi'. It's all up to the
+      specific function that accepts a function as a
+      parameter. 
+      
+      Part of understanding this behaviour is to let go
+      of the idea that WE are calling the function. We're not. And
+      since that's not true, we need to ask ourselves then,
+      WHEN will it be called? And that's completely up to the specific
+      function you've passed the defined function.
+      
+      In JS we say that functions are "first class citizens". 
+      
+      This is part of the reason. Functions are like any datatype. */
+
+      // 1. Call sayHi when 'resize' happens
+      window.addEventListener("resize", sayHi);
+
+      // 2. Call sayHi when 'scroll' happens
+      document.addEventListener("scroll", sayHi);
+
+      // 3. Call sayHi when 'click' on button happens
+      const button = document.querySelector("button");
+      button.addEventListener("click", sayHi);
+
+      // 4. Call sayHi every second
+      setInterval(sayHi, 1000);
+
+      const numbers = [1, 2, 3, 4, 5];
+
+      // 5. Call sayHi for every item in our array (five times)
+      [1, 2, 3, 4, 5].forEach(sayHi);
+    </script>
+  </head>
+  <body>
+    <button>Click me</button>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
+      assumenda at maiores veritatis, veniam nulla provident voluptatibus magni
+      rerum eum. Minus delectus maxime rerum neque pariatur quibusdam illum
+      eligendi aperiam expedita adipisci, nesciunt ullam, harum ipsam
+      repudiandae reiciendis totam amet, id numquam aliquam quia libero! Vero,
+      aliquam dolorem et, praesentium excepturi fuga, in quod ipsam illo vel
+      itaque! Quisquam deserunt minima facilis architecto dicta nostrum
+      voluptatum dolores aut distinctio nobis nam et dolorum culpa, voluptate
+      quasi ducimus dolorem eligendi! Minima totam neque aspernatur dolor
+      inventore? Aliquam provident cupiditate doloremque eum eius pariatur
+      voluptatum expedita magnam dolorem. Sapiente molestiae vel maxime!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
+      assumenda at maiores veritatis, veniam nulla provident voluptatibus magni
+      rerum eum. Minus delectus maxime rerum neque pariatur quibusdam illum
+      eligendi aperiam expedita adipisci, nesciunt ullam, harum ipsam
+      repudiandae reiciendis totam amet, id numquam aliquam quia libero! Vero,
+      aliquam dolorem et, praesentium excepturi fuga, in quod ipsam illo vel
+      itaque! Quisquam deserunt minima facilis architecto dicta nostrum
+      voluptatum dolores aut distinctio nobis nam et dolorum culpa, voluptate
+      quasi ducimus dolorem eligendi! Minima totam neque aspernatur dolor
+      inventore? Aliquam provident cupiditate doloremque eum eius pariatur
+      voluptatum expedita magnam dolorem. Sapiente molestiae vel maxime!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
+      assumenda at maiores veritatis, veniam nulla provident voluptatibus magni
+      rerum eum. Minus delectus maxime rerum neque pariatur quibusdam illum
+      eligendi aperiam expedita adipisci, nesciunt ullam, harum ipsam
+      repudiandae reiciendis totam amet, id numquam aliquam quia libero! Vero,
+      aliquam dolorem et, praesentium excepturi fuga, in quod ipsam illo vel
+      itaque! Quisquam deserunt minima facilis architecto dicta nostrum
+      voluptatum dolores aut distinctio nobis nam et dolorum culpa, voluptate
+      quasi ducimus dolorem eligendi! Minima totam neque aspernatur dolor
+      inventore? Aliquam provident cupiditate doloremque eum eius pariatur
+      voluptatum expedita magnam dolorem. Sapiente molestiae vel maxime!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
+      assumenda at maiores veritatis, veniam nulla provident voluptatibus magni
+      rerum eum. Minus delectus maxime rerum neque pariatur quibusdam illum
+      eligendi aperiam expedita adipisci, nesciunt ullam, harum ipsam
+      repudiandae reiciendis totam amet, id numquam aliquam quia libero! Vero,
+      aliquam dolorem et, praesentium excepturi fuga, in quod ipsam illo vel
+      itaque! Quisquam deserunt minima facilis architecto dicta nostrum
+      voluptatum dolores aut distinctio nobis nam et dolorum culpa, voluptate
+      quasi ducimus dolorem eligendi! Minima totam neque aspernatur dolor
+      inventore? Aliquam provident cupiditate doloremque eum eius pariatur
+      voluptatum expedita magnam dolorem. Sapiente molestiae vel maxime!
+    </p>
+  </body>
+</html>

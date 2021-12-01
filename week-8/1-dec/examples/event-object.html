@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event object</title>
+    <script type="module">
+      let playerPosition = 0;
+
+      document.addEventListener("keydown", (event) => {
+        // Use the 'key' property to access which key was pressed
+        if (event.key === "ArrowUp") {
+          playerPosition++;
+        }
+
+        console.log(`Current position is ${playerPosition}`);
+      });
+
+      document.addEventListener("mousemove", (event) => {
+        // Use the 'x' and 'y' properties to access the current mouse position
+        console.log(`Current mouse position is ${event.x} ${event.y}`);
+      });
+    </script>
+  </head>
+  <body></body>
+</html>

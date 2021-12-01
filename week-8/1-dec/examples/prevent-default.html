@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prevent default</title>
+    <script type="module">
+      const a = document.querySelector("a");
+
+      a.addEventListener("click", (event) => {
+        /* Calling this will prevent the default behaviour of the event,
+        which is to navigate to the URL specified in 'href' */
+        event.preventDefault();
+
+        console.log("Clicked on link without navigating to the URL!");
+      });
+
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        /* In order to process the form with our event listener, we need
+        to prevent the default behaviour of "sending" the form away. */
+        event.preventDefault();
+
+        /* Construct a formData object based on the 
+        event.target (which is our <form>) */
+        const formData = new FormData(event.target);
+        const username = formData.get("username");
+        const password = formData.get("password");
+
+        console.log(
+          `Form submitted without actually sending it! username: ${username} password: ${password}`
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>Prevent default</h1>
+      <a href="https://google.com">Go to Google</a>
+
+      <form action="">
+        <input type="text" name="username" />
+        <input type="password" name="password" />
+        <button>Submit form</button>
+      </form>
+    </main>
+  </body>
+</html>

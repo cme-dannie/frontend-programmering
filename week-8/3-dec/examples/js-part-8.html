@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS part 8</title>
+    <style>
+      .cursor {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        border: 2px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        transition: transform 200ms ease-in;
+      }
+
+      .upscaled {
+        transform: scale(2);
+      }
+    </style>
+    <script type="module">
+      // Add resize event to window
+      window.addEventListener("resize", () => {
+        console.log("The window was resized!");
+      });
+
+      /* Add mousemove event listener to document, and use event object
+      to set absolute position of our .cursor <div> */
+      const cursor = document.querySelector(".cursor");
+
+      document.addEventListener("mousemove", (event) => {
+        cursor.style.top = `${event.y - cursor.offsetWidth / 2}px`;
+        cursor.style.left = `${event.x - cursor.offsetHeight / 2}px`;
+      });
+
+      // Add scale transform when cursor <div> is clicked
+      cursor.addEventListener("click", () => {
+        cursor.classList.add("upscaled");
+      });
+
+      // Remove the class after the CSS transition has finished (200ms)
+      cursor.addEventListener("transitionend", () => {
+        cursor.classList.remove("upscaled");
+      });
+
+      /* Add click event to all Nodes within a NodeList (basically an Array).
+      
+      Here we have a function, which runs alert, which is passed as a parameter to
+      addEventListener. li.addEventListener is called for each item in our list.
+      
+      A function as a parameter, to a function which is called inside of a function
+      which is ALSO passed as a parameter, to a function which is forEach.
+      
+      😵‍💫 */
+      const liElements = document.querySelectorAll("li");
+
+      liElements.forEach((li) =>
+        li.addEventListener("click", () => {
+          alert(li.textContent);
+        })
+      );
+    </script>
+  </head>
+  <body>
+    <button>Click me for awesome things to happen!</button>
+    <ul>
+      <li>Lorem.</li>
+      <li>Fuga.</li>
+      <li>Ea?</li>
+      <li>Amet?</li>
+      <li>Eaque.</li>
+      <li>Aut.</li>
+      <li>Praesentium.</li>
+    </ul>
+    <div class="cursor"></div>
+  </body>
+</html>

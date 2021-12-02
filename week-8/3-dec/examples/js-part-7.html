@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .big {
+        font-size: 2rem;
+      }
+
+      .white {
+        color: white;
+      }
+    </style>
+    <title>JS part 7</title>
+    <!-- Script without 'defer' or type="module" causes error when using DOM -->
+    <script>
+      console.log("The <body> node is", document.body); // Returns null, as the DOM is not ready yet
+    </script>
+    <!-- Script with type="module" will be deferred until the DOM is ready -->
+    <script type="module">
+      console.log("The <body> node is", document.body); // Returns the node representing <body>
+
+      // Set the bg color of our body element to 'red'
+      document.body.style.backgroundColor = "red";
+
+      // Retrieve
+      const p = document.querySelector("p");
+      console.log(p);
+
+      // Modify by adding two classes
+      p.classList.add("big", "white");
+
+      // Create
+      const strong = document.createElement("strong");
+      strong.textContent = "Hey!";
+
+      // Modify by append
+      p.append(strong);
+
+      // Remove
+      strong.remove();
+    </script>
+  </head>
+  <body>
+    <main>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, ea!
+      </p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS part 3</title>
+    <script>
+      // const och let och varför de är bättre än var
+      const number = 1;
+      // number = 2; // Produces error
+      console.log(number);
+
+      let hi = "Hello and welcome!";
+      hi = "Hello and, indeed, welcome!!!";
+      console.log(hi);
+
+      // Array
+      const students = ["Student 1", "Student 2", "Student 3"];
+
+      // Iterating Array
+      for (let i = 0; i < students.length; i++) {
+        // Accessing items within array at specific position with []
+        const student = students[i];
+        console.log(student);
+      }
+
+      for (const student of students) {
+        console.log(student);
+      }
+
+      // Function
+
+      // Declaring function
+      function sayHi() {
+        console.log("Hi there!");
+      }
+
+      function sayHiDifferently(how) {
+        console.log(how, " there!");
+      }
+
+      function createGreeting(guest) {
+        return "Hi and welcome " + guest;
+      }
+
+      // Calling function
+      sayHi();
+
+      // Function parameters för att förändra körandet av en funktion
+      sayHiDifferently("Howdy");
+      sayHiDifferently("Tjeenare");
+      sayHiDifferently("Ey brush");
+
+      // Function return values för att få “tillbaks” ett värde från en funktion
+      const greeting = createGreeting("dear student");
+      console.log(greeting);
+
+      // String functions för att manipulera/ändra en String
+      const schoolAddress = "Åsögatan 117, 116 24 Stockholm, Sverige";
+      const parts = schoolAddress.split(" ");
+      const streetName = parts[0];
+      const movedSchool = schoolAddress.replace("Stockholm", "Helsingborg");
+      const uppercaseSchool = schoolAddress.toUpperCase();
+
+      // Printing with string template literals
+      console.log(`The address is ${schoolAddress}`);
+      console.log(parts);
+      console.log(`The street name is ${streetName}`);
+      console.log(
+        `When we moved the school the address became: ${movedSchool}`
+      );
+      console.log(`THE SCHOOL IS ${uppercaseSchool}`);
+
+      // Scoping av variabler (global vs block)
+      const global = "Global";
+
+      function test() {
+        const block = "Block";
+
+        if (true) {
+          const innerBlock = "Most inner";
+          console.log(innerBlock);
+        }
+
+        console.log(global);
+        console.log(block);
+        // console.log(innerBlock); Produces error
+      }
+
+      test();
+
+      console.log(global);
+      //   console.log(block); // Produces error
+      //   console.log(innerBlock); // Produces error
+    </script>
+  </head>
+  <body></body>
+</html>

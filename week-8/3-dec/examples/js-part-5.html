@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS part 5</title>
+    <script>
+      // Syntax error
+      cons myVar = 1;
+
+      if (true {
+        console.log("hey");
+      }
+
+      // Runtime error
+
+      // Produces ReferenceError
+      // doSomething();
+
+      const people = [{ firstName: "Dannie", lastName: "Håkansson", age: 28 }];
+
+      // This person exists
+      console.log(people[0].age);
+
+      /* This person does NOT exist, but there's no way for the
+      program to know without reaching this line.
+
+      Produces TypeError. */
+      console.log(people[0].age);
+
+      const values = [1];
+      /* We're trying to use 'split', which is not a function on an array.
+
+      Also produces TypeError. */
+      values.split();
+
+      // Logical error
+
+      const correctPassword = "secret";
+      let guessPassword;
+
+      do {
+        guessPassword = prompt("Welcome, enter password to proceed...");
+      } while (guessPassword === correctPassword);
+
+      alert("Password correct, you may proceed.");
+
+      // How to break down problems
+
+      /* Fem ord ska finnas med i spelet. Dessa ord är
+      “Programmering”, “Stockholm”, “Studenter”, “Javascript” och “Afterwork”.
+      Notera att dessa ord är svenska och engelska, men använder endast ord
+      från det engelska alfabetet. */
+
+      /* Varje gång programmet startar så skall ett av dessa ord slumpartat
+      väljas, vilket sedan spelet baserar sin gång på. */
+
+      /* 1. Create the words of the program that should be selected from */
+      const words = [
+        "Programmering",
+        "Stockholm",
+        "Studenter",
+        "Javascript",
+        "Afterwork",
+      ];
+
+      /* 2. Find a way to produce a random value */
+      const randomValue = Math.floor(Math.random() * words.length);
+      console.log(randomValue);
+
+      /* 3. Find a way to select a word based on this random value */
+      const chosenWord = words[randomValue];
+      console.log(chosenWord);
+    </script>
+  </head>
+  <body></body>
+</html>

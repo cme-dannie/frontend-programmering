@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS part 2</title>
+    <script>
+      // Converting between type
+      var number = "1";
+      var actualNumber = parseInt(number);
+      console.log(number, actualNumber);
+
+      // Using prompt
+      var input = prompt("Write something!");
+      console.log(input);
+
+      // Evaluation of conditions (resulting in a Boolean value)
+      var schoolName = "Changemaker";
+      var hasGraduated = false;
+      var currentSchool = "Changemaker";
+      var topSchool = "Harvard";
+      console.log(
+        "Is my current school Changemaker?",
+        currentSchool === schoolName
+      );
+      console.log(
+        "Can I have a job?",
+        hasGraduated || currentSchool === topSchool
+      );
+      var guess = 10;
+      var validGuess = 60;
+      console.log("The guess is invalid", guess !== validGuess);
+      console.log("The guess is too low", guess < validGuess);
+      console.log("The guess is too high", guess > validGuess);
+      console.log("The guess is exact", guess === validGuess);
+
+      // Making decisions in our code through "control flow" statements
+      if (guess === validGuess) {
+        console.log("The guess is correct, have a cookie!");
+      } else {
+        console.log("The guess is incorrect, give me a cookie!");
+      }
+
+      for (var i = 0; i < 10; i++) {
+        console.log("The current iteration value is", i);
+      }
+
+      var playing = true;
+      var iterationCount = 0;
+
+      while (playing) {
+        console.log("Still playing, let's see if someone wins");
+        iterationCount++;
+        if (iterationCount === 10) {
+          playing = false;
+        }
+      }
+
+      console.log("Someone won, since we exited the loop!");
+
+      // Debugging
+      debugger;
+    </script>
+  </head>
+  <body></body>
+</html>

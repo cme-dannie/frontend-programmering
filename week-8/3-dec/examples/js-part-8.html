@@ -8,9 +8,10 @@
     <style>
       .cursor {
         position: fixed;
-        width: 50px;
-        height: 50px;
-        border: 2px solid red;
+        z-index: -1;
+        width: 100px;
+        height: 100px;
+        background: radial;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -28,21 +29,27 @@
         console.log("The window was resized!");
       });
 
-      /* Add mousemove event listener to document, and use event object
-      to set absolute position of our .cursor <div> */
-      const cursor = document.querySelector(".cursor");
+      // Add click event to our buton, and alert when it is clicked
+      const button = document.querySelector("button");
 
+      button.addEventListener("click", () => {
+        alert("Hi!");
+      });
+
+      /* Add mousemove event listener to document, and use event object
+      to set absolute position of our .cursor <img> */
+      const cursor = document.querySelector(".cursor");
       document.addEventListener("mousemove", (event) => {
         cursor.style.top = `${event.y - cursor.offsetWidth / 2}px`;
         cursor.style.left = `${event.x - cursor.offsetHeight / 2}px`;
       });
 
-      // Add scale transform when cursor <div> is clicked
-      cursor.addEventListener("click", () => {
+      // Add scale transform when mouse is pressed on our cursor <img>
+      cursor.addEventListener("mousedown", () => {
         cursor.classList.add("upscaled");
       });
 
-      // Remove the class after the CSS transition has finished (200ms)
+      // Remove the class after the CSS transition has finished
       cursor.addEventListener("transitionend", () => {
         cursor.classList.remove("upscaled");
       });
@@ -76,6 +83,6 @@
       <li>Aut.</li>
       <li>Praesentium.</li>
     </ul>
-    <div class="cursor"></div>
+    <img class="cursor" src="circle.png"></img>
   </body>
 </html>

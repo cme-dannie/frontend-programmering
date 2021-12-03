@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercises</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-size: 1.5rem;
+      }
+
+      header {
+        display: flex;
+        gap: 1em;
+      }
+
+      header > * {
+        flex: 1;
+      }
+
+      .container {
+        max-width: 60rem;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      button {
+        border: 0;
+        padding: 5em 0;
+        font-size: inherit;
+        transition: all 200ms ease-in-out;
+      }
+
+      button:hover {
+        filter: brightness(85%);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+      }
+
+      button:first-child {
+        background: #845ec2;
+      }
+
+      button:nth-child(2) {
+        background: #d65db1;
+      }
+
+      button:nth-child(3) {
+        background: #ff6f91;
+      }
+
+      button:nth-child(4) {
+        background: #ff9671;
+      }
+
+      button:nth-child(5) {
+        background: #ffc75f;
+      }
+
+      input {
+        margin-top: 1em;
+        padding: 0.5em;
+        font-size: inherit;
+      }
+
+      .results {
+        margin-top: 1em;
+      }
+
+      .results ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .results ul li {
+        border-bottom: 1px solid black;
+        padding: 0.5em 0.25em;
+      }
+
+      .highlight {
+        background: yellow;
+      }
+
+      footer {
+        display: grid;
+        grid-template-areas:
+          ". arrow-up ."
+          "arrow-left arrow-down arrow-right";
+        gap: 0.5em;
+      }
+
+      .arrow {
+        border: 1px solid black;
+        padding: 0.5em 0;
+        text-align: center;
+      }
+
+      .arrow-up {
+        margin-top: 1em;
+        grid-area: arrow-up;
+      }
+
+      .arrow-left {
+        grid-area: arrow-left;
+      }
+
+      .arrow-down {
+        grid-area: arrow-down;
+      }
+
+      .arrow-right {
+        grid-area: arrow-right;
+      }
+    </style>
+    <script type="module">
+      /*
+            In the exercises of today we will start to make ourselves
+            comfortable using the DOM, and to be more specific: how to use
+            events and event listeners.
+
+            NOTE: Some solutions will require you to search for solutions that are not
+            immediately in front of you. This will not change, as that's how you will
+            have to work when you start your first job.
+
+            NOTE: When getting access to the elements within the DOM, scroll down and
+            view the existing elements of <body> and see which selector would fit in
+            order to retrieve them.
+
+            NOTE: Remember that you can use named functions, anonymous functions,
+            anonymous arrow functions etc. They will all be invoked when the appropriate
+            event is fired, irrespective of which function you choose to create and pass
+            as an event listener.
+
+            NOTE: Use the DevTools Console and Debugger when you are stuck.
+            This CANNOT be overstated.
+
+            NOTE: Use https://cme-waiting-list.netlify.app/ when you need help 💪.
+            */
+
+      /* 1. We have five buttons on our page. Add an event listener to them
+              based on the click event, and have them say "Hi" when being clicked.
+              You can do this with an alert. */
+      const buttons = document.querySelectorAll("button");
+
+      buttons.forEach((button) =>
+        button.addEventListener("click", () => {
+          alert(`Hi I'm ${button.textContent}`);
+        })
+      );
+
+      /* 2. Expand on the previous solution by changing the alert to
+            "Hi I'm <buttonText>" inside. For the first button,
+              this would be "Hi I'm One". */
+
+      /* 3. We have an input field. Input fields fire an event called "input" which
+            is triggered when the content is filled in. Put the value of what the user has
+            typed into our search results that currently are empty. */
+      const input = document.querySelector("input");
+      const results = document.querySelector(".results");
+
+      const ul = document.createElement("ul");
+      results.append(ul);
+
+      input.addEventListener("input", () => {
+        const filteredIngredients = ingredients.filter((ingredient) =>
+          ingredient.toLowerCase().includes(input.value.toLowerCase())
+        );
+
+        const listItems = filteredIngredients.map((ingredient) => {
+          const li = document.createElement("li");
+
+          const parts = ingredient
+            .toLowerCase()
+            .split(input.value.toLowerCase());
+
+          const highlightedTextContent = parts.join(
+            `<span class="highlight">${input.value.toLowerCase()}</span>`
+          );
+
+          li.innerHTML = highlightedTextContent;
+
+          const firstNode = li.childNodes[0];
+          firstNode.textContent =
+            firstNode.textContent[0].toUpperCase() +
+            firstNode.textContent.slice(1);
+          return li;
+        });
+
+        ul.textContent = "";
+        ul.append(...listItems);
+      });
+
+      /* 4. Since we're now actually not really searching for ingredients, let's change
+            that. Based on our 'ingredients' array below, can you print to the console all items
+            that match the search query? For example, searching for 'oo' should result in 'Mushroom'
+            and 'Noodles' being printed. The order doesn't matter. */
+      const ingredients = [
+        "Mushroom",
+        "Cheese",
+        "Lentils",
+        "Tomato",
+        "Wheat",
+        "Noodles",
+        "Rice",
+        "Chicken",
+        "Salmon",
+        "Avocado",
+        "Spinach",
+        "Chili",
+      ];
+
+      /* 5. Let's move our console.logs to actually be items in our search results. When the search
+            query changes, create a <ul> list of the relevant items from the array, and put it into
+            our "results" section. */
+
+      /* 6. Find an event which fires when a key is pressed. We want to highlight the correct
+            arrow on the page based on which arrow key was pressed. Each time a new arrow key is pressed,
+            we want to move the highlight to that one. I have prepared a class 'highlight' in the CSS which
+            can be utilized here. It will turn the background yellow. */
+      // document.addEventListener("keydown", (event) => {
+      //   const arrows = document.querySelectorAll(".arrow");
+      //   arrows.forEach((arrow) => arrow.classList.remove("highlight"));
+
+      //   const direction = event.key.replace("Arrow", "").toLowerCase();
+      //   const arrow = document.querySelector(`.arrow-${direction}`);
+      //   arrow.classList.add("highlight");
+      // });
+
+      /* BONUS: Can you figure out how to highlight the term that you've searched for, inside
+            of the search result item? For instance, for 'oo' "N'oo'ddles" should be highlighted with another
+            background color. For 'o', "T'o'mat'o'" should have two highlights.
+            I have prepared a class 'highlight' in the CSS which can be utilized here.
+
+            You don't have to care about keeping the original casing, as that's quite hard to solve.
+
+            A hint is that Regex and String replace are very handy tools. */
+    </script>
+  </head>
+  <!-- NOTE: This body element should not be modified through directly written 
+    HTML, but only through JS. -->
+  <body>
+    <header class="container">
+      <button>One</button>
+      <button>Two</button>
+      <button>Three</button>
+      <button>Four</button>
+      <button>Five</button>
+    </header>
+    <main class="container">
+      <input type="text" placeholder="Search for ingredients!" />
+      <section class="results">There are no results</section>
+    </main>
+    <footer class="container">
+      <div class="arrow arrow-up">⬆️</div>
+      <div class="arrow arrow-left">⬅️</div>
+      <div class="arrow arrow-down">⬇️</div>
+      <div class="arrow arrow-right">➡️</div>
+    </footer>
+  </body>
+</html>

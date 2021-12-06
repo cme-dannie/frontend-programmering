@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codealong - Guessing game HTML/CSS</title>
+    <script>
+      /*
+        In this exercise we build a frontend (HTML/CSS) for our guessing game to see what it
+        might be like to make things interactive for the user outside of 'alert', 'prompt' etc.
+        
+        The code below is based off of my own solution, but you may use your own if you like.
+      */
+
+      var validGuess = 57;
+
+      do {
+        var input = prompt(
+          "Guess a number and maybe you'll win something nice :)"
+        );
+
+        if (!input) {
+          alert("You have canceled the game");
+          break;
+        }
+
+        var parsedInput = parseInt(input);
+
+        var isLower = parsedInput < validGuess;
+        var isLowerButClose = parsedInput >= validGuess - 10;
+
+        var isHigher = parsedInput > validGuess;
+        var isHigherButClose = parsedInput <= validGuess + 20;
+
+        var hasGuessedCorrectly = parsedInput === validGuess;
+
+        if (isLower) {
+          if (isLowerButClose) {
+            alert("Your guess is low but close!");
+          } else {
+            alert("Your guess is too low");
+          }
+        } else if (isHigher) {
+          if (isHigherButClose) {
+            alert("Your guess is high but close!");
+          } else {
+            alert("Your guess is too high");
+          }
+        } else {
+          alert("Your guess is exact");
+        }
+      } while (!hasGuessedCorrectly);
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codealong - Guessing game HTML/CSS</title>
+    <!-- I will execute AFTER the DOM is ready to be used -->
+    <script type="module">
+      /*
+        In this exercise we build a frontend (HTML/CSS) for our guessing game to see what it
+        might be like to make things interactive for the user outside of 'alert', 'prompt' etc.
+
+        The code below is based off of my own solution, but you may use your own if you like.
+      */
+
+      /* Add event listener to our button */
+      const inputElement = document.querySelector("input");
+      const button = document.querySelector("button");
+      const message = document.querySelector(".message");
+      const form = document.querySelector("form");
+
+      const validGuess = Math.floor(Math.random() * 100);
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        /* Extract value of input somehow, and log it to the console */
+        const input = inputElement.value;
+        const parsedInput = parseInt(input);
+
+        /* Establish comparisons so that we know if the guess was correct
+        or not */
+        const isLower = parsedInput < validGuess;
+        const isLowerButClose = parsedInput >= validGuess - 10;
+
+        const isHigher = parsedInput > validGuess;
+        const isHigherButClose = parsedInput <= validGuess + 20;
+
+        const hasGuessedCorrectly = parsedInput === validGuess;
+
+        message.textContent = "";
+
+        /* Refactor 'alert' so that it shows in HTML instead */
+        if (isLower) {
+          if (isLowerButClose) {
+            message.textContent = "Your guess is low but close!";
+          } else {
+            message.textContent = "Your guess is too low";
+          }
+        } else if (isHigher) {
+          if (isHigherButClose) {
+            message.textContent = "Your guess is high but close!";
+          } else {
+            message.textContent = "Your guess is too high";
+          }
+        } else {
+          message.textContent = "Your guess is exact";
+        }
+      });
+
+      // button.addEventListener("click", () => {
+      //   /* Extract value of input somehow, and log it to the console */
+      //   const input = inputElement.value;
+      //   const parsedInput = parseInt(input);
+
+      //   console.log(input, parsedInput);
+
+      //   /* Establish comparisons so that we know if the guess was correct
+      //   or not */
+      //   const isLower = parsedInput < validGuess;
+      //   const isLowerButClose = parsedInput >= validGuess - 10;
+
+      //   const isHigher = parsedInput > validGuess;
+      //   const isHigherButClose = parsedInput <= validGuess + 20;
+
+      //   const hasGuessedCorrectly = parsedInput === validGuess;
+
+      //   message.textContent = "";
+
+      //   /* Refactor 'alert' so that it shows in HTML instead */
+      //   if (isLower) {
+      //     if (isLowerButClose) {
+      //       message.textContent = "Your guess is low but close!";
+      //     } else {
+      //       message.textContent = "Your guess is too low";
+      //     }
+      //   } else if (isHigher) {
+      //     if (isHigherButClose) {
+      //       message.textContent = "Your guess is high but close!";
+      //     } else {
+      //       message.textContent = "Your guess is too high";
+      //     }
+      //   } else {
+      //     message.textContent = "Your guess is exact";
+      //   }
+      // });
+
+      // do {
+      //   /* 1. Potentially move out to HTML/CSS? */
+
+      //   /* 2. How do we accept input from HTML/CSS? */
+      //   var input = prompt(
+      //     "Guess a number and maybe you'll win something nice :)"
+      //   );
+
+      //   if (!input) {
+      //     alert("You have canceled the game");
+      //     break;
+      //   }
+
+      // var parsedInput = parseInt(input);
+
+      //   var isLower = parsedInput < validGuess;
+      //   var isLowerButClose = parsedInput >= validGuess - 10;
+
+      //   var isHigher = parsedInput > validGuess;
+      //   var isHigherButClose = parsedInput <= validGuess + 20;
+
+      //   var hasGuessedCorrectly = parsedInput === validGuess;
+
+      //   if (isLower) {
+      //     if (isLowerButClose) {
+      //       alert("Your guess is low but close!");
+      //     } else {
+      //       alert("Your guess is too low");
+      //     }
+      //   } else if (isHigher) {
+      //     if (isHigherButClose) {
+      //       alert("Your guess is high but close!");
+      //     } else {
+      //       alert("Your guess is too high");
+      //     }
+      //   } else {
+      //     alert("Your guess is exact");
+      //   }
+      // } while (!hasGuessedCorrectly);
+
+      /* Where does HTML and CSS fit into the picture? */
+    </script>
+  </head>
+  <body>
+    <!-- Write HTML so that the user can input a number -->
+    <h1>Guess a number and maybe you'll win something nice :)</h1>
+    <!-- When the button has been clicked, how can we extract what
+    the user has inputted, if anything? -->
+    <form>
+      <input type="number" autofocus />
+      <!-- How can we determine whether or not we have clicked this button? -->
+      <button type="submit">Submit</button>
+    </form>
+    <!-- Write HTML so that it's possible to show the result of the guess -->
+    <p class="message"></p>
+  </body>
+</html>

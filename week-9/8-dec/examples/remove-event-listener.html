@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Removing event listener</title>
+    <style>
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      li {
+        padding: 1em;
+        border: 1px solid black;
+      }
+
+      li > div {
+        display: flex;
+      }
+
+      input {
+        margin-left: auto;
+      }
+
+      p {
+        border-top: 1px solid gray;
+        margin: 0;
+        margin-top: 1em;
+        padding-top: 1em;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+    <script type="module">
+      const listItems = document.querySelectorAll("li");
+
+      function toggleDetails(event) {
+        const p = event.currentTarget.querySelector("p");
+        p.classList.toggle("hidden");
+      }
+
+      listItems.forEach((li) => {
+        // Initialize by registering toggling of details based on click
+        li.addEventListener("click", toggleDetails);
+
+        const checkbox = li.querySelector("input");
+
+        // Toggle event listener on and off based on checkbox value
+        checkbox.addEventListener("change", (event) => {
+          if (event.target.checked) {
+            li.addEventListener("click", toggleDetails);
+          } else {
+            li.removeEventListener("click", toggleDetails);
+          }
+        });
+
+        // We don't want to propagate click for our checkbox, since it will toggle the details
+        checkbox.addEventListener("click", (event) => {
+          event.stopPropagation();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <div>
+          Click whole item to show details <input type="checkbox" checked />
+        </div>
+        <p class="hidden">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, vero?
+        </p>
+      </li>
+      <li>
+        <div>
+          Click whole item to show details <input type="checkbox" checked />
+        </div>
+        <p class="hidden">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, vero?
+        </p>
+      </li>
+      <li>
+        <div>
+          Click whole item to show details <input type="checkbox" checked />
+        </div>
+        <p class="hidden">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, vero?
+        </p>
+      </li>
+    </ul>
+  </body>
+</html>

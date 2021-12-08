@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List item with button</title>
+    <style>
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .outer-list {
+        position: relative;
+      }
+
+      .outer-list > li {
+        border: 1px solid black;
+        padding: 1em;
+      }
+
+      .outer-list li > div {
+        display: flex;
+      }
+
+      .context-button {
+        margin-left: auto;
+        position: relative;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .dropdown {
+        border: 1px solid black;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 1;
+        background: black;
+        color: white;
+      }
+
+      .dropdown li {
+        padding: 0.25em 0.75em;
+        text-align: left;
+      }
+    </style>
+    <script type="module">
+      const listItems = document.querySelectorAll(".outer-list > li");
+      const buttons = document.querySelectorAll("button");
+
+      // Each li will have its own listener
+      listItems.forEach((li) =>
+        li.addEventListener("click", () => {
+          console.log("Item was clicked!");
+          const p = li.querySelector("p");
+          p.classList.toggle("hidden");
+        })
+      );
+
+      // Note that these buttons are located INSIDE of each li
+      buttons.forEach((button) =>
+        button.addEventListener("click", () => {
+          console.log("Context button was clicked!");
+          const dropdown = button.querySelector(".dropdown");
+          dropdown.classList.toggle("hidden");
+        })
+      );
+    </script>
+  </head>
+  <body>
+    <ul class="outer-list">
+      <li>
+        <div>
+          First
+          <div class="context-button">
+            <button>
+              ...
+              <ul class="dropdown hidden">
+                <li>Delete</li>
+                <li>Edit</li>
+              </ul>
+            </button>
+          </div>
+        </div>
+        <p class="hidden">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, vero?
+        </p>
+      </li>
+      <li>
+        <div>
+          Second
+          <div class="context-button">
+            <button>
+              ...
+              <ul class="dropdown hidden">
+                <li>Delete</li>
+                <li>Edit</li>
+              </ul>
+            </button>
+          </div>
+        </div>
+        <p class="hidden">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, vero?
+        </p>
+      </li>
+      <li>
+        <div>
+          Third
+          <div class="context-button">
+            <button>
+              ...
+              <ul class="dropdown hidden">
+                <li>Delete</li>
+                <li>Edit</li>
+              </ul>
+            </button>
+          </div>
+        </div>
+        <p class="hidden">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, vero?
+        </p>
+      </li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Implicit click</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      section {
+        padding: 1em;
+        background-image: linear-gradient(
+          to left,
+          #051937,
+          #004d7a,
+          #008793,
+          #00bf72,
+          #a8eb12
+        );
+      }
+    </style>
+    <script type="module">
+      const section = document.querySelector("section");
+
+      /* Although we have a listener only registered for our section,
+      notice what happens if we click our nested buttons. */
+      section.addEventListener("click", () => {
+        console.log("Section was clicked", section);
+      });
+    </script>
+  </head>
+  <body>
+    <section>
+      <button>Click me</button>
+      <button>Click me as well</button>
+    </section>
+  </body>
+</html>

@@ -16,6 +16,10 @@
         border: 1px solid black;
       }
 
+      li.disabled {
+        opacity: 0.3;
+      }
+
       li > div {
         display: flex;
       }
@@ -56,6 +60,9 @@
           } else {
             li.removeEventListener("click", toggleDetails);
           }
+
+          // Navigate from input > div > li and add class to it
+          checkbox.parentElement.parentElement.classList.toggle("disabled");
         });
 
         // We don't want to propagate click for our checkbox, since it will toggle the details

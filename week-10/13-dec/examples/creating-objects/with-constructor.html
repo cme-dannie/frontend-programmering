@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating objects - With constructor</title>
+    <script>
+      const animalPrototype = {
+        makeNoise: function () {
+          console.log(`The ${this.type} ${this.name} says ${this.noise}`);
+        },
+        eat: function () {
+          console.log(`I'm a ${this.type} animal and I'm currently eating`);
+        },
+      };
+
+      /* We change our function name from 'createAnimal' to just 'Animal',
+      since we wish to treat this function as a constructor.
+
+      Worth noting is:
+      1. The 'this' keyword can now be utilized to refer to the object
+      which is currently being created. This is directly connected
+      with the 'new' keyword which is being used further down.
+      2. The object that is being constructed is returned implicitly,
+      even WITHOUT a 'return' statement! */
+      function Animal(name, type, noise) {
+        this.name = name;
+        this.type = type;
+        this.noise = noise;
+      }
+
+      /* This is identical to what we did with Object.create to add
+      a custom prototype. Without doing this, we will NOT have access
+      to 'makeNoise' and 'eat' for our animal objects.
+
+      Worth noting here is that 'prototype' is a property which exists on ALL
+      functions. This is key, since we need this in order to set our custom
+      prototype.
+      
+      This property says:
+      - All objects that are created with this constructor will inherit from
+      this prototype object. In our case they will inherit from 'animalPrototype',
+      just like before.
+      
+      This is the "constructor variant" of using Object.create(animalPrototype).
+      
+      Without doing this, all our objects created with this constructor will inherit
+      from the default object prototype, which has 'toString', 'hasOwnProperty' etc. */
+      Animal.prototype = animalPrototype;
+
+      /* Notice how we use the new keyword to create new animals.
+
+      In programming we usually phrase this as "instantiating objects"
+      of a particular type or class.
+
+      We "instantiate three animals of the type/class Animal".
+
+      We will revisit the concept of a class a bit later. Right now you can
+      conceptually view them as a "blueprint". The 'Animal' constructor is a
+      blueprint for how to construct animals. 
+      
+      Much like an architectural drawing might define
+      how a house is supposed to be built/constructed, our Animal constructor
+      does the same for animal objects. */
+      const animal = new Animal("Lucky", "Killer", "RAAAWR!!!");
+      const otherAnimal = new Animal("Peanut", "Kind", "Meow :)");
+      const yetAnotherAnimal = new Animal("Bubba", "Furry", "Purrrr");
+
+      animal.makeNoise();
+      otherAnimal.makeNoise();
+      yetAnotherAnimal.makeNoise();
+
+      animal.eat();
+      otherAnimal.eat();
+      yetAnotherAnimal.eat();
+
+      console.log("The animal prototype is", Object.getPrototypeOf(animal));
+      console.log(
+        "The otherAnimal prototype is",
+        Object.getPrototypeOf(otherAnimal)
+      );
+      console.log(
+        "The yetAnotherAnimal prototype is",
+        Object.getPrototypeOf(yetAnotherAnimal)
+      );
+      console.log(
+        "The prototype is the same",
+        Object.getPrototypeOf(animal) === Object.getPrototypeOf(otherAnimal) &&
+          Object.getPrototypeOf(otherAnimal) ===
+            Object.getPrototypeOf(yetAnotherAnimal)
+      );
+      console.log(
+        "The prototype of the animal prototype is",
+        Object.getPrototypeOf(Object.getPrototypeOf(animal))
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

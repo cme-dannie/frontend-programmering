@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating objects - With custom prototype</title>
+    <script>
+      /* 1. We create a new object which represents our animal prototype. 
+      It will contain functionality that is applicable to ALL animals.
+      
+      Worth noting is that we NEED to use 'this' here. Why? Well, because the
+      'name', 'type' and 'noise' parameters are not accessible without it. */
+      const animalPrototype = {
+        makeNoise: function () {
+          console.log(`The ${this.type} ${this.name} says ${this.noise}`);
+        },
+        eat: function () {
+          console.log(`I'm a ${this.type} animal and I'm currently eating`);
+        },
+      };
+
+      function createAnimal(name, type, noise) {
+        /* 2. We utilize the built in function Object.create,
+        which will let us create an object with a custom
+        prototype. It's the easiest way to achieve this.
+        
+        After this instruction is finished, we have 'animal' which is
+        'derived' or 'inherits' from 'animalPrototype'. */
+        const animal = Object.create(animalPrototype);
+        animal.name = name;
+        animal.type = type;
+        animal.noise = noise;
+        return animal;
+      }
+
+      const animal = createAnimal("Lucky", "Killer", "RAAAWR!!!");
+      const otherAnimal = createAnimal("Peanut", "Kind", "Meow :)");
+      const yetAnotherAnimal = createAnimal("Bubba", "Furry", "Purrrr");
+
+      animal.makeNoise();
+      otherAnimal.makeNoise();
+      yetAnotherAnimal.makeNoise();
+
+      animal.eat();
+      otherAnimal.eat();
+      yetAnotherAnimal.eat();
+
+      /* Notice how if we look in DevTools, we now have a custom prototype
+      set for our animals. Notice also how the custom prototype is shared
+      between all of our animals. */
+      console.log("The animal prototype is", Object.getPrototypeOf(animal));
+      console.log(
+        "The otherAnimal prototype is",
+        Object.getPrototypeOf(otherAnimal)
+      );
+      console.log(
+        "The yetAnotherAnimal prototype is",
+        Object.getPrototypeOf(yetAnotherAnimal)
+      );
+      console.log(
+        "The prototype is the same",
+        Object.getPrototypeOf(animal) === Object.getPrototypeOf(otherAnimal) &&
+          Object.getPrototypeOf(otherAnimal) ===
+            Object.getPrototypeOf(yetAnotherAnimal)
+      );
+
+      /* This is very efficient, since it's the SAME
+      object which all animals are "derived" from. This is at the core of
+      why the prototype concept exists in JS. The function definitions of
+      'makeNoise' and 'eat' will NOT be created for every new object, but
+      rather they are already defined. 
+      
+      Where? On the custom prototype.
+      
+      In practice this is what's called "inheritance" in software. Much
+      like we learnt in CSS how certain properties can be inherited,
+      this means that all objects with this prototype will inherit
+      'makeNoise' and 'eat'. */
+
+      /* Worth noting is that, like in a previous example, although we have defined
+      a custom prototype, this prototype actually has its own prototype, which is
+      the "mother of all prototypes".
+      
+      animal => animalPrototype => Default prototype.
+      
+      We have created a chain of more than one prototype. */
+      console.log("The animal prototype is", Object.getPrototypeOf(animal));
+      console.log(
+        "The prototype of the animal prototype is",
+        Object.getPrototypeOf(Object.getPrototypeOf(animal))
+      );
+
+      /* This can take some time to get used to when working with prototypes. */
+    </script>
+  </head>
+  <body></body>
+</html>

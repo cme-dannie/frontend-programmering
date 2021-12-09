@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object and Array</title>
+    <script>
+      /* Since we now now that constructors have its first letter capitalized
+        (to make them easier to identify), we can now learn that 'Object' and 
+        'Array' are two different constructors that are built into JS. */
+      console.log(Object);
+      console.log(Array);
+
+      /* Some time ago I mentioned that there are ways to create objects and arrays
+      that involve the keyword new. This is how: */
+      const obj = new Object();
+      const arr = new Array();
+
+      console.log(obj);
+      console.log(arr);
+
+      /* I still recommend you to keep on using { ... } and [...] though, since
+      they are more concise (and I believe more optimized/quicker for the browser): */
+      const anotherObj = {};
+      const anotherArr = [];
+      console.log(anotherObj);
+      console.log(anotherArr);
+
+      /* Like previously, we can understand these constructors prototype property: */
+      console.log(Object.prototype);
+      console.log(Array.prototype);
+
+      /* These prototype objects define what all objects and arrays will inherit.
+      Below are some examples. */
+      console.log(Object.prototype.toString);
+      console.log(Object.prototype.hasOwnProperty);
+
+      console.log(Array.prototype.join);
+      console.log(Array.prototype.sort);
+      console.log(Array.prototype.forEach);
+      console.log(Array.prototype.map);
+      console.log(Array.prototype.filter);
+      console.log(Array.prototype.reduce);
+
+      /* Basically every functionality that is built in to some "specific object" comes as
+      a result of the prototype chain. */
+    </script>
+  </head>
+  <body></body>
+</html>

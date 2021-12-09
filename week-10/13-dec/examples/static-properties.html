@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Static properties</title>
+    <script>
+      /* Certain functions are actually defined immediately on the constructor.
+        In the world of OOP these are called "static" functions. They
+        lie in contrast to what we call methods of an object. */
+      console.log(Object.keys);
+      console.log(Object.values);
+
+      /* We can illustrate that they are not part of the prototype chain of objects, by
+        trying to access them through new objects: */
+      const obj = {};
+      console.log(obj.keys);
+      console.log(obj.values);
+
+      /* Another example that you're already familiar with is the class of Math. */
+      console.log(Math);
+      console.log(Math.random);
+      console.log(Math.floor);
+      console.log(Math.round);
+      console.log(Math.ceil);
+
+      /* The interesting difference between Math and other constructors, is that
+      it is never meant to be used to create objects (the following code will produce
+      an error): */
+      const math = new Math();
+      console.log(math);
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating objects - With function property</title>
+    <script>
+      function createAnimal(name, type, noise) {
+        const animal = {};
+        animal.name = name;
+        animal.type = type;
+        /* We add a new property, noise, which will be used below. */
+        animal.noise = noise;
+        /* We create two functions 'speak' and 'eat' as properties on our object,
+        that will operate on the data that is specific to the animal.
+        
+        In the world of OOP, functions that are directly related to
+        a specific object are usually called 'methods'. */
+        animal.makeNoise = function () {
+          console.log(`The ${type} ${name} says ${noise}`);
+        };
+        animal.eat = function () {
+          console.log(`I'm a ${type} animal and I'm currently eating`);
+        };
+        return animal;
+      }
+
+      const animal = createAnimal("Lucky", "Killer", "RAAAWR!!!");
+      const otherAnimal = createAnimal("Peanut", "Kind", "Meow :)");
+      const yetAnotherAnimal = createAnimal("Bubba", "Furry", "Purrrr");
+
+      /* We now have the power to make our animals make a noise as well as
+      eat. */
+      animal.makeNoise();
+      otherAnimal.makeNoise();
+      yetAnotherAnimal.makeNoise();
+
+      animal.eat();
+      otherAnimal.eat();
+      yetAnotherAnimal.eat();
+
+      /* Notice how we now have the power to create not only primitive data
+      values to our animals, but also functions that operate on the data
+      we pass in. */
+    </script>
+  </head>
+  <body></body>
+</html>

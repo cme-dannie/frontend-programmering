@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shared prototype</title>
+    <script>
+      const rabbit = { type: "Killer", age: 2 };
+      const dog = { mood: "Hungry" };
+      const person = { firstName: "Test", lastName: "Testsson" };
+
+      /* 1. All of our objects share the default prototype, which has functions
+      available such as toString. We will soon see how this
+      concept might be useful. */
+      console.log(rabbit.toString());
+      console.log(dog.toString());
+      console.log(person.toString());
+
+      /* 2. They also have 'hasOwnProperty' available, since this function is also
+      defined to exist on the default prototype for objects that we create. 
+      This function accepts a key for a property and returns whether or not the 
+      object has that property defined or not. */
+      console.log("Rabbit has type as property", rabbit.hasOwnProperty("type"));
+      console.log("Dog has type as property", dog.hasOwnProperty("type"));
+      console.log("Person has age as property", person.hasOwnProperty("age"));
+
+      /* 3. We learnt previously that Arrays are a "specific form of object". This ought to mean,
+      that toString and hasOwnProperty ought to exist on arrays as well, right?
+      
+      This is very much the case. */
+      const livingBeings = [rabbit, dog, person];
+      console.log(livingBeings.toString());
+      console.log(
+        "livingBeings has length as property",
+        livingBeings.hasOwnProperty("length")
+      );
+
+      /* 4. There's actually a way to retrieve the prototype of a given object. 
+      That function is called Object.getPrototypeOf. */
+      console.log("Rabbit prototype is", Object.getPrototypeOf(rabbit));
+      console.log("Dog prototype is", Object.getPrototypeOf(dog));
+      console.log("Person prototype is", Object.getPrototypeOf(person));
+
+      /* 5. If we do the same for our array, we will see that it differs. Strange,
+      right? */
+      console.log(
+        "livingBeings prototype is",
+        Object.getPrototypeOf(livingBeings)
+      );
+
+      /* This is actually because Arrays have a different prototype than regular
+      objects by default. 
+      
+      Their prototype defines other functions, which you 
+      are already familiar with. split, forEach, reduce, map, sort are five
+      examples of these.
+      
+      What might make this even more confusing, is that this prototype actually
+      has a prototype of its own. That prototype is the same as the one we see
+      above.
+
+      This means that:
+
+      For our rabbit we have "rabbit => prototype".
+      For our array we have "livingBeings => prototype => prototype".
+      
+      Notice how this all of a sudden becomes a chain? This is where the name
+      "prototype chain" comes from. This might become longer than this, depending on how
+      we define our objects. */
+
+      /* Before diving deeper into this topic, we will cover more conceptually
+      why these things exist in the first place. */
+    </script>
+  </head>
+  <body></body>
+</html>

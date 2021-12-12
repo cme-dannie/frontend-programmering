@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating objects - With this keyword</title>
+    <script>
+      function createAnimal(name, type, noise) {
+        const animal = {};
+        animal.name = name;
+        animal.type = type;
+        animal.noise = noise;
+        /* Our two functions now utilize the 'this' keyword
+        to refer to the actual animal whose noise we wish to make, as well as and 
+        eating. This might not be that powerful, since we're doing the same thing,
+        but we will soon see how this becomes necessary. */
+        animal.makeNoise = function () {
+          /* Because 'makeNoise' is a property on 'animal', we can use 'this'
+          to refer to our animal inside of our function 'makeNoise' */
+          console.log(`The ${this.type} ${this.name} says ${this.noise}`);
+        };
+        animal.eat = function () {
+          /* We can do the same for 'eat'. */
+          console.log(`I'm a ${this.type} animal and I'm currently eating`);
+        };
+        return animal;
+      }
+
+      const animal = createAnimal("Lucky", "Killer", "RAAAWR!!!");
+      const otherAnimal = createAnimal("Peanut", "Kind", "Meow :)");
+      const yetAnotherAnimal = createAnimal("Bubba", "Furry", "Purrrr");
+
+      animal.makeNoise();
+      otherAnimal.makeNoise();
+      yetAnotherAnimal.makeNoise();
+
+      animal.eat();
+      otherAnimal.eat();
+      yetAnotherAnimal.eat();
+    </script>
+  </head>
+  <body></body>
+</html>

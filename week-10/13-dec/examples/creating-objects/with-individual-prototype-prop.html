@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating objects - With individual prototype properties</title>
+    <script>
+      function Animal(name, type, noise) {
+        this.name = name;
+        this.type = type;
+        this.noise = noise;
+      }
+
+      /* Instead of "replacing" the entire default prototype, we will
+      instead decorate it with some new properties. The result is the same.
+      
+      This is the more common approach that you will see. */
+      Animal.prototype.makeNoise = function () {
+        console.log(`The ${this.type} ${this.name} says ${this.noise}`);
+      };
+
+      Animal.prototype.eat = function () {
+        console.log(`I'm a ${this.type} animal and I'm currently eating`);
+      };
+
+      const animal = new Animal("Lucky", "Killer", "RAAAWR!!!");
+      const otherAnimal = new Animal("Peanut", "Kind", "Meow :)");
+      const yetAnotherAnimal = new Animal("Bubba", "Furry", "Purrrr");
+
+      animal.makeNoise();
+      otherAnimal.makeNoise();
+      yetAnotherAnimal.makeNoise();
+
+      animal.eat();
+      otherAnimal.eat();
+      yetAnotherAnimal.eat();
+
+      console.log("The animal prototype is", Object.getPrototypeOf(animal));
+      console.log(
+        "The otherAnimal prototype is",
+        Object.getPrototypeOf(otherAnimal)
+      );
+      console.log(
+        "The yetAnotherAnimal prototype is",
+        Object.getPrototypeOf(yetAnotherAnimal)
+      );
+      console.log(
+        "The prototype is the same",
+        Object.getPrototypeOf(animal) === Object.getPrototypeOf(otherAnimal) &&
+          Object.getPrototypeOf(otherAnimal) ===
+            Object.getPrototypeOf(yetAnotherAnimal)
+      );
+      console.log(
+        "The prototype of the animal prototype is",
+        Object.getPrototypeOf(Object.getPrototypeOf(animal))
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating objects - With deeper inheritance</title>
+    <script>
+      function Animal(name, type, noise) {
+        this.name = name;
+        this.type = type;
+        this.noise = noise;
+      }
+
+      Animal.prototype.makeNoise = function () {
+        console.log(`The ${this.type} ${this.name} says ${this.noise}`);
+      };
+
+      Animal.prototype.eat = function () {
+        console.log(`I'm a ${this.type} animal and I'm currently eating`);
+      };
+
+      /* Note that our new Dog constructor accepts all previous parameters,
+      but in addition it accepts 'owner', since dogs might
+      have owners. */
+      function Dog(name, type, noise, owner) {
+        /* We use 'call' to connect our 'Dog' constructor function with
+        its parent 'Animal' constructor function. We pass along the parameters
+        required for every animal. */
+        Animal.call(this, name, type, noise);
+        this.owner = owner;
+      }
+
+      /* Here we say that all Dog objects will inherit from the Animal
+      prototype. This is how we "stitch" together the to constructors in order
+      to have inheritance work its magic.
+      
+      Without doing this, objects created with the Dog constructor will NOT
+      have Animal functionality baked in to them. */
+      Object.setPrototypeOf(Dog.prototype, Animal.prototype);
+
+      Dog.prototype.bark = function () {
+        console.log(`The dog barks by saying ${this.noise}`);
+      };
+
+      Dog.prototype.waveTail = function () {
+        console.log(`I'm a dog and I wave my tail`);
+      };
+
+      /* We can, like before, create regular animals. */
+      const animal = new Animal("Lucky", "Killer", "RAAAWR!!!");
+
+      /* We can also create a dog, which will inherit the traits of all 
+      Animals. In addition, they will inherit all traits that dogs have, like the
+      concept of having an owner and being able to wave their tail. */
+      const dog = new Dog("Peanut", "Kind", "Bark bark!!!", "Sven");
+
+      console.log(dog);
+      console.log(dog.owner);
+      dog.makeNoise();
+      dog.eat();
+      dog.bark();
+      dog.waveTail();
+
+      /* We can utilize an operator in JS called 'instanceof' to see which type
+      our objects have.
+      
+      Notice how our animal is an animal, but not a dog.
+      
+      Our dog is BOTH an animal and a dog, though. This makes sense.
+      
+      We say, once again, that our object is an "instance" of a particular type
+      or class. */
+      console.log("Our animal is an animal", animal instanceof Animal);
+      console.log("Our animal is also a dog", animal instanceof Dog);
+      console.log("Our dog is an animal", dog instanceof Animal);
+      console.log("Our animal is also a dog", dog instanceof Dog);
+    </script>
+  </head>
+  <body></body>
+</html>

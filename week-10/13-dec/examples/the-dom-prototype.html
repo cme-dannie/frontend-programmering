@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The DOM prototype</title>
+    <script type="module">
+      /* Everything that we're doing in the DOM is the result of "built in"
+        functionality being assigned to different parts of the prototype chain.
+        
+        These objects are "more specialized objects" for the exact reason of
+        their prototype chains being unique to the DOM. */
+      console.log("The window prototype is", Object.getPrototypeOf(window));
+      console.log("The document prototype is", Object.getPrototypeOf(document));
+      console.log(
+        "The body prototype is",
+        Object.getPrototypeOf(document.body)
+      );
+      const h1 = document.querySelector("h1");
+      console.log("The h1 Node prototype is", Object.getPrototypeOf(h1));
+
+      const input = document.querySelector("input");
+      console.log("The input Node prototype is", Object.getPrototypeOf(input));
+
+      /* For 'document', the constructor is called HTMLDocument. Since we already know
+      that "generalized" properties for all objects of a constructor is defined with the
+      .prototype property, we can find these methods that we're accustomed to use, on this
+      specific prototype object. */
+      console.log(
+        "The querySelector definition is",
+        HTMLDocument.prototype.querySelector
+      );
+      console.log(
+        "The querySelectorAll definition is",
+        HTMLDocument.prototype.querySelectorAll
+      );
+
+      /* Perhaps this gives you an idea of the inner workings of how all of this is "built in"
+      to these objects. It's all due to the prototype chain and its inheritance mechanism. */
+    </script>
+  </head>
+  <body>
+    <h1>This is an example title</h1>
+    <input type="text" placeholder="Say something!" />
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating objects - With function</title>
+    <script>
+      /* We define a function whose sole purpose is to create an object for us */
+      function createAnimal(name, type) {
+        const animal = {};
+        animal.name = name;
+        animal.type = type;
+        return animal;
+      }
+
+      const animal = createAnimal("Lucky", "Killer");
+      const otherAnimal = createAnimal("Peanut", "Kind");
+      const yetAnotherAnimal = createAnimal("Bubba", "Furry");
+
+      console.log(animal);
+      console.log(otherAnimal);
+      console.log(yetAnotherAnimal);
+
+      /* Notice how this approach makes creating objects more easily
+      maintainable.
+      
+      Our function takes in 'name' and 'type' as parameters, making it
+      possible to configure the actual animal we wish to create. This is
+      powerful.
+      
+      This function is sometimes called a "factory" or "factory function", 
+      since its purpose is to create a new object and return it. */
+    </script>
+  </head>
+  <body></body>
+</html>

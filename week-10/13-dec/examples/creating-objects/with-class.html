@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating objects - With deeper inheritance</title>
+    <script>
+      /* We have replaced our Animal constructor with a class called Animal.
+        The class defined a 'constructor' function, which acts like the one we
+        had previously.  */
+      class Animal {
+        constructor(name, type, noise) {
+          this.name = name;
+          this.type = type;
+          this.noise = noise;
+        }
+
+        /* These were previously created by setting Animal.prototype.makeNoise and
+        Animal.prototype.eat, respectively. */
+        makeNoise() {
+          console.log(`The ${this.type} ${this.name} says ${this.noise}`);
+        }
+
+        eat() {
+          console.log(`I'm a ${this.type} animal and I'm currently eating`);
+        }
+      }
+
+      /* The extends keyword defines inheritance in a more clear way.
+      
+      Notice how there not a single mention of the "prototype" in this
+      example. It's a "hidden" detail when it comes to classes.
+      
+      Don't be fooled though, this example is IDENTICAL to what we 
+      saw before. This is just a tool to make the prototype chain
+      easier to work with. */
+      class Dog extends Animal {
+        constructor(name, type, noise, owner) {
+          super(name, type, noise);
+          this.owner = owner;
+        }
+
+        bark() {
+          console.log(`The dog barks by saying ${this.noise}`);
+        }
+
+        waveTail() {
+          console.log(`I'm a dog and I wave my tail`);
+        }
+      }
+
+      const animal = new Animal("Lucky", "Killer", "RAAAWR!!!");
+      const dog = new Dog("Peanut", "Kind", "Bark bark!!!", "Sven");
+
+      console.log(dog);
+      console.log(dog.owner);
+      dog.makeNoise();
+      dog.eat();
+      dog.bark();
+      dog.waveTail();
+
+      console.log("Our animal is an animal", animal instanceof Animal);
+      console.log("Our animal is also a dog", animal instanceof Dog);
+      console.log("Our dog is an animal", dog instanceof Animal);
+      console.log("Our animal is also a dog", dog instanceof Dog);
+    </script>
+  </head>
+  <body></body>
+</html>

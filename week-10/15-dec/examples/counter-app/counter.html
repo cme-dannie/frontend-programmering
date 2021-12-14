@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        font-size: 62.5%;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 5.4rem;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      section {
+        padding: 1em;
+        border: 5px solid rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 1em;
+      }
+
+      .btn-group > * {
+        flex: 1;
+      }
+
+      button {
+        padding: 1em;
+        font-size: inherit;
+        background: #009075;
+        color: white;
+        border-radius: 10px;
+        border: 1px solid white;
+        text-transform: uppercase;
+      }
+    </style>
+    <script type="module">
+      /* As this program is currently written, there is no OOP involved.
+      
+      We have no objects, no classes and no "state management" related to an object.
+      
+      I'd bet that this example is pretty close to the way you've all been building
+      your programs thus far.
+      
+      We will go through this example, and then we will see an approach to the same app
+      when written with a more heavy OOP approach. */
+      const title = document.querySelector("h1");
+      const incrementButton = document.querySelector(".increment");
+      const decrementButton = document.querySelector(".decrement");
+
+      /* This is the state that we have in our program.
+      Remember that state is something that changes over time. */
+      let counter = 0;
+
+      function updateText() {
+        title.textContent = counter;
+      }
+
+      function incrementCounter() {
+        counter++;
+        updateText(counter);
+      }
+
+      function decrementCounter() {
+        counter--;
+        updateText(counter);
+      }
+
+      function setUpListeners() {
+        incrementButton.addEventListener("click", incrementCounter);
+        decrementButton.addEventListener("click", decrementCounter);
+      }
+
+      setUpListeners();
+      updateText();
+    </script>
+  </head>
+  <body>
+    <section>
+      <h1></h1>
+      <div class="btn-group">
+        <button class="increment">Increment</button>
+        <button class="decrement">Decrement</button>
+      </div>
+    </section>
+  </body>
+</html>

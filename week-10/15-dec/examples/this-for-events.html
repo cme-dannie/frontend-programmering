@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This for events</title>
+    <style>
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      header,
+      ul,
+      li {
+        padding: 1em;
+      }
+
+      header {
+        border: 2px solid #845ec2;
+      }
+
+      header:hover {
+        background: #845ec2;
+      }
+
+      ul {
+        border: 2px solid #ff9671;
+      }
+
+      ul:hover {
+        background: #ff9671;
+      }
+
+      li {
+        border: 2px solid #ffc75f;
+      }
+
+      li:hover {
+        background: #ffc75f;
+      }
+    </style>
+    <script type="module">
+      const listItems = document.querySelectorAll("li");
+
+      /* When we use a regular function definition and NOT an
+      arrow function, 'this' will be bound to 'event.currentTarget',
+      which in this case is the individual <li> item that was clicked.
+      
+      If we change the example to an arrow function, 'this' will actually be
+      undefined. */
+      listItems.forEach((li) =>
+        li.addEventListener("click", function (event) {
+          console.log("List item was clicked!");
+          console.log("'this' is", this);
+          console.log("event.currentTarget is", event.currentTarget);
+          console.log(
+            "this and event.currentTarget are the same",
+            this === event.currentTarget
+          );
+        })
+      );
+    </script>
+  </head>
+  <body>
+    <ul>
+      UL
+      <li>LI</li>
+      <li>LI</li>
+      <li>LI</li>
+    </ul>
+  </body>
+</html>

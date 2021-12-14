@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OOP Counter</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        font-size: 62.5%;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 5.4rem;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      section {
+        padding: 1em;
+        border: 5px solid rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 1em;
+      }
+
+      .btn-group > * {
+        flex: 1;
+      }
+
+      button {
+        padding: 1em;
+        font-size: inherit;
+        background: #009075;
+        color: white;
+        border-radius: 10px;
+        border: 1px solid white;
+        text-transform: uppercase;
+      }
+    </style>
+    <script type="module">
+      /* Notice the heavy usage of 'this' inside of the class, 
+      which is used to reference the actual counter object that was instantiated 
+      with this class.  */
+      class Counter {
+        constructor(initialValue) {
+          this.value = initialValue;
+          this.title = document.querySelector("h1");
+          this.incrementButton = document.querySelector(".increment");
+          this.decrementButton = document.querySelector(".decrement");
+          this.setUpListeners();
+          this.updateText();
+        }
+
+        setUpListeners() {
+          this.incrementButton.addEventListener(
+            "click",
+            this.increment.bind(this)
+          );
+          this.decrementButton.addEventListener(
+            "click",
+            this.decrement.bind(this)
+          );
+        }
+
+        updateText() {
+          this.title.textContent = this.value;
+        }
+
+        increment() {
+          this.value++;
+          this.updateText();
+        }
+
+        decrement() {
+          this.value--;
+          this.updateText();
+        }
+      }
+
+      const counter = new Counter(0);
+      
+      /* Code that lives outside of this class has actually access to the 
+      internal details of the object state. There's no way currently to avoid 
+      this with classes in JS.
+      
+      In more traditional OOP languages like Java and C#, there's the concept of
+      "private members" of a class. In those languages, it would be possible to model
+      'value' and 'updateText' as private members/variables of this class. */
+      setInterval(() => {
+        console.log("Setting counter to 0");
+        counter.value = 0;
+        counter.updateText();
+      }, 1000);
+    </script>
+  </head>
+  <body>
+    <section>
+      <h1></h1>
+      <div class="btn-group">
+        <button class="increment">Increment</button>
+        <button class="decrement">Decrement</button>
+      </div>
+    </section>
+  </body>
+</html>

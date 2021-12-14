@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OOP Counter</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        font-size: 62.5%;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 5.4rem;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      section {
+        padding: 1em;
+        border: 5px solid rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 1em;
+      }
+
+      .btn-group > * {
+        flex: 1;
+      }
+
+      button {
+        padding: 1em;
+        font-size: inherit;
+        background: #009075;
+        color: white;
+        border-radius: 10px;
+        border: 1px solid white;
+        text-transform: uppercase;
+      }
+    </style>
+    <script type="module">
+      function createCounter(initialValue) {
+        function increment() {
+          value++;
+          updateText();
+        }
+
+        function decrement() {
+          value--;
+          updateText();
+        }
+
+        function updateText() {
+          title.textContent = value;
+        }
+
+        function setUpListeners() {
+          incrementButton.addEventListener("click", increment);
+          decrementButton.addEventListener("click", decrement);
+        }
+
+        let value = initialValue;
+        const title = document.querySelector("h1");
+        const incrementButton = document.querySelector(".increment");
+        const decrementButton = document.querySelector(".decrement");
+        setUpListeners();
+        updateText();
+
+        /* Here we create and return our counter object. Notice how it will NOT 
+        contain anything that we explicitly don't set to be part of this 
+        "exposed" object. */
+        return {
+          /* Although we're exposing a way to set our value, this is very much
+            in our control. Every change to 'value' will NEED to happen through
+            this function. 
+            
+            In OOP we call this function a "setter", because we're setting the data
+            of the object. */
+          setValue: function (newValue) {
+            value = newValue;
+            updateText();
+          },
+          /* We also expose a way to retrieve the current value. This is what's
+          called a "getter" in OOP. */
+          getValue: function () {
+            return value;
+          },
+        };
+      }
+
+      /* Since an object is now returned, we can store it in a variable. */
+      const counter = createCounter(0);
+      console.log(counter);
+
+      /* Code that lives outside of this class actually STILL DOESN'T have access
+      to the internal state of our counter. It only has access to some certain
+      members/fields that we have chosen to expose. */
+      setInterval(() => {
+        console.log("The value of the counter is", counter.getValue());
+        console.log("Setting counter to 0");
+        /* Specific members/variables are actually accessible now, albeit in a very
+        controlled manner. It is all up to 'createCounter' what we're able to
+        manipulate.
+        
+        This is very similar to when we work with ES Modules, and we 'export' what
+        we wish to export (the rest is a hidden implementation detail of the module
+        itself). */
+        counter.setValue(0);
+      }, 1000);
+    </script>
+  </head>
+  <body>
+    <section>
+      <h1></h1>
+      <div class="btn-group">
+        <button class="increment">Increment</button>
+        <button class="decrement">Decrement</button>
+      </div>
+    </section>
+  </body>
+</html>

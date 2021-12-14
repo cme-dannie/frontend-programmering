@@ -55,14 +55,11 @@
       }
     </style>
     <script type="module">
-      /* The entire Counter app is now written to be encapsulated inside of a
-      Counter class.
-      
-      We need to create an object of Counter in order to use it. */
+      /* Notice the heavy usage of 'this' inside of the class, 
+      which is used to reference the actual counter object that was instantiated 
+      with this class.  */
       class Counter {
         constructor(initialValue) {
-          /* Our state (this.value) is now modelled to be coupled with the 
-          object itself. */
           this.value = initialValue;
           this.title = document.querySelector("h1");
           this.incrementButton = document.querySelector(".increment");
@@ -97,9 +94,20 @@
         }
       }
 
-      /* Notice how we don't have to do anything with our object in order to
-      kickstart the application. */
       const counter = new Counter(0);
+      
+      /* Code that lives outside of this class has actually access to the 
+      internal details of the object state. There's no way currently to avoid 
+      this with classes in JS.
+      
+      In more traditional OOP languages like Java and C#, there's the concept of
+      "private members" of a class. In those languages, it would be possible to model
+      'value' and 'updateText' as private members/variables of this class. */
+      setInterval(() => {
+        console.log("Setting counter to 0");
+        counter.value = 0;
+        counter.updateText();
+      }, 1000);
     </script>
   </head>
   <body>

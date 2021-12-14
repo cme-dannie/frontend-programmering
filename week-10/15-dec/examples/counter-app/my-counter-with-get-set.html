@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OOP Counter</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        font-size: 62.5%;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 5.4rem;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      section {
+        padding: 1em;
+        border: 5px solid rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 1em;
+      }
+
+      .btn-group > * {
+        flex: 1;
+      }
+
+      button {
+        padding: 1em;
+        font-size: inherit;
+        background: #009075;
+        color: white;
+        border-radius: 10px;
+        border: 1px solid white;
+        text-transform: uppercase;
+      }
+    </style>
+    <script type="module">
+      function createCounter(initialValue) {
+        function increment() {
+          value++;
+          updateText();
+        }
+
+        function decrement() {
+          value--;
+          updateText();
+        }
+
+        function updateText() {
+          title.textContent = value;
+        }
+
+        function setUpListeners() {
+          incrementButton.addEventListener("click", increment);
+          decrementButton.addEventListener("click", decrement);
+        }
+
+        let value = initialValue;
+        const title = document.querySelector("h1");
+        const incrementButton = document.querySelector(".increment");
+        const decrementButton = document.querySelector(".decrement");
+        setUpListeners();
+        updateText();
+
+        /* Here we create and return our counter object. Notice how it will NOT 
+        contain anything that we explicitly don't set to be part of this 
+        "exposed" object. */
+        return {
+          /* We're still exposing a setter, but it's done through more modern
+          JS tools. */
+          set value(newValue) {
+            value = newValue;
+            updateText();
+          },
+          /* We're still exposing a setter, but it's done through more modern
+          JS tools. */
+          get value() {
+            return value;
+          },
+        };
+      }
+
+      const counter = createCounter(0);
+      console.log(counter);
+
+      setInterval(() => {
+        /* Notice how it seems like we have private access to the internal 'value'
+          variable. This is NOT the case. We're actually calling our 'getter' above. */
+        console.log("The value of the counter is", counter.value);
+        console.log("Setting counter to 0");
+        /* Notice here how it, like with our getter, seems like we have private 
+        access to setting the internal 'value'. This is NOT the case. We're actually
+        calling our 'setter' above.  */
+        counter.value = 0;
+      }, 1000);
+    </script>
+  </head>
+  <body>
+    <section>
+      <h1></h1>
+      <div class="btn-group">
+        <button class="increment">Increment</button>
+        <button class="decrement">Decrement</button>
+      </div>
+    </section>
+  </body>
+</html>

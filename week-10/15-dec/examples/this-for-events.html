@@ -49,13 +49,12 @@
       which in this case is the individual <li> item that was clicked.
       
       If we change the example to an arrow function, 'this' will actually be
-      undefined. We will see a bit later more how 'this' works when
-      it comes to event handlers. Unfortunately it is confusing :( */
+      undefined. */
       listItems.forEach((li) =>
         li.addEventListener("click", function (event) {
           console.log("List item was clicked!");
-          console.log(this);
-          console.log(event.currentTarget);
+          console.log("'this' is", this);
+          console.log("event.currentTarget is", event.currentTarget);
           console.log(
             "this and event.currentTarget are the same",
             this === event.currentTarget

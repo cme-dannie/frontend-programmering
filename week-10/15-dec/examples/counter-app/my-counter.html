@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OOP Counter</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        font-size: 62.5%;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 5.4rem;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      section {
+        padding: 1em;
+        border: 5px solid rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 1em;
+      }
+
+      .btn-group > * {
+        flex: 1;
+      }
+
+      button {
+        padding: 1em;
+        font-size: inherit;
+        background: #009075;
+        color: white;
+        border-radius: 10px;
+        border: 1px solid white;
+        text-transform: uppercase;
+      }
+    </style>
+    <script type="module">
+      /* Notice we have gone back to the "factory function" approach of creating our
+      counter. This means that we're not using 'this' anywhere. This reduces
+      the amount of code and indentation and increases readability (arguably) 
+      of the implementation. */
+      function createCounter(initialValue) {
+        /* These functions are actually living inside of 'createCounter'.
+
+        Worth thinking about is, how is it that these functions are able to run, even
+        after 'createCounter' has finished executing?
+
+        This is a more advanced and powerful feature of JS called Closures.
+        
+        The idea is that an inner function has access to the scope of an outer function,
+        after the outer function finishes execution. 
+        
+        It's something you can understand better when you progress your skills in JS :) */
+        function increment() {
+          value++;
+          updateText();
+        }
+
+        function decrement() {
+          value--;
+          updateText();
+        }
+
+        function updateText() {
+          title.textContent = value;
+        }
+
+        function setUpListeners() {
+          incrementButton.addEventListener("click", increment);
+          decrementButton.addEventListener("click", decrement);
+        }
+
+        let value = initialValue;
+        const title = document.querySelector("h1");
+        const incrementButton = document.querySelector(".increment");
+        const decrementButton = document.querySelector(".decrement");
+        setUpListeners();
+        updateText();
+      }
+
+      createCounter(0);
+
+      /* Code that lives outside of this class actually DOESN'T have access
+      to the internal state of our counter. This is because the state is
+      local to the function 'createCounter'.
+      
+      Also worth noting is that, we actually have no object :o 
+      
+      In the next example we will see how we can involve an actual object to 
+      expose certain details of our counter. */
+      setInterval(() => {
+        console.log("Setting counter to 0");
+        /* These members/variables are not accessible... */
+        counter.value = 0;
+        counter.updateText();
+      }, 1000);
+    </script>
+  </head>
+  <body>
+    <section>
+      <h1></h1>
+      <div class="btn-group">
+        <button class="increment">Increment</button>
+        <button class="decrement">Decrement</button>
+      </div>
+    </section>
+  </body>
+</html>

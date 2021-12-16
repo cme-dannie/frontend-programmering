@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery</title>
+    <style>
+      body {
+        font-size: 2rem;
+      }
+
+      button {
+        font-size: inherit;
+      }
+
+      .green {
+        background: green;
+        color: white;
+      }
+
+      footer {
+        background: red;
+        color: white;
+        padding: 2em;
+      }
+    </style>
+    <!-- This script tag was copied from https://code.jquery.com/ -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script type="module">
+      /* All functionality of jQuery comes from a function, which is
+      called $. It's literally a function with the name of "dollar sign".
+
+      Let's see some examples of what we can do with this function. */
+
+      console.log($);
+
+      /* This will return all our buttons, much like how we work with
+      querySelectorAll. Worth noting is that for jQuery, there's no
+      difference between querySelector and querySelectorAll. This is
+      actually great.
+
+      This function returns a specific type of object. Let's see in the
+      console what this object can help us do. It's part of the jQuery
+      prototype chain. */
+      const buttons = $("button");
+
+      /* This means we can add a click event without a loop.
+
+      This is done with the jQuery 'click' function. */
+      buttons.click(function () {
+        /* 'this' is a regular DOM object representing one of the buttons
+        that was clicked. This is identical to how it would be if we'd
+        never used jQuery.
+
+        We wrap this in the '$' function
+        to convert it to a "more powerful" DOM object.
+
+        Let's see the difference in the console. */
+        console.log(this);
+        console.log($(this));
+        /* 'text' is also a function that is built in to jQuery. */
+        const buttonText = $(this).text();
+        alert(buttonText);
+      });
+
+      /* Much like with 'this', we can throw our document object into
+      jQuery to convert it to a "more powerful" DOM object.
+
+      Adding a 'scroll' event listener is easier this way. */
+      $(document).scroll(() => {
+        console.log("The document was scrolled");
+      });
+
+      /* We can easily hide our elements with the 'hide' function. */
+      $("footer").hide();
+
+      setInterval(() => {
+        /* There are also functions built in for some basic animation work,
+        like 'fadeIn', 'fadeOut' and 'fadeToggle'. */
+        $("footer").fadeToggle();
+      }, 1000);
+
+      /* Adding a class to an element is easier in jQuery. Like we learnt before,
+      querySelector and querySelectorAll is the same thing in jQuery.
+      
+      Here we add a class of green to all of our buttons.
+      
+      The non-jQuery approach would need to iterate our buttons and use
+      classList.add as a function. */
+      buttons.addClass("green");
+
+      /* Everything that is possible in jQuery is documented at
+      https://api.jquery.com/. */
+    </script>
+  </head>
+  <body>
+    <h1>jQuery intro</h1>
+    <button>Click me 1</button>
+    <button>Click me 2</button>
+    <button>Click me 3</button>
+    <button>Click me 4</button>
+    <main>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
+        aliquid reprehenderit nisi praesentium magni pariatur vel dicta?
+        Similique accusantium dicta nihil reprehenderit iusto. Atque recusandae
+        mollitia numquam quaerat perspiciatis! Assumenda, aut facilis voluptate
+        tenetur, nemo mollitia inventore quos aperiam in tempore dolores error
+        neque ea minima, impedit laborum! Recusandae, error iste tenetur facere
+        assumenda quasi, expedita optio accusantium sit quaerat dolore
+        necessitatibus distinctio quos obcaecati voluptas odit! Dignissimos
+        tempora qui debitis aspernatur atque vitae voluptates, expedita numquam
+        impedit optio ut officiis corrupti architecto assumenda adipisci
+        possimus quod cupiditate sapiente veritatis dolorum commodi ratione
+        tempore non? Est repellat dolorum, asperiores eaque enim ipsa dolor quia
+        eum sapiente incidunt ducimus iusto aut assumenda voluptas et quae
+        commodi ut id adipisci beatae tempora ratione voluptate itaque corrupti?
+        Dicta magni eveniet nam saepe officia nisi doloribus cum ex in a
+        assumenda dolores repudiandae molestias, ab, esse sed voluptatum
+        architecto obcaecati excepturi. Omnis possimus veritatis consectetur
+        eveniet enim dignissimos, sunt corrupti? Inventore architecto, ratione
+        excepturi minus quasi sunt unde eos vitae expedita quos illo provident
+        officiis perspiciatis cum deserunt debitis assumenda in sint magnam
+        tempora est? Maxime repellendus ipsum neque nemo quia exercitationem
+        esse totam suscipit est animi modi eos rem, facilis possimus officia et
+        blanditiis aut veniam consectetur laudantium tempora ut placeat?
+        Corrupti sed dignissimos architecto aut. Veritatis maiores quis
+        temporibus nam laborum eaque, accusamus at odit consequatur totam, iusto
+        natus. Quasi aperiam eum corporis tempora nobis itaque repellat
+        exercitationem? Veniam illo quia voluptatem perspiciatis blanditiis
+        aliquam amet error. Recusandae, perspiciatis eligendi inventore
+        consequuntur, quibusdam optio facere doloribus perferendis consectetur,
+        itaque voluptas. Tempore, animi quasi? Iusto doloremque, pariatur ab qui
+        minus reprehenderit, a earum provident veniam quisquam repellendus odit?
+        Cumque at autem vel reprehenderit facere facilis eligendi quidem fuga
+        voluptas, maxime debitis possimus nobis quod mollitia hic ipsam fugit
+        nesciunt itaque, corrupti recusandae amet aspernatur! Tempore ratione,
+        earum praesentium consectetur velit cumque odit unde quaerat veniam
+        dolores repellendus impedit? Dignissimos aliquid vel nesciunt qui ex
+        aspernatur esse blanditiis inventore culpa eos! Quam ex perspiciatis nam
+        eos magni maxime explicabo. Minima vel quibusdam fuga. Ipsum mollitia ex
+        voluptatibus id sequi voluptatum amet beatae aspernatur? Recusandae
+        nulla vel ducimus illum corrupti, accusantium nam neque enim magnam
+        dolorem alias beatae atque rem nobis mollitia. Alias harum voluptate
+        neque officia, repellendus modi deserunt obcaecati exercitationem
+        tempore provident corporis, hic animi? Dolorum excepturi laboriosam
+        voluptates sequi quae quasi eius, error adipisci est porro perferendis,
+        tempora, deserunt tempore aliquam possimus exercitationem optio
+        assumenda praesentium deleniti! Assumenda, quos quibusdam excepturi
+        omnis accusamus voluptatibus exercitationem maiores sed illum ipsa!
+        Eligendi recusandae quia deserunt non quasi labore exercitationem sit
+        pariatur officiis. Dicta quam aperiam tenetur labore, iusto obcaecati!
+        Modi molestias accusamus earum error quis perferendis itaque eaque quasi
+        inventore veritatis deserunt ipsum, ad dolorum dolores, placeat
+        dignissimos cupiditate harum, alias odio ab rem debitis illum optio.
+        Incidunt, impedit sit amet praesentium beatae quidem dolor recusandae
+        debitis voluptate odit reprehenderit exercitationem rem eligendi omnis
+        dolores ipsum vel ut tenetur eaque sapiente minima magnam laborum rerum
+        eos. Repellendus necessitatibus sint molestiae, aliquid cum atque
+        recusandae.
+      </p>
+    </main>
+    <footer>This is a footer</footer>
+  </body>
+</html>

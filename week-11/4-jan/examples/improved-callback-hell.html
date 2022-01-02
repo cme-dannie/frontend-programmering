@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Improved callback hell</title>
+    <script type="module">
+      /* This is the same example as before. Still looks pretty crappy/unreadable, no? */
+      function runCallbackHell() {
+        console.log("Before calling setTimeout for the first time");
+        setTimeout(() => {
+          console.log("Before calling setTimeout for the second time");
+          setTimeout(() => {
+            console.log(
+              "Before calling setTimeout for the third and last time"
+            );
+            setTimeout(() => {
+              console.log("Can you see me all the way in here?");
+            }, 3000);
+          }, 2000);
+        }, 1000);
+      }
+
+      runCallbackHell();
+
+      /* Now let's see how we can improve this example with our new knowledge.
+      
+      First we have the same "modern" version of our setTimeout that we just built. */
+      function setTimeoutModern(time) {
+        return new Promise((resolve) => {
+          setTimeout(resolve, time);
+        });
+      }
+
+      /* Notice how we're achieving consistent indentation with this solution.
+      Also notice how we're creating a chain of 'then'. This is what's called a 
+      "promise chain". 
+      
+      "First do this, then do that, then do that, lastly do that".
+      
+      Also notice how we're using 'return' inside of our 'then' callbacks. This
+      is needed in order to create this chain. It's essentially connecting one promise
+      with another. */
+      function runCallbackHeaven() {
+        console.log("Before calling setTimeout for the first time");
+
+        setTimeoutModern(1000)
+          .then(() => {
+            console.log("Before calling setTimeout for the second time");
+            return setTimeoutModern(2000);
+          })
+          .then(() => {
+            console.log(
+              "Before calling setTimeout for the third and last time"
+            );
+            return setTimeoutModern(3000);
+          })
+          .then(() => {
+            console.log("You can probably see me in here.");
+          });
+      }
+
+      runCallbackHeaven();
+    </script>
+  </head>
+  <body></body>
+</html>

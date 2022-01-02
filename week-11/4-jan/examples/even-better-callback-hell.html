@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Improved callback hell</title>
+    <script type="module">
+      /* This is the original example. */
+      function runCallbackHell() {
+        console.log("Before calling setTimeout for the first time");
+        setTimeout(() => {
+          console.log("Before calling setTimeout for the second time");
+          setTimeout(() => {
+            console.log(
+              "Before calling setTimeout for the third and last time"
+            );
+            setTimeout(() => {
+              console.log("Can you see me all the way in here?");
+            }, 3000);
+          }, 2000);
+        }, 1000);
+      }
+
+      runCallbackHell();
+
+      /* This is the last example */
+      function setTimeoutModern(time) {
+        return new Promise((resolve) => {
+          setTimeout(resolve, time);
+        });
+      }
+
+      function runCallbackHeaven() {
+        console.log("Before calling setTimeout for the first time");
+
+        setTimeoutModern(1000)
+          .then(() => {
+            console.log("Before calling setTimeout for the second time");
+            return setTimeoutModern(2000);
+          })
+          .then(() => {
+            console.log(
+              "Before calling setTimeout for the third and last time"
+            );
+            return setTimeoutModern(3000);
+          })
+          .then(() => {
+            console.log("You can probably see me in here.");
+          });
+      }
+
+      runCallbackHeaven();
+
+      /* Now let's see how we can improve this even further with async/await.
+
+      The execution of this example is functionally identical to the last one. The difference
+      lies in how easy it is to write and read. It's a developer tool.
+      
+      We use 'await' in front of a promise in order to "await its eventual completion".
+      
+      We need to change our 'function' to be an 'async function'. Otherwise we will not be
+      able to use 'await' inside of it. */
+      async function runImprovedCallbackHeaven() {
+        console.log("Before calling setTimeout for the first time");
+        await setTimeoutModern(1000);
+
+        console.log("Before calling setTimeout for the second time");
+        await setTimeoutModern(2000);
+
+        console.log("Before calling setTimeout for the third and last time");
+        await setTimeoutModern(3000);
+
+        console.log("If you can't see me now, you're probably blind...");
+      }
+
+      runImprovedCallbackHeaven();
+    </script>
+  </head>
+  <body></body>
+</html>

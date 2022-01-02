@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resolving promise</title>
+    <script type="module">
+      /* We create a promise with a passed anonymous function. This function
+      STILL serves no purpose that makes any sort of sense, but we will understand 
+      how it fits into the bigger picture soon.
+      
+      Let's take note of the fact that our executor function resolves the promise. */
+      const promise = new Promise((resolve) => {
+        console.log("I'm the executor function!");
+        /* We resolve the promise immediately. This is not very useful, but we need to
+        see this before we can make sense of the added complexity which is coming. */
+        resolve();
+      });
+
+      /* Take note of the fact that our promise is not logged as <pending> anymore.
+        It is instead logged as <fulfilled>. This is another word for "resolved" that
+        you might see. */
+      console.log(promise);
+    </script>
+  </head>
+  <body></body>
+</html>

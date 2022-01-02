@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise executor function</title>
+    <script type="module">
+      /* We create a promise with a passed anonymous function. This function
+      STILL serves no purpose that makes any sort of sense, but we will understand 
+      how it fits into the bigger picture soon.
+      
+      Let's take note of the fact that our executor function is executed immediately.
+      
+      The Promise executor function is also sometimes called the "Promise body", because it
+      contains the body of the promise itself, much like <body> in HTML contains the content 
+      of a web page. */
+      const promise = new Promise(() => {
+        console.log("I'm the executor function!");
+      });
+      console.log(promise);
+    </script>
+  </head>
+  <body></body>
+</html>

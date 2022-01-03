@@ -17,7 +17,12 @@
       });
 
       /* then accepts a function, which represents "what we want to execute when the promise 
-      resolves" */
+      resolves".
+      
+      The function we pass here is actually a callback, and it is put
+      on the "message queue" we learnt of yesterday. This makes our promise
+      async, making our console.log run only once the call stack
+      is empty :) */
       promise.then(() => {
         console.log("I will run only when the promise resolves!");
       });

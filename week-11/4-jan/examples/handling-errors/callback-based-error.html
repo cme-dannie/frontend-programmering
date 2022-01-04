@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handling errors - Callback based error</title>
+    <script type="module">
+      /* We're below implementing what's famously known as the
+      "Error-First callback approach" to handle our errors. */
+      function loadImage(src, callback) {
+        const img = document.createElement("img");
+        img.src = src;
+
+        img.addEventListener("load", () => {
+          console.log("loaded!");
+          /* If NO error occurs, we call our callback with a parameter of 'null'. */
+          callback(null);
+        });
+
+        img.addEventListener("error", () => {
+          console.log("An error occurred!", );
+          /* If an error occurs, we pass the error as the first parameter. This is
+          how the "outside world" is made aware of whether an error happened. */
+          callback("An error occurred");
+        });
+
+        document.body.append(img);
+      }
+
+      loadImage(
+        "https://media.istockfphoto.com/photos/feline-picture-id108226626?k=20&m=108226626&s=612x612&w=0&h=bDaWwxhcygjerdR71qQu8YFSXaDUIi_HUZV2AADg5L8=",
+        /* This callback now is made aware of whether or not an 'error' occurred. */
+        (error) => {
+          const p = document.createElement("p");
+          document.body.append(p);
+
+          /* We can know do different things based on the async result. Error or
+          not error. */
+          if (error) {
+            p.textContent = "The image failed to load!";
+          } else {
+            p.textContent = "The image loaded!";
+          }
+        }
+      );
+
+      console.log("After initiating loading of image!");
+    </script>
+  </head>
+  <body></body>
+</html>

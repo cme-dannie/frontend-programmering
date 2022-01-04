@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handling errors - Promise based error</title>
+    <script type="module">
+      /* We're still returning a promise. The difference is that this promise
+      has its executor function accept not only 'resolve' but also 'reject'
+      as parameters. This is built in functionality. */
+      function loadImage(src, callback) {
+        return new Promise((resolve, reject) => {
+          const img = document.createElement("img");
+          img.src = src;
+
+          img.addEventListener("load", () => {
+            console.log("loaded!");
+            resolve();
+          });
+
+          img.addEventListener("error", () => {
+            console.log("An error occurred!");
+            /* We call reject to signal to the "outside world" that
+            something went wrong. */
+            reject("An error occurred");
+          });
+
+          document.body.append(img);
+        });
+      }
+
+      const promise = loadImage(
+        "https://media.istockphoto.com/photos/feline-picture-id108226626?k=20&m=108226626&s=612x612&w=0&h=bDaWwxhcygjerdR71qQu8YFSXaDUIi_HUZV2AADg5L8="
+      );
+
+      /* This will be executed as soon as our image has loaded successfully. */
+      promise
+        .then(() => {
+          const p = document.createElement("p");
+          p.textContent = "The image loaded!";
+          document.body.append(p);
+        })
+        /* We use a function called 'catch' which till "catch the error".
+        
+        This will only run if the promise has been rejected.
+        
+        Notice how this function is part of the "promise chain". */
+        .catch((error) => {
+          const p = document.createElement("p");
+          p.textContent = "The image failed to load!";
+          document.body.append(p);
+        });
+
+      console.log("After initiating loading of image!");
+    </script>
+  </head>
+  <body></body>
+</html>

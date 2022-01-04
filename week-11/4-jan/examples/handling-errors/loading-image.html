@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handling errors - Loading image</title>
+    <script type="module">
+      /* This function is responsible for creating an <img>
+      and appending it to the body. 
+      
+      It is actually doing something async. Where?
+      By appending an <img> to our <body> it needs to be downloaded. This
+      is initiating a background process because downloading "takes time"
+      and the browser will not wait until it is done before doing anything
+      else. If that were not the case, downloading this image would "freeze" 
+      the UI completely, animations would stop and no events would be able to 
+      be received. This is part of the reason why 
+      Async exists in the world of JS.
+      
+      We will see in our next example how we can expand it based on what we've
+      learnt. */
+      function loadImage(src) {
+        const img = document.createElement("img");
+        img.src = src;
+
+        /* We learnt that 'addEventListener' is a WebAPI. */
+        img.addEventListener("load", () => {
+          console.log("loaded!");
+        });
+
+        /* Doing this will initiate the download of our image. When the download
+        is complete, our 'load' event will be fired. */
+        document.body.append(img);
+      }
+
+      /* What if we want to know when our image has loaded? */
+      loadImage(
+        "https://media.istockphoto.com/photos/feline-picture-id108226626?k=20&m=108226626&s=612x612&w=0&h=bDaWwxhcygjerdR71qQu8YFSXaDUIi_HUZV2AADg5L8="
+      );
+
+      console.log("After initiating loading of image!");
+    </script>
+  </head>
+  <body></body>
+</html>

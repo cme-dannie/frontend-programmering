@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set timeout promise</title>
+    <script type="module">
+      /* A regular setTimeout (no promises involved). This is what we know as the
+      old school approach to async JS. We call it "callback based async".
+      
+      This is what we familiarized ourselves with yesterday. */
+      setTimeout(() => {
+        console.log("I run after one second has passed!");
+      }, 1000);
+
+      /* Let's see how a promise based solution would look.
+      
+      Notice that "what we're doing" in our executor function is something async, 
+      namely calling a WebAPI. The WebAPI we're using is setTimeout. 
+      
+      We've essentially wrapped the old school approach in a 
+      "new school" approach.
+      
+      This might seem like lots of code for nothing. Bare with me though,
+      it will make sense soon. */
+      const promise = new Promise((resolve) => {
+        /* We resolve immediately as the setTimeout callback executes. How?
+        We pass the resolve function ITSELF as the callback. */
+        setTimeout(resolve, 1000);
+      });
+
+      promise.then(() => {
+        console.log("I also run after one second has passed");
+      });
+
+      /* We can rewrite it even further, to make it into a reusable
+      function. */
+      function setTimeoutModern(time) {
+        return new Promise((resolve) => {
+          setTimeout(resolve, time);
+        });
+      }
+
+      /* Since our function returns a promise, we can chain it with 'then'
+      like this. Pretty clean huh? */
+      setTimeoutModern(2000).then(() => {
+        console.log("I run after two seconds!");
+      });
+    </script>
+  </head>
+  <body></body>
+</html>

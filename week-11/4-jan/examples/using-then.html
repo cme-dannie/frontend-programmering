@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using then</title>
+    <script type="module">
+      /* We create a promise with a passed anonymous function. This function
+      STILL serves no purpose that makes any sort of sense, but we will understand 
+      how it fits into the bigger picture soon. */
+      const promise = new Promise((resolve) => {
+        console.log("I'm the executor function!");
+        /* We resolve the promise immediately. This is not very useful, but we need to
+        see this before we can make sense of the added complexity which is coming. */
+        resolve();
+      });
+
+      /* then accepts a function, which represents "what we want to execute when the promise 
+      resolves".
+      
+      The function we pass here is actually a callback, and it is put
+      on the "message queue" we learnt of yesterday. This makes our promise
+      async, making our console.log run only once the call stack
+      is empty :) */
+      promise.then(() => {
+        console.log("I will run only when the promise resolves!");
+      });
+
+      console.log(promise);
+    </script>
+  </head>
+  <body></body>
+</html>

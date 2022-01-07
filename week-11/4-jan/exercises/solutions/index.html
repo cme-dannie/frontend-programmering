@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercises</title>
+    <style>
+      body {
+        font-size: 2rem;
+      }
+
+      main {
+        margin: 0 auto;
+        max-width: 50rem;
+      }
+
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      li {
+        text-align: center;
+        padding: 0.5em 1em;
+        margin: 0.5em 0;
+        background: linear-gradient(
+          to right,
+          #f5af19,
+          0%,
+          #f12711,
+          1%,
+          #f5af19 1%
+        );
+        background-size: 200% 200%;
+        color: white;
+        transition: transform 100ms ease-in-out;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+
+      li:hover:not(.complete) {
+        transform: scale(1.1);
+      }
+
+      .in-progress:not(.complete) {
+        animation: inProgress 2s linear reverse;
+      }
+
+      .complete {
+        background: rgb(77, 162, 77);
+        cursor: not-allowed;
+      }
+
+      @keyframes inProgress {
+        0% {
+          background-position: 0%;
+        }
+
+        50% {
+          background-position: -98%;
+        }
+
+        100% {
+          background-position: 0%;
+        }
+      }
+    </style>
+    <script type="module">
+      const status = document.querySelector(".status");
+      const listItems = document.querySelectorAll("li");
+
+      // Rewrite this function to be "promise based"
+
+      // What happens to our existing listener!?
+
+      // Our executor function executes immediately
+
+      // 1. Remove 'callback'
+      // 2. Use a promise somehow
+      // 3. Still no listener, and we need to resolve our promise, right?
+
+      // You will HAVE to work with promises when you graduate
+      // Probably mostly with async/await
+
+      // .then
+      // new Promise
+      // Resolve means "ending a promise"
+
+      // OLD SCHOOL/ ASYNC CALLBACK APPROACH
+
+      // function setupClickListener(li, callback) {
+      //   li.addEventListener("click", callback);
+      // }
+
+      // function setupAnimationEndListener(li, callback) {
+      //   li.addEventListener("animationend", callback);
+      // }
+
+      // NEW SCHOOL/ PROMISE APPROACH
+
+      function setupClickListener(li) {
+        return new Promise((resolve) => {
+          li.addEventListener("click", resolve);
+        });
+      }
+
+      function setupAnimationEndListener(li) {
+        return new Promise((resolve) => {
+          li.addEventListener("animationend", resolve);
+        });
+      }
+
+      let atLeastOneItemCompleted = false;
+
+      const promises = [];
+
+      listItems.forEach(async (li) => {
+        // How can we USE our promise???
+
+        // OLD SCHOOL/ ASYNC CALLBACK APPROACH
+
+        // setupClickListener(li, () => {
+        //   li.classList.add("in-progress");
+
+        //   // When is any item initiated???
+
+        //   if (atLeastOneItemCompleted) {
+        //     return;
+        //   }
+
+        //   status.textContent = "Some items have been initiated";
+        // });
+
+        // setupAnimationEndListener(li, () => {
+        //   console.log("done!");
+        //   status.textContent = "Some items have been completed";
+        //   atLeastOneItemCompleted = true;
+
+        //   // When is one item finished?
+        //   li.classList.remove("in-progress");
+        //   li.classList.add("complete");
+        // });
+
+        // NEW SCHOOL/ PROMISE APPROACH
+
+        // setupClickListener(li).then(() => {
+        //   console.log("Yay promise is resolved");
+
+        //   li.classList.add("in-progress");
+
+        //   // When is any item initiated???
+
+        //   if (atLeastOneItemCompleted) {
+        //     return;
+        //   }
+
+        //   status.textContent = "Some items have been initiated";
+        // });
+
+        // setupAnimationEndListener(li).then(() => {
+        //   console.log("done!");
+        //   status.textContent = "Some items have been completed";
+        //   atLeastOneItemCompleted = true;
+
+        //   // When is one item finished?
+        //   li.classList.remove("in-progress");
+        //   li.classList.add("complete");
+        // });
+
+        // WAIT FOR ALL (without async/await)
+
+        // const promiseOne = setupClickListener(li);
+
+        // promises.push(promiseOne);
+
+        // promiseOne.then(() => {
+        //   console.log("Yay promise is resolved");
+
+        //   li.classList.add("in-progress");
+
+        //   // When is any item initiated???
+
+        //   if (atLeastOneItemCompleted) {
+        //     return;
+        //   }
+
+        //   status.textContent = "Some items have been initiated";
+        // });
+
+        // const promiseTwo = setupAnimationEndListener(li);
+
+        // promises.push(promiseTwo);
+
+        // promiseTwo.then(() => {
+        //   console.log("done!");
+        //   status.textContent = "Some items have been completed";
+        //   atLeastOneItemCompleted = true;
+
+        //   // When is one item finished?
+        //   li.classList.remove("in-progress");
+        //   li.classList.add("complete");
+        // });
+
+        // WAIT FOR ALL (WITH async/await)
+
+        const promiseOne = setupClickListener(li);
+        const promiseTwo = setupAnimationEndListener(li);
+        promises.push(promiseOne, promiseTwo);
+
+        await promiseOne;
+
+        console.log("Yay promise is resolved");
+        li.classList.add("in-progress");
+
+        if (!atLeastOneItemCompleted) {
+          status.textContent = "Some items have been initiated";
+        }
+
+        await promiseTwo;
+
+        console.log("done!");
+        status.textContent = "Some items have been completed";
+        atLeastOneItemCompleted = true;
+
+        // When is one item finished?
+        li.classList.remove("in-progress");
+        li.classList.add("complete");
+
+        // How do we know when all items have been completed?
+
+        // When all 10 promises have been resolved
+
+        // When the 5 last promises have been resolved
+
+        // ???
+      });
+
+      console.log(promises);
+
+      await Promise.all(promises);
+
+      console.log("Super done!!!");
+      status.textContent = "All items have been completed";
+
+      /* The exercises of today will make you comfortable with using
+      callbacks, promises as well as async/await. Good luck!
+
+      The code that is written is mimicing 5 tasks that
+        work asynchronously. We will work through some exercises
+        to get familiar with this concept. */
+
+      /* 1. We're currently iterating all of our list items using 'forEach',
+        but we're doing nothing inside of that function (notice the '???').
+        Let's change that.
+
+        Invoke 'setupClickListener' with the list item and a callback as
+        parameter.
+
+        This callback represents whenever an item has been "initiated".
+
+        Make it so that when this callback is invoked, we add a class of
+        "in-progress". Clicking the item after this change will make the
+        "crunching" visualised and animated.
+
+      /* 2. Can you figure out how to update the text of 'status' to
+
+      "Some items have been initiated" as soon as any item has been
+      initiated? */
+
+      /* 3. Can you also make the text change to
+      "Some items have been completed" as soon as at least one item has
+      finished? Notice how initiating a new item after this has happened
+      will re-inforce the "old" text if you're not careful. */
+
+      /* 4. Perhaps you've noticed that it's not really clear that an item
+      has been finished. Let's fix this.
+
+      Can you figure out how to remove the class of 'in-progress' and
+      instead add a class of 'complete' for each item when it is finished?
+
+      This will fix the visual inconsistencies by making it green. */
+
+      /* 5. It's now time to refine this example with promises. Can
+      you figure out how to rewrite the entire example with promises
+      instead of using the existing callbacks?
+
+      This means usage of the 'Promise' constructor, 'then' and
+      'resolve'. */
+
+      /* 6. Can you figure out how to render "All items have been completed"
+      in the status field when all items have been completed?
+      This will require something we haven't touched upon,
+      called 'Promise.all'.
+
+      You can read about it here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all */
+
+      /* 7. It's now time to rewrite it with async/await :) */
+    </script>
+  </head>
+  <body>
+    <main>
+      <ul>
+        <li>Download images</li>
+        <li>Upload status update to facebook</li>
+        <li>Upload pokemon data</li>
+        <li>Submit Kunskapskontroll quickly</li>
+        <li>Become frontend developer master</li>
+      </ul>
+      <p>Status: <em class="status">No items have been initiated</em></p>
+    </main>
+  </body>
+</html>

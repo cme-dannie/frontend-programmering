@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch on click</title>
+    <script type="module">
+      const status = document.querySelector(".status");
+      const button = document.querySelector("button");
+      const ul = document.querySelector("ul");
+
+      button.addEventListener("click", async () => {
+        status.textContent = "Loading data...";
+
+        /* This particular URL will retrieve all my repositories in JSON format. */
+        const response = await fetch(
+          "https://api.github.com/users/dhakan/repos"
+        );
+        const data = await response.json();
+
+        /* There's no need to keep the status or buttons around, since their jobs are
+        done. */
+        button.remove();
+        status.remove();
+
+        /* Notice how this URL returns an array. What can we do with that? Iterate! */
+        data.forEach((repo) => {
+          const li = document.createElement("li");
+          li.textContent = `${repo.name} - ${repo.description}`;
+          ul.append(li);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p class="status"></p>
+    <button>Load repositories!</button>
+    <ul></ul>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Render data</title>
+    <style>
+      img {
+        width: 10rem;
+      }
+    </style>
+    <script type="module">
+      const status = document.querySelector(".status");
+      status.textContent = "Loading data...";
+
+      const response = await fetch("https://api.github.com/users/dhakan");
+      const data = await response.json();
+
+      status.textContent = "Data downloaded :)";
+
+      /* Create an img with a src returned by GitHub */
+      const img = document.createElement("img");
+      img.src = data.avatar_url;
+      document.body.append(img);
+
+      /* Create a paragraph with the name returned by GitHub */
+      const p = document.createElement("p");
+      p.textContent = data.name;
+      document.body.append(p);
+    </script>
+  </head>
+  <body>
+    <p class="status"></p>
+  </body>
+</html>

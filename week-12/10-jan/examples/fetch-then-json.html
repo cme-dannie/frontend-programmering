@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch then json</title>
+    <script type="module">
+      fetch("https://api.github.com/users/dhakan")
+        .then((response) => {
+          /* We return the result of calling 'response.json', which
+          returns a NEW promise. Since we're returning a new promise,
+          we can add a new 'then' at the end.
+          
+          This will extend our "promise chain". */
+          return response.json();
+        })
+        .then((data) => {
+          /* What will this console log print? */
+          console.log(data);
+        });
+
+      /* We can rewrite this with async/await to make it more clean. */
+      const response = await fetch("https://api.github.com/users/dhakan");
+      const data = await response.json();
+      console.log(data);
+    </script>
+  </head>
+  <body></body>
+</html>

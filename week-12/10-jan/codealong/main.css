@@ -1,0 +1,19 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+header img {
+  width: 20rem;
+}
+
+main {
+  max-width: 50rem;
+  margin: 2em auto 0 auto;
+}

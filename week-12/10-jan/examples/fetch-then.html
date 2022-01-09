@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch then</title>
+    <script>
+      fetch("https://api.github.com/users/dhakan").then((response) => {
+        /* This 'then' will be called when the promise resolves.
+          
+          Note how this variable does NOT represent the actual data we saw
+          in the browser earlier... What's up with that? :( */
+        console.log(response);
+      });
+    </script>
+  </head>
+  <body></body>
+</html>

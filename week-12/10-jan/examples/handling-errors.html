@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handling errors</title>
+    <script type="module">
+      const status = document.querySelector(".status");
+      const button = document.querySelector("button");
+      const ul = document.querySelector("ul");
+
+      button.addEventListener("click", async () => {
+        status.textContent = "Loading data...";
+
+        try {
+          const response = await fetch(
+            "https://api.github.com/users/dhakan/repos"
+          );
+          const data = await response.json();
+
+          data.forEach((repo) => {
+            const li = document.createElement("li");
+            li.textContent = `${repo.name} - ${repo.description}`;
+            ul.append(li);
+          });
+          status.remove();
+          button.remove();
+        } catch (err) {
+          console.error(err);
+          status.textContent =
+            "An error occurred while trying to fetch data...";
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <p class="status"></p>
+    <button>Load repositories!</button>
+    <ul></ul>
+  </body>
+</html>

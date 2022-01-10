@@ -38,18 +38,24 @@
         4. Render an image above each pokemon name
         5. Render every type of each pokemon
         6. Structure the logic a bit more to make it more readable
-        7. Add an animated spinner icon when the data is loading
+        7. Add COLOR to our types
+        8. Implement infinite scroll (load new pokemon as the user scrolls)
+
+        BONUS: Add an animated spinner icon when the data is loading
       */
 
       const mainElement = document.querySelector("main");
 
-      const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=20"
-      );
+      let url = "https://pokeapi.co/api/v2/pokemon?limit=20";
 
-      const data = await response.json();
+      async function fetchMultiplePokemon() {
+        const response = await fetch(url);
+        const data = await response.json();
 
-      console.log(data);
+        url = data.next;
+
+        data.results.forEach(renderIndividualPokemon);
+      }
 
       function parseIndividualPokemon(detailData) {
         const parsed = {
@@ -88,12 +94,30 @@
         parsedData.types.forEach((type) => {
           const li = document.createElement("li");
           li.textContent = type;
+          li.classList.add(type);
           ul.append(li);
         });
         div.append(ul);
       }
 
-      data.results.forEach(renderIndividualPokemon);
+      fetchMultiplePokemon();
+
+      /* How do we implement an infinite scroll?
+      
+      - We need to know when the scroll has reached the end of the page
+      - When user reaches the end of the page, load new pokemon
+      - Load 20 new pokemon each time
+      */
+
+      window.addEventListener("scroll", () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          console.log("bottom reached!");
+
+          fetchMultiplePokemon();
+
+          // When user reaches the end of the page, load new pokemon
+        }
+      });
     </script>
   </head>
   <body>

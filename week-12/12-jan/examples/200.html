@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>200 ok</title>
+    <script type="module">
+      /* API used is found at http://numbersapi.com/ */
+      const response = await fetch("http://numbersapi.com/42");
+      const data = await response.text();
+      console.log(response.status, data);
+    </script>
+  </head>
+  <body></body>
+</html>

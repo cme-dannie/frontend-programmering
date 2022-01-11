@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Broken error handling</title>
+    <script type="module">
+      /* What happens if the web service produces an HTTP response
+          with a code of 404 or 500 below? */
+
+      const input = document.querySelector("input");
+      const trivia = document.querySelector("p");
+
+      input.addEventListener("input", async () => {
+        /* If there's nothing in the input, why bother? */
+        if (!input.value) {
+          return;
+        }
+        
+        try {
+          /* Our request is based off of what the user types! */
+          const response = await fetch(`http://numbersapi.com/${input.value}`);
+          const data = await response.text();
+          trivia.textContent = data;
+        } catch (err) {
+          /* All errors will be caught here! ...or will they? */
+          console.log("Handle error gracefully :)");
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" placeholder="Input a number" />
+    <p class="trivia"></p>
+  </body>
+</html>

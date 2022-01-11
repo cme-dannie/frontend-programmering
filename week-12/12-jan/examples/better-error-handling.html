@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Better error handling</title>
+    <script type="module">
+      const input = document.querySelector("input");
+      const trivia = document.querySelector("p");
+
+      input.addEventListener("input", async () => {
+        if (!input.value) {
+          return;
+        }
+
+        try {
+          const response = await fetch(`http://numbersapi.com/${input.value}`);
+          const data = await response.text();
+
+          /* We check for the built in 'ok' variable on the response object.
+          It will tell us if it was a 2xx status code (like 200).
+          
+          If it's anything OTHER than 2xx (like 404 or 500) we "throw"
+          a new error. This will make 404 and 500 codes end up as errors
+          in our 'catch' block below. */
+          if (!response.ok) {
+            throw new Error("Something went wrong");
+          }
+
+          /* This will now only happen if the status code was 2xx. How?
+          Because we've thrown an error otherwise, which will "exit" this 'try' block. */
+          trivia.textContent = data;
+        } catch (err) {
+          console.log("Handle error gracefully :)");
+          trivia.textContent = err;
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" placeholder="Input a number" />
+    <p class="trivia"></p>
+  </body>
+</html>

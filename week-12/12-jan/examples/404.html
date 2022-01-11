@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 not found</title>
+    <script type="module">
+      /* We're attempting to request a number "tjena". The issue?
+        
+        "tjena" is not a number, so the server doesn't know what to do with this request.
+        The server produces a response which we call, fittingly, "Not found".
+        
+        Notice how the data returned is different when this happens. */
+      const response = await fetch("http://numbersapi.com/tjena");
+      const data = await response.text();
+      console.log(response.status, data);
+    </script>
+  </head>
+  <body></body>
+</html>

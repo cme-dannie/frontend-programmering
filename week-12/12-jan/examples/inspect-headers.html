@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inspect headers</title>
+    <script type="module">
+      /* Let's navigate to the "Network" tab in our browser to see
+      request/response headers for the request below :) */
+      const response = await fetch("http://numbersapi.com/42");
+      const data = await response.text();
+    </script>
+  </head>
+  <body></body>
+</html>

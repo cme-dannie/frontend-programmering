@@ -14,19 +14,35 @@
           return;
         }
 
+        /* Example WITHOUT async/await (regular promises) */
+        // fetch(`https://vincentsjogren.work/http-response-test/500`)
+        //   .then((response) => {
+        //     if (!response.ok) {
+        //       throw new Error("Something went wrong");
+        //     }
+        //     return response.text();
+        //   })
+        //   .then((data) => {
+        //     trivia.textContent = data;
+        //   })
+        //   .catch((err) => {
+        //     console.log("Handle error gracefully :)");
+        //     trivia.textContent = err;
+        //   });
+
         try {
           const response = await fetch(`http://numbersapi.com/${input.value}`);
-          const data = await response.text();
-
           /* We check for the built in 'ok' variable on the response object.
           It will tell us if it was a 2xx status code (like 200).
-          
+
           If it's anything OTHER than 2xx (like 404 or 500) we "throw"
           a new error. This will make 404 and 500 codes end up as errors
           in our 'catch' block below. */
           if (!response.ok) {
             throw new Error("Something went wrong");
           }
+
+          const data = await response.text();
 
           /* This will now only happen if the status code was 2xx. How?
           Because we've thrown an error otherwise, which will "exit" this 'try' block. */

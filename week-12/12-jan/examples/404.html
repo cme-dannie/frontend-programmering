@@ -12,7 +12,7 @@
         The server produces a response which we call, fittingly, "Not found".
         
         Notice how the data returned is different when this happens. */
-      const response = await fetch("http://numbersapi.com/tjena");
+      const response = await fetch("http://numbersapi.com/42");
       const data = await response.text();
       console.log(response.status, data);
     </script>

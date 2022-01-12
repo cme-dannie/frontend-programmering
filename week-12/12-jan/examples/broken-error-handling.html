@@ -22,12 +22,19 @@
           /* Our request is based off of what the user types! */
           const response = await fetch(`http://numbersapi.com/${input.value}`);
           const data = await response.text();
+          console.log(response.status);
           trivia.textContent = data;
         } catch (err) {
           /* All errors will be caught here! ...or will they? */
           console.log("Handle error gracefully :)");
         }
       });
+
+      // The different scenarios of ERRORS:
+
+      // 1. User goes offline
+      // 2. 404 is returned (because of malformed input)
+      // 3. 500 is returned (because of a server bug/glitch)
     </script>
   </head>
   <body>

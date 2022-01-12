@@ -21,7 +21,18 @@ select.addEventListener("change", async (event) => {
 
   /* Object destructuring version (look inside the object for properties and create variables
         with those same names) */
-  const { confirmed, deaths, recovered, critical } = data[0];
+  const { confirmed, deaths, recovered, critical, latitude, longitude } =
+    data[0];
+
+  console.log(latitude, longitude, map);
+
+  const location = { lat: latitude, lng: longitude };
+  map.panTo(location);
+
+  const marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
 
   confirmedElement.textContent = confirmed;
   deathsElement.textContent = deaths;
@@ -33,7 +44,22 @@ select.addEventListener("change", async (event) => {
 
 // Google API key: AIzaSyDzn6x8l5LwxutxJxnlpjjYqCvPiCgOnPw
 
+let map = null;
+
 // Initialize and add the map
 function initMap() {
   console.log("Init map!!!");
+
+  // The location of Uluru
+  const uluru = { lat: -25.344, lng: 131.036 };
+  // The map, centered at Uluru
+  map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 6,
+    center: uluru,
+  });
+  // The marker, positioned at Uluru
+  const marker = new google.maps.Marker({
+    position: uluru,
+    map: map,
+  });
 }

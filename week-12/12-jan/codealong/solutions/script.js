@@ -97,7 +97,6 @@ if (window.google) {
   initMap();
 } else {
   console.log("Google API failed to load!!!");
-  // Show message to user, NOT the console stoopid
   createErrorMessage("The map could not be loaded");
 }
 
@@ -106,21 +105,5 @@ if (window.google) {
 2. Attempt to load the Google Maps API asynchronously. If succeeded, WE will run 'initMap'
 3. Setup event listener for <select>
 4. If the Google Map API failed to load, show "The map could not be loaded" instead of the map
-5. If the user selects a country and no map has been loaded, attempt render statistics anyways
-6. If the download of the Covid 19 data fails, what happens then? */
-
-/* If the download of the Covid 19 data fails, what happens then? */
-
-/* 
-1. Statistics are EMPTY when program is loaded, no matter what happens
-2. When a country is chosen and data is returned, render it in the table
-3. When a country is chosen and request FAILS, ???
- */
-
-// Render error message, which says "The Covid Data could not be downloaded. TOO BAD FOR YOU"
-// Render error message, which says "The Covid Data could not be downloaded. Wish to try again?"
-
-// 1. User loads page and selects one country. This request FAILS.
-// 2. User loads page and selects one country. This request succeeds. User proceeds to select another country.
-// This request FAILS.
-// WHAT HAPPENS TO THE MAP? :(
+5. If the user selects a country and no map has been loaded, attempt to render statistics anyways
+6. If the download of the Covid 19 data fails, show error message */

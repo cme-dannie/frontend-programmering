@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercises</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <script type="module">
+      /* We're going to familiarize ourselves with a Web Service/API dedicated to POKEMON!!!.
+
+      This might sound silly, but it's actually a really well built API.
+
+      We're going to start small, and then try to implement more and more complexity.
+
+      The docs can be found at https://pokeapi.co/docs/v2.
+
+      It's quite common to dive right into unknown territory (meaning a new web service/api)
+      and then discover what's possible with it. We will see how we can tackle something like this
+      with our new knowledge.
+
+      One thing worth doing before starting, is installing "JSON Formatter" for Chrome:
+      https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa.
+
+      It will make JSON print "prettier" in our browser. */
+
+      /* All pokemon: https://pokeapi.co/api/v2/pokemon
+
+        1. Fetch data from URL (should by default return 20, which can be changed)
+        2. Render name for each of the 20 items
+        3. Make sure the list of pokemon is deterministic (predictable)
+        4. Render an image above each pokemon name
+        5. Render every type of each pokemon
+        6. Structure the logic a bit more to make it more readable
+        7. Add COLOR to our types
+        8. Implement infinite scroll (load new pokemon as the user scrolls)
+
+        BONUS: Add an animated spinner icon when the data is loading
+      */
+
+      const mainElement = document.querySelector("main");
+
+      let url = "https://pokeapi.co/api/v2/pokemon?limit=20";
+
+      // 1. We have a variable isLoading
+      // 2. If 'isLoading' is true, PREVENT downloads of new pokemon
+      // 3. If loading is false, ALLOW downloads, but set 'isLoading' to true
+      // 4. When ongoing download is complete, set 'isLoading' to false :)
+
+      let isLoading = false;
+
+      async function fetchMultiplePokemon() {
+        isLoading = true;
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        url = data.next;
+
+        // 1. Create list of promises
+        const promises = [];
+        data.results.forEach((result) => {
+          // 'renderIndividualPokemon' TAKES TIME
+          const promise = renderIndividualPokemon(result);
+          promises.push(promise);
+        });
+
+        // 2. Create list of promises - map/cleaner variant
+        // const promises = data.results.map(renderIndividualPokemon);
+
+        await Promise.all(promises);
+
+        // 20 ms later, all 20 divs for each pokemon are rendered
+
+        // Request detail information for 20 pokemon. This might take
+        // a while
+
+        // We set 'isLoading' before detail information has been downloaded 100%
+
+        console.log("Before setting 'isLoading' to false!");
+        isLoading = false;
+      }
+
+      function parseIndividualPokemon(detailData) {
+        const parsed = {
+          img: detailData.sprites.other["official-artwork"].front_default,
+          name: detailData.name,
+          types: detailData.types.map((type) => {
+            return type.type.name;
+          }),
+          order: detailData.id,
+        };
+        return parsed;
+      }
+
+      async function renderIndividualPokemon(pokemon) {
+        const div = document.createElement("div");
+        div.classList.add("pokemon");
+        mainElement.append(div);
+
+        const anotherResponse = await fetch(pokemon.url);
+        const detailData = await anotherResponse.json();
+        const parsedData = parseIndividualPokemon(detailData);
+
+        /* Create image */
+        const img = document.createElement("img");
+        img.src = parsedData.img;
+        div.append(img);
+
+        /* Create title */
+        const h2 = document.createElement("h2");
+        h2.textContent = `${parsedData.order}. ${parsedData.name}`;
+        div.append(h2);
+
+        /* Create type(s) */
+        const ul = document.createElement("ul");
+        ul.classList.add("types");
+
+        parsedData.types.forEach((type) => {
+          const li = document.createElement("li");
+          li.textContent = type;
+          li.classList.add(type);
+          ul.append(li);
+        });
+        div.append(ul);
+
+        console.log("renderIndividualPokemon is complete!");
+      }
+
+      fetchMultiplePokemon();
+
+      /* How do we implement an infinite scroll?
+      
+      - We need to know when the scroll has reached the end of the page
+      - When user reaches the end of the page, load new pokemon
+      - Load 20 new pokemon each time
+      */
+
+      window.addEventListener("scroll", () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          console.log("bottom reached!");
+
+          // Only download new pokemon if we are not already loading new pokemon
+          if (!isLoading) {
+            fetchMultiplePokemon();
+          }
+
+          // When user reaches the end of the page, load new pokemon
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <img src="logo.png" alt="Pokemon logo" />
+    </header>
+    <main></main>
+  </body>
+</html>

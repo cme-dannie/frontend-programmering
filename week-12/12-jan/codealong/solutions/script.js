@@ -1,4 +1,5 @@
 const select = document.querySelector("select");
+const mapElement = document.querySelector("#map");
 
 const confirmedElement = document.querySelector(".confirmed");
 const deathsElement = document.querySelector(".deaths");
@@ -28,22 +29,24 @@ select.addEventListener("change", async (event) => {
 
   console.log(latitude, longitude, map);
 
-  const location = { lat: latitude, lng: longitude };
-  map.panTo(location);
-  marker.setPosition(location);
-
-  //   const marker = new google.maps.Marker({
-  //     position: location,
-  //     map: map,
-  //   });
-
   confirmedElement.textContent = confirmed;
   deathsElement.textContent = deaths;
   recoveredElement.textContent = recovered;
   criticalElement.textContent = critical;
 
   console.log(confirmed, deaths, recovered, critical);
+
+  const position = { lat: latitude, lng: longitude };
+  updateMap(position);
 });
+
+function updateMap(position) {
+  if (!map) {
+    return;
+  }
+  map.panTo(position);
+  marker.setPosition(position);
+}
 
 // Google API key: AIzaSyDzn6x8l5LwxutxJxnlpjjYqCvPiCgOnPw
 
@@ -57,7 +60,7 @@ function initMap() {
   // The location of Uluru
   const uluru = { lat: -25.344, lng: 131.036 };
   // The map, centered at Uluru
-  map = new google.maps.Map(document.getElementById("map"), {
+  map = new google.maps.Map(mapElement, {
     zoom: 6,
     center: uluru,
   });
@@ -66,6 +69,8 @@ function initMap() {
     position: uluru,
     map: map,
   });
+
+  mapElement.classList.add("map-loaded");
 }
 
 if (window.google) {
@@ -81,6 +86,6 @@ if (window.google) {
 1. Program starts
 2. Attempt to load the Google Maps API asynchronously. If succeeded, it will run 'initMap'
 3. Setup event listener for <select>
-4. If user selects a country before or IF the Google Maps API could not load, what happens then?  */
-
-/* If the API failed to load, show "The map could not be loaded" */
+4. If the API failed to load, show "The map could not be loaded" instead of the map
+5. If the user selects a country and no map has been loaded, render statistics anyways
+6. If the download of the Covid 19 data fails, what happens then? */

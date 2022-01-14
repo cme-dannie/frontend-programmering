@@ -5,6 +5,8 @@ const deathsElement = document.querySelector(".deaths");
 const recoveredElement = document.querySelector(".recovered");
 const criticalElement = document.querySelector(".critical");
 
+const errorMessageElement = document.querySelector(".error-message");
+
 select.addEventListener("change", async (event) => {
   const chosenCountry = event.target.value;
   const url = `https://covid-19-data.p.rapidapi.com/country?name=${chosenCountry}`;
@@ -28,11 +30,12 @@ select.addEventListener("change", async (event) => {
 
   const location = { lat: latitude, lng: longitude };
   map.panTo(location);
+  marker.setPosition(location);
 
-  const marker = new google.maps.Marker({
-    position: location,
-    map: map,
-  });
+  //   const marker = new google.maps.Marker({
+  //     position: location,
+  //     map: map,
+  //   });
 
   confirmedElement.textContent = confirmed;
   deathsElement.textContent = deaths;
@@ -45,10 +48,11 @@ select.addEventListener("change", async (event) => {
 // Google API key: AIzaSyDzn6x8l5LwxutxJxnlpjjYqCvPiCgOnPw
 
 let map = null;
+let marker = null;
 
 // Initialize and add the map
 function initMap() {
-  console.log("Init map!!!");
+  console.log("Init map!!!", map, marker);
 
   // The location of Uluru
   const uluru = { lat: -25.344, lng: 131.036 };
@@ -58,8 +62,25 @@ function initMap() {
     center: uluru,
   });
   // The marker, positioned at Uluru
-  const marker = new google.maps.Marker({
+  marker = new google.maps.Marker({
     position: uluru,
     map: map,
   });
 }
+
+if (window.google) {
+  console.log("Google API was loaded!!!");
+  initMap();
+} else {
+  console.log("Google API failed to load!!!");
+  // Show message to user, NOT the console stoopid
+  errorMessageElement.textContent = "The map could not be loaded";
+}
+
+/* 
+1. Program starts
+2. Attempt to load the Google Maps API asynchronously. If succeeded, it will run 'initMap'
+3. Setup event listener for <select>
+4. If user selects a country before or IF the Google Maps API could not load, what happens then?  */
+
+/* If the API failed to load, show "The map could not be loaded" */

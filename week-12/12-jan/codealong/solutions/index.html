@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Codealong</title>
     <style>
-      #map {
+      .map-loaded {
         height: 400px;
-        /* The height is 400 pixels */
         width: 100%;
-        /* The width is the width of the web page */
       }
     </style>
+    <!-- Load script #1 ASYNCHRONOUSLY -->
+    <!-- Load script #2 ASYNCHRONOUSLY -->
+    <!-- Render the awesome HTML to the user :)))) -->
+    <!-- When BOTH scripts are ready to be run: RUN THEM IN SEQUENCE (first script #1, then script #2) -->
     <script
-      async
       defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzn6x8l5LwxutxJxnlpjjYqCvPiCgOnPw&callback=initMap"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzn6x8l5LwxutxJxnlpjjYqCvPiCgOnPw"
     ></script>
     <script src="script.js" defer>
       /* In the codealong of today we will continue to familiarise ourselves with
@@ -75,5 +76,6 @@
       </tbody>
     </table>
     <section id="map"></section>
+    <p class="error-message"></p>
   </body>
 </html>

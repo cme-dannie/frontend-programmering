@@ -6,39 +6,58 @@ const deathsElement = document.querySelector(".deaths");
 const recoveredElement = document.querySelector(".recovered");
 const criticalElement = document.querySelector(".critical");
 
-const errorMessageElement = document.querySelector(".error-message");
+const footerElement = document.querySelector("footer");
 
 select.addEventListener("change", async (event) => {
   const chosenCountry = event.target.value;
   const url = `https://covid-19-data.p.rapidapi.com/country?name=${chosenCountry}`;
 
   // Download relevant data based on country chosen!!!
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
-      "x-rapidapi-key": "459ea5d62fmsh6411ec02bb9a765p138cacjsn81b007d6fc15",
-    },
-  });
-  const data = await response.json();
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
+        "x-rapidapi-key": "459ea5d62fmsh6411ec02bb9a765p138cacjsn81b007d6fc15",
+      },
+    });
+    const data = await response.json();
 
-  /* Object destructuring version (look inside the object for properties and create variables
-        with those same names) */
-  const { confirmed, deaths, recovered, critical, latitude, longitude } =
-    data[0];
+    /* Object destructuring version (look inside the object for properties and create variables
+            with those same names) */
+    const { confirmed, deaths, recovered, critical, latitude, longitude } =
+      data[0];
 
-  console.log(latitude, longitude, map);
+    console.log(latitude, longitude, map);
 
-  confirmedElement.textContent = confirmed;
-  deathsElement.textContent = deaths;
-  recoveredElement.textContent = recovered;
-  criticalElement.textContent = critical;
+    confirmedElement.textContent = confirmed;
+    deathsElement.textContent = deaths;
+    recoveredElement.textContent = recovered;
+    criticalElement.textContent = critical;
 
-  console.log(confirmed, deaths, recovered, critical);
+    console.log(confirmed, deaths, recovered, critical);
 
-  const position = { lat: latitude, lng: longitude };
-  updateMap(position);
+    const position = { lat: latitude, lng: longitude };
+    updateMap(position);
+  } catch (error) {
+    console.log("The Covid Data could not be downloaded. TOO BAD FOR YOU");
+    createErrorMessage(
+      `The Covid Data for ${chosenCountry} could not be downloaded. TOO BAD FOR YOU`
+    );
+  }
 });
+
+function createErrorMessage(message) {
+  const errorMessageElement = document.createElement("p");
+  errorMessageElement.classList.add("error-message");
+  errorMessageElement.textContent = message;
+
+  footerElement.prepend(errorMessageElement);
+
+  setTimeout(() => {
+    errorMessageElement.remove();
+  }, 2000);
+}
 
 function updateMap(position) {
   if (!map) {
@@ -79,13 +98,29 @@ if (window.google) {
 } else {
   console.log("Google API failed to load!!!");
   // Show message to user, NOT the console stoopid
-  errorMessageElement.textContent = "The map could not be loaded";
+  createErrorMessage("The map could not be loaded");
 }
 
 /* 
 1. Program starts
-2. Attempt to load the Google Maps API asynchronously. If succeeded, it will run 'initMap'
+2. Attempt to load the Google Maps API asynchronously. If succeeded, WE will run 'initMap'
 3. Setup event listener for <select>
-4. If the API failed to load, show "The map could not be loaded" instead of the map
-5. If the user selects a country and no map has been loaded, render statistics anyways
+4. If the Google Map API failed to load, show "The map could not be loaded" instead of the map
+5. If the user selects a country and no map has been loaded, attempt render statistics anyways
 6. If the download of the Covid 19 data fails, what happens then? */
+
+/* If the download of the Covid 19 data fails, what happens then? */
+
+/* 
+1. Statistics are EMPTY when program is loaded, no matter what happens
+2. When a country is chosen and data is returned, render it in the table
+3. When a country is chosen and request FAILS, ???
+ */
+
+// Render error message, which says "The Covid Data could not be downloaded. TOO BAD FOR YOU"
+// Render error message, which says "The Covid Data could not be downloaded. Wish to try again?"
+
+// 1. User loads page and selects one country. This request FAILS.
+// 2. User loads page and selects one country. This request succeeds. User proceeds to select another country.
+// This request FAILS.
+// WHAT HAPPENS TO THE MAP? :(

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- 
+    What do we want do achieve today?
+
+    - We want to build a website which lists 5 random ingredients
+    for a smoothie
+    - We want to use Node and NPM to "bundle" our project
+    - At least one installed package
+    - Project should be version controlled with git
+    - Project should be hosted on GitHub for easy download/install
+    - Practice of npm start/npm run build
+    - Usage of a Module Bundler (snowpack)
+
+    In what order should we do this?
+
+    1. Build out a website which lists ingredients. We should stop
+    when we face the problem of "how do we show 5 random ones".
+    2. We will then introduce NPM to our project (npm init)
+    3. We will then install Lodash, which is a library with
+    many functions (shuffle being one of them). This will probably
+    help us to show random ingredients.
+    4. We will introduce Git at this point, to make the project
+    version controlled.
+    5. We will add a .gitignore file. Important to discuss why.
+    6. We will then push our project to GitHub.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smoothie ingredients shuffler</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="index.js" type="module"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Smoothie ingredients shuffler</h1>
+    </header>
+    <main>
+      <ul>
+        <!-- These items will be populated by our program -->
+      </ul>
+      <button>Shuffle!</button>
+    </main>
+  </body>
+</html>

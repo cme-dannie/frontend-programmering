@@ -1,0 +1,47 @@
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+header,
+main {
+  margin: 0 auto;
+  max-width: 30rem;
+}
+
+h1 {
+  background-image: linear-gradient(
+    to left,
+    violet,
+    indigo,
+    blue,
+    green,
+    yellow,
+    orange,
+    red
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shiny 10s ease-in-out infinite alternate;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: rgb(65, 65, 182);
+  color: rgb(0, 230, 84);
+}
+
+@keyframes shiny {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

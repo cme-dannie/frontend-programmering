@@ -19,7 +19,7 @@ Varje vecka kommer innehålla föreläsningar som sker på förmiddagar och even
 - Emmet som verktyg för att kunna skriva snabbare HTML
 - Chrome DevTools intro
 
-### Återstående
+### Att läsa på om på egen hand
 
 - Aria attribut
 
@@ -64,7 +64,7 @@ Varje vecka kommer innehålla föreläsningar som sker på förmiddagar och even
 - Att skriva CSS som skalar (CSS variables, fler filer, rätt namn på selektorer etc)
 - Att systematisera det som går att sätta i system (sizing, spacing, colors etc)
 
-### Återstående
+### Att läsa på om på egen hand
 
 - Collapsing margins
 - CSS ideologier (utility-first, BEM, OOCSS, atomic, css-in-js, css modules)
@@ -121,15 +121,6 @@ Varje vecka kommer innehålla föreläsningar som sker på förmiddagar och even
 - Node/npm
 - Module bundler (Snowpack intro)
 
-### Återstående
-
-- Type coercion
-- Truthy vs Falsy values
-- Recursion
-- Hoisting
-- `<template>` element
-- Passing by reference vs passing by value
-
 ### Att läsa på om på egen hand
 
 - Data attributes
@@ -142,6 +133,12 @@ Varje vecka kommer innehålla föreläsningar som sker på förmiddagar och even
 - Object destructuring
 - Array destructuring
 - Guard clauses
+- Type coercion
+- Truthy vs Falsy values
+- Recursion
+- Hoisting
+- `<template>` element
+- Passing by reference vs passing by value
 
 ## Git och GitHub - Kommer introduceras allt eftersom
 
